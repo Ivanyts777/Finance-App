@@ -1,0 +1,9 @@
+body {
+  background-image: url("./img/background.png");
+  min-width: 320px;
+}
+
+.main {
+  max-width: 1192px;
+  margin: 0 auto;
+}

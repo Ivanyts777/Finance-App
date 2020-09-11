@@ -10,6 +10,8 @@ import { navigation } from "./vars";
 // CSS
 import "./App.css";
 
+import Header from "./Components/Header/Header";
+
 // const Login = lazy(() => import("./Containers/Sing/Login"));
 // const Registration = lazy(() => import("./Containers/Sing/Registration"));
 
@@ -17,7 +19,7 @@ const App = () => {
   return (
     <div className="App">
       <Suspense fallback={<p>Compaling...</p>}>
-        {/* <Header /> */}
+        <Header />
         <main className="main">
           <Switch>
             {/* <Route path={navigation.home} exact render={(props) => <Home {...props} />} /> */}
