@@ -1,7 +1,11 @@
 import React from "react";
 
 const Diagram = () => {
-  return <div></div>;
+  return (
+    <div>
+      <h1>DIAGRAM</h1>
+    </div>
+  );
 };
 
 export default Diagram;

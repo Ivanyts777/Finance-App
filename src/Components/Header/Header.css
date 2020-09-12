@@ -1,14 +1,11 @@
-/* .header {
-  box-shadow: 1.5px 2.598px 3px 0px rgba(1, 1, 0, 0.12); 
-} */
+.header {
+  background-color: #284060;
+}
 
 .header-center {
-  /* max-width: 1192px;
+  max-width: 1192px;
   margin: 0 auto;
-
-  align-items: center; */
   padding: 7px 8px;
-  background-color: #284060;
   display: flex;
   justify-content: space-between;
 }
@@ -31,39 +28,47 @@
   color: #8390a2;
   font-size: 15px;
 }
+.header__link-text {
+  display: none;
+  margin-left: 5px;
+}
 .header__logo {
   font-family: "BauhausC Medium";
   font-size: 18px;
   display: flex;
   align-items: center;
+}
+.header__logo a {
   color: #8390a2;
 }
 .header__logo > *:first-child {
   margin-right: 10px;
 }
-.header__mobile-submenu {
-  display: flex;
-  justify-content: center;
-  padding: 7px 8px;
-  background-color: #3a5374;
-}
-.header__mobile-submenu-item {
-  display: inline-block;
-  padding: 7px 10px;
-  background-color: #2a4262;
-  border-radius: 5px;
-}
-.header__mobile-submenu-item:hover {
-  background-color: #66778e;
-}
-.header__mobile-submenu-item:hover g {
-  fill: #ffffff;
-}
-.header__mobile-submenu-item:not(:last-child) {
-  margin-right: 13px;
-}
 
 @media (min-width: 748px) {
+  .header {
+    padding: 30px 33px;
+    box-shadow: 1.5px 2.598px 3px 0px rgba(1, 1, 0, 0.12);
+    background-color: #ffffff;
+    margin-bottom: 35px;
+  }
+  .header__link {
+    display: flex;
+    align-items: center;
+  }
+  .header__link-text {
+    display: inline-block;
+  }
+  .header__item.separator {
+    display: inline-block;
+  }
+  .header__logo a {
+    font-size: 20px;
+    color: #000000;
+  }
 }
 @media (min-width: 1192px) {
+  .header {
+    padding: 30px 0;
+  }
 }

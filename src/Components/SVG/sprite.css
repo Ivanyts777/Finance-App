@@ -9,3 +9,11 @@
 .svg-Money {
   fill: #aab3c0;
 }
+
+@media (min-width: 748px) {
+  .svg-Logo {
+    fill: #3a5374;
+  }
+}
+@media (min-width: 1192px) {
+}
