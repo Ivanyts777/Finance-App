@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { Home, TimeLine, Money } from "../SVG/sprite";
 import { Loader } from "../../redux/Actions";
 
-import "./Menu.css";
+import "./Menu.scss";
 import { useDispatch } from "react-redux";
 const Menu = () => {
   const dispatch = useDispatch();
