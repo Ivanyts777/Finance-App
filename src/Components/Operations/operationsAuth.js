@@ -1,7 +1,6 @@
 import axios from "axios";
-import { Loader } from "../../redux/slice/Loader";
+import { Loader } from "../../redux/Actions";
 import { changeOptions } from "../../redux/slice/Options";
-import { setUserInfo } from "../../redux/slice/UserInfo";
 
 const baseURL = "https://goit-phonebook-api.herokuapp.com/users/";
 
@@ -13,7 +12,8 @@ export const createNewUser = (userData) => async (dispatch) => {
       url: baseURL + "signup",
       data: userData,
     });
-    dispatch(changeOptions({ Token: result.data.token }));
+    console.log(result);
+    // dispatch(changeOptions({ Token: result.data.token }));
   } catch (error) {
     console.log(error);
   } finally {
@@ -29,7 +29,8 @@ export const userLogin = (userData) => async (dispatch) => {
       url: baseURL + "login",
       data: userData,
     });
-    dispatch(changeOptions({ Token: result.data.token, Name: result.data.user.name }));
+    console.log(result);
+    // dispatch(changeOptions({ Token: result.data.token, Name: result.data.user.name }));
   } catch (error) {
     console.log(error);
   } finally {
@@ -45,23 +46,7 @@ export const userLoginOut = (token) => async (dispatch) => {
       url: baseURL + "logout",
       headers: { Authorization: `Bearer ${token}` },
     });
-    dispatch(changeOptions({ Token: null, Name: "" }));
-  } catch (error) {
-    console.log(error);
-  } finally {
-    dispatch(Loader(false));
-  }
-};
-
-export const getUserInfo = (token) => async (dispatch) => {
-  try {
-    dispatch(Loader(true));
-    const result = await axios({
-      method: "",
-      url: baseURL + "current",
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    dispatch(setUserInfo(result.data));
+    // dispatch(changeOptions({ Token: null, Name: "" }));
   } catch (error) {
     console.log(error);
   } finally {

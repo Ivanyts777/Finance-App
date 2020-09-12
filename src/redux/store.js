@@ -4,7 +4,7 @@ import storage from "redux-persist/lib/storage"; // defaults to localStorage for
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
 // import {configureStore} from '@reduxjs/toolkit'
-import rootReducer from "./reducers/index.js";
+import rootReducer from "./index.js";
 
 const middleWares = [thunk];
 
