@@ -23,7 +23,7 @@ const Login = lazy(() => import("./Containers/Login/Login"));
 const Registration = lazy(() => import("./Containers/Registration/Registration"));
 
 const App = () => {
-  const { loader, error, token } = useSelector((state) => state);
+  const { loader, error } = useSelector((state) => state);
   return (
     <>
       {loader && (
