@@ -8,7 +8,7 @@ import { Logo, LoginOut } from "../SVG/sprite";
 import { navigation } from "../../constants";
 
 // Css
-import "./Header.css";
+import "./Header.scss";
 const Header = () => {
   return (
     <header className="header">
@@ -20,11 +20,7 @@ const Header = () => {
           </NavLink>
         </div>
         <ul className="header__menu">
-          <li className="header__item">
-            <a className="header__link" href="/">
-              Name
-            </a>
-          </li>
+          <li className="header__item">Name</li>
           <li className="header__item separator"> | </li>
           <li className="header__item">
             <a className="header__link loginOut" href="/">

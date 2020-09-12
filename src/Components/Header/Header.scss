@@ -1,0 +1,73 @@
+.header {
+  background-color: #284060;
+  &-center {
+    max-width: 1192px;
+    margin: 0 auto;
+    padding: 7px 8px;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__menu {
+    list-style: none;
+    display: flex;
+    align-items: center;
+  }
+  &__item {
+    display: inline-block;
+    &.separator {
+      display: none;
+    }
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+  &__link-text {
+    display: none;
+    margin-left: 5px;
+  }
+  &__logo {
+    font-family: "BauhausC Medium";
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    & a {
+      color: #8390a2;
+    }
+    & > *:first-child {
+      margin-right: 10px;
+    }
+  }
+  &__link,
+  &__item {
+    color: #8390a2;
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 748px) {
+  .header {
+    padding: 30px 33px;
+    box-shadow: 1.5px 2.598px 3px 0px rgba(1, 1, 0, 0.12);
+    background-color: #ffffff;
+    margin-bottom: 35px;
+    &__link {
+      display: flex;
+      align-items: center;
+      &-text {
+        display: inline-block;
+      }
+    }
+    &__item.separator {
+      display: inline-block;
+    }
+    &__logo a {
+      font-size: 20px;
+      color: #000000;
+    }
+  }
+}
+@media (min-width: 1192px) {
+  .header {
+    padding: 30px 0;
+  }
+}
