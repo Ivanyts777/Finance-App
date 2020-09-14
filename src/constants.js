@@ -6,7 +6,20 @@ export const navigation = {
   diagram: "/diagram",
 };
 
-// Options
-export const LOADERTYPE = "app/loader";
-export const ERRORTYPE = "app/error";
-export const TOKENTYPE = "app/token";
+// Session
+const TYPESTATES = "session/";
+export const ERRORTYPE = TYPESTATES + "error";
+export const TOKENTYPE = TYPESTATES + "token";
+export const USERINFO = TYPESTATES + "userinfo";
+
+// Global
+const TYPESTATEG = "global/";
+export const LOADERTYPE = TYPESTATEG + "loader";
+export const MODALADDTYPE = TYPESTATEG + "modal";
+export const MODALLOGINTYPE = TYPESTATEG + "modal";
+
+// Finance
+const TYPESTATEF = "finance/";
+export const DATAADDTYPE = TYPESTATEF + "data/add";
+export const DATAREMOVETYPE = TYPESTATEF + "data/remove";
+export const DATAEDITTYPE = TYPESTATEF + "data/edit";
