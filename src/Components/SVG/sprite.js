@@ -6,7 +6,13 @@ const initialScale = "24";
 
 export const Remove = ({ scale = initialScale }) => {
   return (
-    <svg className="svg-Remove" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width={scale} height={scale}>
+    <svg
+      className="svg-Remove"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512 512"
+      width={scale}
+      height={scale}
+    >
       <g>
         <path d="m442.154 145c10.585 0 17.924-10.701 13.955-20.514-14.093-34.841-48.275-59.486-88.109-59.486h-18.414c-6.867-36.273-38.67-65-77.586-65h-32c-38.891 0-70.715 28.708-77.586 65h-18.414c-39.834 0-74.016 24.645-88.109 59.486-3.969 9.813 3.37 20.514 13.955 20.514zm-202.154-115h32c21.9 0 40.49 14.734 46.748 35h-125.496c6.258-20.266 24.848-35 46.748-35z" />
         <path d="m111.053 470.196c1.669 23.442 21.386 41.804 44.886 41.804h200.121c23.5 0 43.217-18.362 44.886-41.804l21.023-295.196h-331.938zm185.966-214.945c.414-8.274 7.469-14.655 15.73-14.232 8.274.414 14.646 7.457 14.232 15.73l-8 160c-.401 8.019-7.029 14.251-14.969 14.251-8.637 0-15.42-7.223-14.994-15.749zm-97.768-14.232c8.263-.415 15.317 5.959 15.73 14.232l8 160c.426 8.53-6.362 15.749-14.994 15.749-7.94 0-14.568-6.232-14.969-14.251l-8-160c-.413-8.273 5.959-15.316 14.233-15.73z" />
@@ -17,7 +23,13 @@ export const Remove = ({ scale = initialScale }) => {
 
 export const Edit = ({ scale = initialScale }) => {
   return (
-    <svg className="svg-Edit" xmlns="http://www.w3.org/2000/svg" viewBox="0 -1 401.52289 401" width={scale} height={scale}>
+    <svg
+      className="svg-Edit"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 -1 401.52289 401"
+      width={scale}
+      height={scale}
+    >
       <path d="m370.589844 250.972656c-5.523438 0-10 4.476563-10 10v88.789063c-.019532 16.5625-13.4375 29.984375-30 30h-280.589844c-16.5625-.015625-29.980469-13.4375-30-30v-260.589844c.019531-16.558594 13.4375-29.980469 30-30h88.789062c5.523438 0 10-4.476563 10-10 0-5.519531-4.476562-10-10-10h-88.789062c-27.601562.03125-49.96875 22.398437-50 50v260.59375c.03125 27.601563 22.398438 49.96875 50 50h280.589844c27.601562-.03125 49.96875-22.398437 50-50v-88.792969c0-5.523437-4.476563-10-10-10zm0 0" />
       <path d="m376.628906 13.441406c-17.574218-17.574218-46.066406-17.574218-63.640625 0l-178.40625 178.40625c-1.222656 1.222656-2.105469 2.738282-2.566406 4.402344l-23.460937 84.699219c-.964844 3.472656.015624 7.191406 2.5625 9.742187 2.550781 2.546875 6.269531 3.527344 9.742187 2.566406l84.699219-23.464843c1.664062-.460938 3.179687-1.34375 4.402344-2.566407l178.402343-178.410156c17.546875-17.585937 17.546875-46.054687 0-63.640625zm-220.257812 184.90625 146.011718-146.015625 47.089844 47.089844-146.015625 146.015625zm-9.40625 18.875 37.621094 37.625-52.039063 14.417969zm227.257812-142.546875-10.605468 10.605469-47.09375-47.09375 10.609374-10.605469c9.761719-9.761719 25.589844-9.761719 35.351563 0l11.738281 11.734375c9.746094 9.773438 9.746094 25.589844 0 35.359375zm0 0" />
     </svg>
@@ -26,7 +38,13 @@ export const Edit = ({ scale = initialScale }) => {
 
 export const Account = ({ scale = initialScale }) => {
   return (
-    <svg className="svg-Account" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width={scale} height={scale}>
+    <svg
+      className="svg-Account"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 32 32"
+      width={scale}
+      height={scale}
+    >
       <path d="M4 6.667v18.667c0 1.467 1.187 2.667 2.667 2.667h18.667c1.467 0 2.667-1.2 2.667-2.667v-18.667c0-1.467-1.2-2.667-2.667-2.667h-18.667c-1.48 0-2.667 1.2-2.667 2.667zM20 12c0 2.213-1.787 4-4 4s-4-1.787-4-4 1.787-4 4-4 4 1.787 4 4zM8 22.667c0-2.667 5.333-4.133 8-4.133s8 1.467 8 4.133v1.333h-16v-1.333z"></path>
     </svg>
   );
@@ -34,7 +52,13 @@ export const Account = ({ scale = initialScale }) => {
 
 export const ArrowRight = ({ scale = initialScale }) => {
   return (
-    <svg className="svg-ArrowRight" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width={scale} height={scale}>
+    <svg
+      className="svg-ArrowRight"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 32 32"
+      width={scale}
+      height={scale}
+    >
       <path d="M29.333 16l-5.333-5.333v4h-20v2.667h20v4l5.333-5.333z"></path>
     </svg>
   );
@@ -42,7 +66,13 @@ export const ArrowRight = ({ scale = initialScale }) => {
 
 export const Date = ({ scale = initialScale }) => {
   return (
-    <svg className="svg-Date" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width={scale} height={scale}>
+    <svg
+      className="svg-Date"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 32 32"
+      width={scale}
+      height={scale}
+    >
       <path d="M12 14.667h-2.667v2.667h2.667v-2.667zM17.333 14.667h-2.667v2.667h2.667v-2.667zM22.667 14.667h-2.667v2.667h2.667v-2.667zM25.333 5.333h-1.333v-2.667h-2.667v2.667h-10.667v-2.667h-2.667v2.667h-1.333c-1.48 0-2.653 1.2-2.653 2.667l-0.013 18.667c0 1.467 1.187 2.667 2.667 2.667h18.667c1.467 0 2.667-1.2 2.667-2.667v-18.667c0-1.467-1.2-2.667-2.667-2.667zM25.333 26.667h-18.667v-14.667h18.667v14.667z"></path>
     </svg>
   );
@@ -50,7 +80,13 @@ export const Date = ({ scale = initialScale }) => {
 
 export const Email = ({ scale = initialScale }) => {
   return (
-    <svg className="svg-Email" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width={scale} height={scale}>
+    <svg
+      className="svg-Email"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 32 32"
+      width={scale}
+      height={scale}
+    >
       <path d="M26.667 5.333h-21.333c-1.467 0-2.653 1.2-2.653 2.667l-0.013 16c0 1.467 1.2 2.667 2.667 2.667h21.333c1.467 0 2.667-1.2 2.667-2.667v-16c0-1.467-1.2-2.667-2.667-2.667zM26.667 10.667l-10.667 6.667-10.667-6.667v-2.667l10.667 6.667 10.667-6.667v2.667z"></path>
     </svg>
   );
@@ -58,7 +94,13 @@ export const Email = ({ scale = initialScale }) => {
 
 export const LockClose = ({ scale = initialScale }) => {
   return (
-    <svg className="svg-LockClose" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width={scale} height={scale}>
+    <svg
+      className="svg-LockClose"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 32 32"
+      width={scale}
+      height={scale}
+    >
       <path d="M24 10.667h-1.333v-2.667c0-3.68-2.987-6.667-6.667-6.667s-6.667 2.987-6.667 6.667v2.667h-1.333c-1.467 0-2.667 1.2-2.667 2.667v13.333c0 1.467 1.2 2.667 2.667 2.667h16c1.467 0 2.667-1.2 2.667-2.667v-13.333c0-1.467-1.2-2.667-2.667-2.667zM16 22.667c-1.467 0-2.667-1.2-2.667-2.667s1.2-2.667 2.667-2.667 2.667 1.2 2.667 2.667-1.2 2.667-2.667 2.667zM20.133 10.667h-8.267v-2.667c0-2.28 1.853-4.133 4.133-4.133s4.133 1.853 4.133 4.133v2.667z"></path>
     </svg>
   );
@@ -66,7 +108,13 @@ export const LockClose = ({ scale = initialScale }) => {
 
 export const LockOpen = ({ scale = initialScale }) => {
   return (
-    <svg className="svg-LockOpen" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width={scale} height={scale}>
+    <svg
+      className="svg-LockOpen"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 32 32"
+      width={scale}
+      height={scale}
+    >
       <path d="M16 22.667c1.467 0 2.667-1.2 2.667-2.667s-1.2-2.667-2.667-2.667-2.667 1.2-2.667 2.667 1.2 2.667 2.667 2.667zM24 10.667h-1.333v-2.667c0-3.68-2.987-6.667-6.667-6.667s-6.667 2.987-6.667 6.667h2.533c0-2.28 1.853-4.133 4.133-4.133s4.133 1.853 4.133 4.133v2.667h-12.133c-1.467 0-2.667 1.2-2.667 2.667v13.333c0 1.467 1.2 2.667 2.667 2.667h16c1.467 0 2.667-1.2 2.667-2.667v-13.333c0-1.467-1.2-2.667-2.667-2.667zM24 26.667h-16v-13.333h16v13.333z"></path>
     </svg>
   );
@@ -74,7 +122,13 @@ export const LockOpen = ({ scale = initialScale }) => {
 
 export const Money = ({ scale = initialScale }) => {
   return (
-    <svg className="svg-Money" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width={scale} height={scale}>
+    <svg
+      className="svg-Money"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 32 32"
+      width={scale}
+      height={scale}
+    >
       <path d="M15.733 14.533c-3.027-0.787-4-1.6-4-2.867 0-1.453 1.347-2.467 3.6-2.467 2.373 0 3.253 1.133 3.333 2.8h2.947c-0.093-2.293-1.493-4.4-4.28-5.080v-2.92h-4v2.88c-2.587 0.56-4.667 2.24-4.667 4.813 0 3.080 2.547 4.613 6.267 5.507 3.333 0.8 4 1.973 4 3.213 0 0.92-0.653 2.387-3.6 2.387-2.747 0-3.827-1.227-3.973-2.8h-2.933c0.16 2.92 2.347 4.56 4.907 5.107v2.893h4v-2.867c2.6-0.493 4.667-2 4.667-4.733 0-3.787-3.24-5.080-6.267-5.867z"></path>
     </svg>
   );
@@ -82,7 +136,13 @@ export const Money = ({ scale = initialScale }) => {
 
 export const TimeLine = ({ scale = initialScale }) => {
   return (
-    <svg className="svg-TimeLine" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width={scale} height={scale}>
+    <svg
+      className="svg-TimeLine"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 32 32"
+      width={scale}
+      height={scale}
+    >
       <path d="M30.667 10.667c0 1.467-1.2 2.667-2.667 2.667-0.24 0-0.467-0.027-0.68-0.093l-4.747 4.733c0.067 0.213 0.093 0.453 0.093 0.693 0 1.467-1.2 2.667-2.667 2.667s-2.667-1.2-2.667-2.667c0-0.24 0.027-0.48 0.093-0.693l-3.4-3.4c-0.213 0.067-0.453 0.093-0.693 0.093s-0.48-0.027-0.693-0.093l-6.067 6.080c0.067 0.213 0.093 0.44 0.093 0.68 0 1.467-1.2 2.667-2.667 2.667s-2.667-1.2-2.667-2.667 1.2-2.667 2.667-2.667c0.24 0 0.467 0.027 0.68 0.093l6.080-6.067c-0.067-0.213-0.093-0.453-0.093-0.693 0-1.467 1.2-2.667 2.667-2.667s2.667 1.2 2.667 2.667c0 0.24-0.027 0.48-0.093 0.693l3.4 3.4c0.213-0.067 0.453-0.093 0.693-0.093s0.48 0.027 0.693 0.093l4.733-4.747c-0.067-0.213-0.093-0.44-0.093-0.68 0-1.467 1.2-2.667 2.667-2.667s2.667 1.2 2.667 2.667z"></path>
     </svg>
   );
@@ -90,7 +150,13 @@ export const TimeLine = ({ scale = initialScale }) => {
 
 export const Home = ({ scale = initialScale }) => {
   return (
-    <svg className="svg-Home" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width={scale} height={scale}>
+    <svg
+      className="svg-Home"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 32 32"
+      width={scale}
+      height={scale}
+    >
       <path d="M13.333 26.667v-8h5.333v8h6.667v-10.667h4l-13.333-12-13.333 12h4v10.667z"></path>
     </svg>
   );
@@ -98,7 +164,13 @@ export const Home = ({ scale = initialScale }) => {
 
 export const LoginOut = ({ scale = initialScale }) => {
   return (
-    <svg className="svg-LoginOut" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width={scale} height={scale}>
+    <svg
+      className="svg-LoginOut"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 32 32"
+      width={scale}
+      height={scale}
+    >
       <path d="M20.191 27.701h-16.44v-23.402h16.441c0.364 0 0.66-0.296 0.66-0.66v-2.431c0-0.364-0.296-0.66-0.66-0.66h-19.531c-0.364 0-0.66 0.296-0.66 0.66v29.584c0 0.364 0.296 0.66 0.66 0.66h19.531c0.365 0 0.66-0.296 0.66-0.66v-2.43c0-0.365-0.295-0.66-0.66-0.66z"></path>
       <path d="M31.806 15.533l-8.887-8.886c-0.248-0.248-0.686-0.248-0.933 0l-2.108 2.109c-0.258 0.258-0.258 0.676 0 0.934l4.014 4.015h-17.376c-0.364 0-0.66 0.296-0.66 0.66v3.272c0 0.364 0.296 0.66 0.66 0.66h17.377l-4.014 4.015c-0.258 0.258-0.258 0.676 0 0.933l2.108 2.109c0.124 0.124 0.292 0.193 0.467 0.193s0.343-0.070 0.467-0.193l8.887-8.886c0.124-0.124 0.193-0.292 0.193-0.467s-0.071-0.343-0.194-0.467z"></path>
     </svg>
@@ -107,7 +179,13 @@ export const LoginOut = ({ scale = initialScale }) => {
 
 export const Logo = ({ scale = initialScale }) => {
   return (
-    <svg className="svg-Logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 890.5 890.5" width={scale} height={scale}>
+    <svg
+      className="svg-Logo"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 890.5 890.5"
+      width={scale}
+      height={scale}
+    >
       <path d="M208.1,180.6l355-96.9l-18.8-38C532,21,502,10.8,477.3,23.1L159.5,180.6H208.1z" />
       <path
         d="M673.3,86.5c-4.4,0-8.8,0.6-13.2,1.8l-83.4,22.8L322,180.6h289.1h126l-15.6-57.2
