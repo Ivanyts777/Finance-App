@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
-import { loader, error, token } from "./Reducers";
+import { session, global, finance } from "./Reducers";
 
 const rootReducer = combineReducers({
-  loader,
-  error,
-  token,
+  session,
+  global,
+  finance,
 });
 
 export default rootReducer;
