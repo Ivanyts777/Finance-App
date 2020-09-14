@@ -1,4 +1,6 @@
 import React from "react";
+import Balance from "../../Components/Balance/Balance";
+import CarrencyExchange from "../../Components/CurrencyExchage/CurrencyExchage";
 import styles from "./Main.module.css";
 import { useSelector } from "react-redux";
 import { Remove, Edit } from "../../Components/SVG/sprite";
@@ -7,6 +9,11 @@ const Main = () => {
   const dataFinance = useSelector((state) => state.finance.data);
 
   return (
+   <div> 
+    <div>
+          <Balance />
+      <CarrencyExchange />
+    </div>
     <div className={styles.Main}>
       <div className={styles.titleContainer}>
         <p className={styles.title}>Date</p>
@@ -65,6 +72,8 @@ const Main = () => {
         ))}
       </ul>
     </div>
+    </div>
+
   );
 };
 
