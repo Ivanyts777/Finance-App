@@ -58,7 +58,7 @@
         color: #3a5374;
         margin-left: 5px;
       }
-      .menu__item:not(:last-child) {
+      &:not(:last-child) {
         margin-right: 10px;
       }
       &.money {
