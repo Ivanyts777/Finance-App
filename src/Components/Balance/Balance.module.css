@@ -1,0 +1,34 @@
+.balance {
+  margin: 20px auto;
+  width: 306px;
+  height: 91px;
+  background-color: #3a5374;
+  border-radius: 4px;
+  box-shadow: 14.095px 5.13px 9px 0px rgba(1, 1, 0, 0.08);
+  padding-top: 25px;
+}
+
+.balance__title,
+.balance__value {
+  text-align: center;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.balance__title {
+  margin-bottom: 5px;
+}
+
+@media (min-width: 748px) {
+  .balance {
+    display: none;
+  }
+}
+
+@media (min-width: 1192px) {
+  .balance {
+    display: block;
+    width: 312px;
+  }
+}
