@@ -5,7 +5,9 @@ import PropTypes from 'prop-types';
 import Table from './Table/Table';
 import Chart from './Chart/Chart';
 import styles from './Diagram.module.css';
-
+import Balance from "../Balance/Balance";
+import CurrencyExchage from "../CurrencyExchage/CurrencyExchage";
+import Menu from "../Menu/Menu";
 
 const pickColor = state => state.data.datasets[0].backgroundColor;
 
@@ -204,6 +206,8 @@ class Diagram extends Component {
       chartBlockHeader,
       diagramHeader,
       wrapper,
+      mainGlobal,
+      showTabletDesktop
     } = styles;
 
     const {
@@ -217,6 +221,15 @@ class Diagram extends Component {
     } = this.state;
 
     return (
+      <div>
+        <div className={mainGlobal}>
+        <div>
+          <Menu />
+          <div className={showTabletDesktop}>
+            <Balance />
+            <CurrencyExchage />
+          </div>
+        </div>
       <div className={diagram}>
         <div className={diagramHeader}>
           <h2>Statistics</h2>
@@ -246,6 +259,9 @@ class Diagram extends Component {
           />
         </div>
       </div>
+      </div>
+      </div>
+      
     );
   }
 }

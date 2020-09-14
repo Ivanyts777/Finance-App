@@ -10,7 +10,8 @@ export const navigation = {
 const TYPESTATES = "session/";
 export const ERRORTYPE = TYPESTATES + "error";
 export const TOKENTYPE = TYPESTATES + "token";
-export const USERINFO = TYPESTATES + "userinfo";
+export const USERINFOTYPE = TYPESTATES + "user/info";
+export const LOGINOUTTYPE = TYPESTATES + "user/loginout";
 
 // Global
 const TYPESTATEG = "global/";
@@ -23,3 +24,4 @@ const TYPESTATEF = "finance/";
 export const DATAADDTYPE = TYPESTATEF + "data/add";
 export const DATAREMOVETYPE = TYPESTATEF + "data/remove";
 export const DATAEDITTYPE = TYPESTATEF + "data/edit";
+export const DATASETTYPE = TYPESTATEF + "data/set";

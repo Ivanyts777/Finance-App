@@ -6,7 +6,7 @@ import styles from './Table.module.css';
 
 const Table = ({
     data,
-    // handleChange,
+    handleChange,
     expenses,
     income,
     year,
@@ -18,14 +18,14 @@ const Table = ({
         <div className={styles.statelessSelect}>
           <div className={styles.statelessSelectGroup}>
             <Select
-              // onChange={handleChange}
+              onChange={handleChange}
               options={month}
               defaultValue={{ label: currentMonth, value: currentMonth }}
             />
           </div>
           <div className={styles.statelessSelectGroup}>
             <Select
-            //   onChange={handleChange}
+              onChange={handleChange}
               options={year}
               defaultValue={{ label: currentYear, value: currentYear }}
             />

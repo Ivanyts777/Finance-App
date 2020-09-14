@@ -1,9 +1,11 @@
 .svg-LoginOut {
   fill: #8390a2;
 }
+
 .svg-Logo {
   fill: #8390a2;
 }
+
 .svg-TimeLine,
 .svg-Home,
 .svg-Money {
@@ -18,5 +20,11 @@
     fill: #3a5374;
   }
 }
-@media (min-width: 1192px) {
+
+@media (min-width: 1192px) {}
+
+.svg-Remove,
+.svg-Edit {
+  fill:
+    #3a5374;
 }

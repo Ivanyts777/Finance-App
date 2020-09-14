@@ -43,7 +43,7 @@
       width: 100%;
       margin-bottom: 78px;
       padding: 30px;
-      background: var(--bg-color-dark-blue);
+      background: #3a5374;
       color: #fff;
       font-family: 'HelveticaNeueCyr';
       text-align: center;
@@ -74,7 +74,7 @@
       width: 100%;
       margin-bottom: 26px;
       padding: 24px;
-      background: var(--bg-color-dark-blue);
+      background: #3a5374;
       color: #fff;
       font-family: 'HelveticaNeueCyr';
       text-align: center;
@@ -108,3 +108,32 @@
     }
   }
   
+.showTabletDesktop {
+  display: none;
+}
+.showMobile {
+  display: block;
+}
+
+.showDesktop {
+  display: none;
+}
+
+@media (min-width: 748px) {
+  .showTabletDesktop {
+    display: block;
+  }
+  .showMobile {
+    display: none;
+  }
+}
+@media (min-width: 1192px) {
+  .mainGlobal {
+    display: grid;
+    grid-template-columns: 316px 1fr;
+    grid-gap: 21px;
+  }
+  .showDesktop {
+    display: block;
+  }
+}

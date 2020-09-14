@@ -1,12 +1,14 @@
-import { LOADERTYPE, ERRORTYPE, TOKENTYPE, USERINFO, MODALADDTYPE, MODALLOGINTYPE, DATAADDTYPE, DATAREMOVETYPE, DATAEDITTYPE } from "../constants";
+import { LOADERTYPE, ERRORTYPE, TOKENTYPE, USERINFOTYPE, LOGINOUTTYPE, MODALADDTYPE, MODALLOGINTYPE, DATAADDTYPE, DATAREMOVETYPE, DATAEDITTYPE, DATASETTYPE } from "../constants";
+
+// {
+//     id: "5f5f40d13b62e40d0f7b0f00",
+//     name: "Peter Shevchuk",
+//     email: "raf02041994@gmail.com",
+//     createdAt: "2020-09-14T10:07:13.179Z",
+//   },
 
 const initialStateSession = {
-  user: {
-    id: "123123123",
-    name: "VOVA",
-    email: "123123123@gmail.com",
-    regData: "2020-09-11T11:29:51.966Z",
-  },
+  user: {},
   error: null,
   token: false,
 };
@@ -19,8 +21,11 @@ export const session = (state = initialStateSession, { type, payload }) => {
     case TOKENTYPE:
       newState = { ...state, token: payload };
       break;
-    case USERINFO:
+    case USERINFOTYPE:
       newState = { ...state, user: payload };
+      break;
+    case LOGINOUTTYPE:
+      newState = initialStateSession;
       break;
     default:
       newState = state;
@@ -86,18 +91,22 @@ const initialStateFinance = {
 };
 export const finance = (state = initialStateFinance, { type, payload }) => {
   let newState = {};
+  let newData = [];
   switch (type) {
     case DATAADDTYPE:
-      newState = {
-        data: [...state.data, payload],
-        balance: state.data.reduce((acc, item) => acc + item.amount, 0),
-      };
+      newData = [payload, ...state.data];
+      newState = { data: newData, balance: newData.reduce((acc, item) => acc + item.amount, 0) };
       break;
     case DATAREMOVETYPE:
-      newState = { data: [...state.data.filter((item) => item.id !== payload)], balance: state.data.reduce((acc, item) => acc + item.amount, 0) };
+      newData = [...state.data.filter((item) => item.id !== payload)];
+      newState = { data: newData, balance: newData.reduce((acc, item) => acc + item.amount, 0) };
       break;
     case DATAEDITTYPE:
-      newState = { data: [...state.data.map((item) => (item.id === payload.id ? payload : item))], balance: state.data.reduce((acc, item) => acc + item.amount, 0) };
+      newData = [...state.data.map((item) => (item.id === payload.id ? payload : item))];
+      newState = { data: newData, balance: newData.reduce((acc, item) => acc + item.amount, 0) };
+      break;
+    case DATASETTYPE:
+      newState = { data: payload.data, balance: payload.totalBalance };
       break;
     default:
       newState = state;
@@ -105,30 +114,3 @@ export const finance = (state = initialStateFinance, { type, payload }) => {
   }
   return newState;
 };
-
-// export const loader = (state = initialState, { type, payload }) => {
-//   switch (type) {
-//     case LOADERTYPE:
-//       return payload;
-//     default:
-//       return state;
-//   }
-// };
-
-// export const error = (state = initialState, { type, payload }) => {
-//   switch (type) {
-//     case ERRORTYPE:
-//       return payload;
-//     default:
-//       return state;
-//   }
-// };
-
-// export const token = (state = "initialState", { type, payload }) => {
-//   switch (type) {
-//     case TOKENTYPE:
-//       return payload;
-//     default:
-//       return state;
-//   }
-// };
