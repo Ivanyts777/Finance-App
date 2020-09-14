@@ -16,7 +16,7 @@ const Header = () => {
         <div className="header__logo">
           <Logo />
           <NavLink to={navigation.main} exact className="nav__link">
-            Wallet
+            Finance
           </NavLink>
         </div>
         <ul className="header__menu">
