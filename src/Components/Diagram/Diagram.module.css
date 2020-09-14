@@ -1,0 +1,110 @@
+.diagram {
+    padding: 40px 28px 34px;
+  }
+  
+  .diagramHeader {
+    display: none;
+    text-transform: uppercase;
+  }
+  
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .chartBlock {
+    margin-bottom: 26px;
+  }
+  
+  .chartBlockHeader {
+    display: none;
+  }
+  
+  @media (min-width: 748px) {
+    .diagram {
+      padding: 0;
+    }
+  
+    .chartBlock {
+      width: 704px;
+      margin-bottom: 34px;
+      padding-bottom: 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-radius: 4px;
+      background: #fff;
+      box-shadow: 10px 17.3px 40px rgba(1, 1, 0, 0.15);
+    }
+  
+    .chartBlockHeader {
+      display: unset;
+      width: 100%;
+      margin-bottom: 78px;
+      padding: 30px;
+      background: var(--bg-color-dark-blue);
+      color: #fff;
+      font-family: 'HelveticaNeueCyr';
+      text-align: center;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+      text-transform: uppercase;
+    }
+  
+    .chartBlockHeader h2 {
+      font-weight: 500;
+      font-size: 15px;
+    }
+  }
+  
+  @media (min-width: 1192px) {
+    .diagram {
+      width: 854px;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+      border-radius: 4px;
+      box-shadow: 10px 17.3px 40px rgba(1, 1, 0, 0.15);
+    }
+  
+    .diagramHeader {
+      display: unset;
+      width: 100%;
+      margin-bottom: 26px;
+      padding: 24px;
+      background: var(--bg-color-dark-blue);
+      color: #fff;
+      font-family: 'HelveticaNeueCyr';
+      text-align: center;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+    }
+  
+    .diagramHeader h2 {
+      font-size: 15px;
+      font-weight: 500;
+    }
+  
+    .wrapper {
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 0 50px 34px;
+    }
+  
+    .chartBlock {
+      width: 338px;
+      margin: 0;
+      display: unset;
+      padding: 0;
+      border-radius: unset;
+      box-shadow: unset;
+      text-align: center;
+    }
+  
+    .chartBlockHeader {
+      display: none;
+    }
+  }
+  

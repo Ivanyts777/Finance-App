@@ -91,7 +91,6 @@ const innerForm = props => {
           Add
         </button>
         </div>
-       
       </Form>
     );
   };
@@ -140,11 +139,10 @@ const EnhancedForm = withFormik({
     }),
     validationSchema: AddTransactionSchema,
     handleSubmit: (values, { setSubmitting, props: { onSubmit } }) => {
-      // eslint-disable-next-line no-unused-vars
       const payload = { ...values, category: values.category.value };
       setTimeout(() => {
-        // console.log(JSON.stringify(payload, null, 2));
-        onSubmit(payload);
+        console.log(JSON.stringify(payload, null, 2));
+        // onSubmit(payload);
         setSubmitting(false);
       }, 100);
     },

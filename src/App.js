@@ -18,7 +18,6 @@ import Main from "./Containers/Main/Main";
 
 // CSS
 import "./App.css";
-import AddTransaction from "./Components/AddTransaction/AddTransaction";
 
 const Login = lazy(() => import("./Containers/Login/Login"));
 const Registration = lazy(() => import("./Containers/Registration/Registration"));
@@ -36,7 +35,6 @@ const App = () => {
       <Suspense fallback={<p>Compaling...</p>}>
         <Header />
         <Menu />
-        {/* <AddTransaction/> */}
         <main className="main">
           <Switch>
             <Route path={navigation.main} exact render={(props) => <Main {...props} />} />
