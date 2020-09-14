@@ -9,6 +9,9 @@
 .svg-Money {
   fill: #aab3c0;
 }
+.svg-ArrowRight {
+  fill: #fff;
+}
 
 @media (min-width: 748px) {
   .svg-Logo {
