@@ -1,9 +1,11 @@
 .showTabletDesktop {
   display: none;
 }
+
 .showDesktop {
   display: none;
 }
+
 .list {
   margin: 0;
   padding: 0;
@@ -52,10 +54,14 @@
 .button {
   all: unset;
 }
-.buttonsMobile > *:first-child {
+
+.buttonsMobile>*:first-child {
   margin-right: 20px;
 }
+
 @media (max-width: 747px) {
+
+
   .item {
     width: 100%;
     border-left: 8px solid #7e8c9e;
@@ -92,6 +98,11 @@
 }
 
 @media (min-width: 748px) {
+  .Main {
+    max-height: 675px;
+    overflow-y: hidden
+  }
+
   .titleContainer {
     background-color: #fff;
     display: grid;
@@ -103,6 +114,35 @@
     /* margin: 0 50px; */
   }
 
+  .list {
+
+    max-height: 602px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+
+
+  }
+
+  .list::-webkit-scrollbar {
+    width: 5px;
+
+
+  }
+
+  .list::-webkit-scrollbar-track {
+    background: #ddd;
+
+  }
+
+  .list::-webkit-scrollbar-thumb {
+    background: #3a5374;
+    border-radius: 2px;
+
+  }
+
+
+
+
   .item {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -111,6 +151,7 @@
     height: 62px;
     align-items: center;
     /* margin: 0 5px; */
+
   }
 
   .item:nth-child(even) {
@@ -120,8 +161,13 @@
   .titleMobile {
     display: none;
   }
+
   .showTabletDesktop {
     display: block;
+  }
+
+  .mainGlobal {
+    padding-bottom: 48px;
   }
 }
 
@@ -130,18 +176,32 @@
     width: 850px;
     margin-left: 21px;
   }
+
   .list {
     width: 850px;
     margin-left: 21px;
   }
+
   .item {
     margin: 0;
   }
+
   .mainGlobal {
     display: grid;
     grid-template-columns: 316px 1fr;
+
   }
+
   .showDesktop {
     display: block;
   }
+
+  .bgCarrenceEx {
+    height: 189px;
+    width: 312px;
+    background: url('../../img/currencyExchange/currencyExchangeBG.png');
+    background-position: 25% 75%;
+  }
+
+
 }
