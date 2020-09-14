@@ -8,8 +8,9 @@ import { useSelector } from "react-redux";
 import { navigation } from "./constants";
 
 // Components
-import Menu from "./Components/Menu/Menu";
 import Header from "./Components/Header/Header";
+import Diagram from "./Components/Diagram/Diagram";
+import CurrencyExchage from "./Components/CurrencyExchage/CurrencyExchage";
 
 // Containers
 import Main from "./Containers/Main/Main";
@@ -23,7 +24,7 @@ const Login = lazy(() => import("./Containers/Login/Login"));
 const Registration = lazy(() => import("./Containers/Registration/Registration"));
 
 const App = () => {
-  const { loader, error } = useSelector((state) => state);
+  const { loader, error, token } = useSelector((state) => state);
   return (
     <>
       {loader && (
@@ -34,12 +35,13 @@ const App = () => {
       {error && <h1>{Error}</h1>}
       <Suspense fallback={<p>Compaling...</p>}>
         <Header />
-        <Menu />
         <main className="main">
           <Switch>
             <Route path={navigation.main} exact render={(props) => <Main {...props} />} />
             <Route path={navigation.login} render={(props) => <Login {...props} />} />
             <Route path={navigation.registration} render={(props) => <Registration {...props} />} />
+            <Route path={navigation.diagram} render={(props) => <Diagram {...props} />} />
+            <Route path={navigation.currency} render={(props) => <CurrencyExchage {...props} />} />
             <Redirect to={navigation.main} />
           </Switch>
         </main>

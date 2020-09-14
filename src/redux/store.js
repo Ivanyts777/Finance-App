@@ -9,9 +9,9 @@ import rootReducer from "./index.js";
 const middleWares = [thunk];
 
 const persistConfig = {
-  key: "token",
+  key: "session",
   storage,
-  whitelist: ["token"],
+  whitelist: ["session"],
 };
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 const rootMiddleWares = applyMiddleware(...middleWares);

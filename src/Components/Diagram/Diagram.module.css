@@ -1,0 +1,24 @@
+.showTabletDesktop {
+  display: none;
+}
+.showMobile {
+  display: block;
+}
+
+@media (min-width: 748px) {
+  .showTabletDesktop {
+    display: block;
+  }
+  .showMobile {
+    display: none;
+  }
+}
+@media (min-width: 1192px) {
+  .mainGlobal {
+    display: grid;
+    grid-template-columns: 316px 1fr;
+  }
+  .showDesktop {
+    display: block;
+  }
+}
