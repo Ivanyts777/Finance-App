@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Main.module.css";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { Remove, Edit } from "../../Components/SVG/sprite";
 
 const Main = () => {
