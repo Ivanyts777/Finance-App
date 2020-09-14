@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./Balance.module.css";
+import { connect } from "react-redux";
 
 const Balance = () => {
   return (
@@ -9,5 +10,6 @@ const Balance = () => {
     </div>
   );
 };
-
-export default Balance;
+const mapStateToProps = (store) => {};
+console.log(mapStateToProps);
+export default connect()(Balance);
