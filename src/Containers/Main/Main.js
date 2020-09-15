@@ -2,16 +2,25 @@ import React from "react";
 import Balance from "../../Components/Balance/Balance";
 import CarrencyExchange from "../../Components/CurrencyExchage/CurrencyExchage";
 import styles from "./Main.module.css";
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
 import { Remove, Edit } from "../../Components/SVG/sprite";
 import Menu from "../../Components/Menu/Menu";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
+import {modalAdd} from '../../redux/Actions'
+import AddTransaction from '../../Components/AddTransaction/AddTransaction'
 
 const titles = ["Date", "Type", "Category", "Comment", "Sum", "Balance", "Edit"];
 
 const Main = () => {
+
   const dataFinance = useSelector((state) => state.finance.data);
+  const isModalAddTransactionOpen = useSelector((state) => state.global.isModalAddTransactionOpen)
+  const dispatch = useDispatch();
+
+  const openModal = () => {
+    dispatch(modalAdd(true));
+  }
 
   return (
     <div className={styles.mainGlobal}>
@@ -78,6 +87,7 @@ const Main = () => {
         <div className={styles.bgIconAdd}></div>
         <div className={styles.iconAdd}>
           <Fab
+            onClick={openModal}
             style={{
               backgroundColor: "#ff6c00",
               color: "#fff",
@@ -85,6 +95,8 @@ const Main = () => {
           >
             <AddIcon />
           </Fab>
+          {isModalAddTransactionOpen && <AddTransaction/>}
+          
         </div>
       </div>
     </div>

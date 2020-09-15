@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import { useSelector } from "react-redux";
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import Table from './Table/Table';
 import Chart from './Chart/Chart';
 import styles from './Diagram.module.css';
@@ -49,6 +49,11 @@ const calendarMonths = [
 
 
 const Diagram = () => {
+  Diagram.ropTypes = {
+    finance: PropTypes.shape({
+      data: PropTypes.arrayOf(PropTypes.object),
+    }).isRequired,
+  };
 
 const [expenses, setExpenses] = useState([25]);
 const [income, setIncome] = useState([15]);
@@ -67,7 +72,6 @@ const [data, setData] = useState({
     },
   ],
 },);
-
 
 // const dispach = useDispatch;
 const finance = useSelector((state) => state.finance);
@@ -109,6 +113,7 @@ useEffect(() => {
 
 
 useEffect(() => {
+
   filterStatistics();
 }, [currentMonth,currentYear,statistics])
 
