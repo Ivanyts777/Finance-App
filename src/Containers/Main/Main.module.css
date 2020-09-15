@@ -6,7 +6,7 @@
 }
 .list {
   margin: 0;
-  padding: 0;
+  padding: 0 10px;
   list-style: none;
 }
 
@@ -29,18 +29,18 @@
   color: #282828;
   font-weight: 400;
   font-family: "HelveticaNeueCyr";
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .textType {
   composes: text;
-  padding-left: 10px;
 }
 
 .textOrange {
   composes: text;
   font-weight: bold;
   color: #ff6c00;
-  padding-left: 10px;
 }
 
 .textBlue {
@@ -75,7 +75,7 @@
     font-weight: 300;
     font-family: "HelveticaNeueCyr";
     display: grid;
-    grid-template-columns: 160px 1fr;
+    grid-template-columns: 120px 1fr;
     height: 45px;
     align-items: center;
     padding-left: 20px;
@@ -95,7 +95,7 @@
   .titleContainer {
     background-color: #fff;
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(7, calc(100% / 7));
     max-width: 1992px;
     height: 72px;
     padding-left: 30px;
@@ -105,7 +105,7 @@
 
   .item {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(7, calc(100% / 7));
     max-width: 1192px;
     padding-left: 30px;
     height: 62px;
@@ -122,6 +122,9 @@
   }
   .showTabletDesktop {
     display: block;
+  }
+  .list {
+    padding: 0;
   }
 }
 

@@ -1,12 +1,5 @@
 import { LOADERTYPE, ERRORTYPE, TOKENTYPE, USERINFOTYPE, LOGINOUTTYPE, MODALADDTYPE, MODALLOGINTYPE, DATAADDTYPE, DATAREMOVETYPE, DATAEDITTYPE, DATASETTYPE } from "../constants";
 
-// {
-//     id: "5f5f40d13b62e40d0f7b0f00",
-//     name: "Peter Shevchuk",
-//     email: "raf02041994@gmail.com",
-//     createdAt: "2020-09-14T10:07:13.179Z",
-//   },
-
 const initialStateSession = {
   user: {},
   error: null,
@@ -66,7 +59,7 @@ const initialStateFinance = {
       amount: 200,
       category: "Car",
       transactionDate: "2020-09-10T21:00:00.000Z",
-      comment: "oil",
+      comment: "zarplataqceaeaxewcexaweawexwazewcexw",
       userId: "123123123",
       balanceAfter: -200,
       balanceAfterSign: "-",
@@ -79,7 +72,7 @@ const initialStateFinance = {
       amount: 10000000,
       category: "income",
       transactionDate: "2020-09-10T21:00:00.000Z",
-      comment: "zarplata",
+      comment: "zarplataqceaeaxewcexaweawexwazewcexw",
       userId: "123123123",
       balanceAfter: 9999800,
       balanceAfterSign: "+",

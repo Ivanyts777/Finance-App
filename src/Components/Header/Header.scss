@@ -13,7 +13,8 @@
     align-items: center;
   }
   &__item {
-    display: inline-block;
+    display: flex;
+    align-items: center;
     &.separator {
       display: none;
     }
@@ -57,8 +58,12 @@
         display: inline-block;
       }
     }
-    &__item.separator {
-      display: inline-block;
+    &__item {
+      display: flex;
+      align-items: center;
+      &.separator {
+        display: inline-block;
+      }
     }
     &__logo a {
       font-size: 20px;
