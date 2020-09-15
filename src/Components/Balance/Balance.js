@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Balance.module.css";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Balance = () => {
   return (
@@ -10,6 +10,5 @@ const Balance = () => {
     </div>
   );
 };
-const mapStateToProps = (store) => {};
-console.log(mapStateToProps);
-export default connect()(Balance);
+
+export default Balance;
