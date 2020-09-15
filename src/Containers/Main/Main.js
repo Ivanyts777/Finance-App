@@ -43,7 +43,7 @@ const Main = () => {
                 <span className={styles.titleMobile}>Category</span>
                 {el.category}
               </p>
-              <p className={styles.text}>
+              <p title={el.comment} className={styles.text}>
                 <span className={styles.titleMobile}>Comment</span>
                 {el.comment}
               </p>

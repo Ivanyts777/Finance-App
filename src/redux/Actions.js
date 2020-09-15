@@ -21,7 +21,7 @@ export const setToken = (value) => ({
 // removeToken (null)
 export const removeToken = () => ({
   type: TOKENTYPE,
-  payload: "",
+  payload: null,
 });
 
 // setUserInfo ({id: '', name: '', email: '', regData: ''})
