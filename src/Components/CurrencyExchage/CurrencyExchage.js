@@ -13,7 +13,9 @@ const CurrencyExchage = () => {
     axios.get(`https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5`).then(({ data }) => setCurrency(data));
   }, []);
   const offExchange = () => {
-    document.getElementById("exchange").classList.add(styles.none);
+    if (windowSize >= 748 && windowSize <= 1191) {
+      document.getElementById("exchange").classList.add(styles.none);
+    }
   };
   return (
     <>

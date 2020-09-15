@@ -51,25 +51,6 @@ const Registration = () => {
           <button className={styles.buttonRegister} type="submit">
             Registration
           </button>
-          <button
-            type="button"
-            /*onClick={googleSignIn}*/ className={styles.google}
-          >
-            <img
-              className={styles.googleIcon}
-              src={googleIcon}
-              alt="google-icon"
-            />
-            Google
-          </button>
-        </div>
-        <div className={styles.authBtnWrapper}>
-          <p className={styles.descr}>If you already have an account please</p>
-          <button className={styles.buttonLogin}>
-            <NavLink to={navigation.login} exact>
-              Login
-            </NavLink>
-          </button>
           <button type="button" /*onClick={googleSignIn}*/ className={styles.google}>
             <img className={styles.googleIcon} src={googleIcon} alt="google-icon" />
             Google

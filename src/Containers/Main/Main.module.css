@@ -5,7 +5,9 @@
 .showDesktop {
   display: none;
 }
-
+.noTransaction {
+  text-align: center;
+}
 .list {
   margin: 0;
   padding: 0 10px;
@@ -15,7 +17,6 @@
 .item:first-child {
   display: none;
 }
-
 
 .title {
   font-size: 15px;
@@ -31,7 +32,6 @@
   text-align: center;
 }
 
-
 .text {
   font-size: 13px;
   letter-spacing: 0px;
@@ -42,35 +42,25 @@
   text-overflow: ellipsis;
 }
 
-
-
 .button {
   all: unset;
 }
 
-
-
-.buttonsMobile>*:first-child {
+.buttonsMobile > *:first-child {
   margin-right: 20px;
-
 }
 
 .Main {
   position: relative;
 }
 
-
 @media (max-width: 747px) {
-
-
   .item {
     width: 100%;
     border-left: 8px solid #7e8c9e;
     margin-bottom: 15px;
     filter: drop-shadow(14.095px 5.13px 4.5px rgba(1, 1, 0, 0.08));
   }
-
-
   .item:nth-child(odd) {
     border-left: 8px solid #e28b20;
   }
@@ -88,14 +78,12 @@
     align-items: center;
     padding-left: 20px;
     background-color: #f3f6f6;
-
   }
 
   .textOrange {
     composes: text;
     font-weight: bold;
     color: #ff6c00;
-
   }
 
   .textBlue {
@@ -113,13 +101,11 @@
     background-color: #fff;
   }
 
-
   .iconAdd {
     position: fixed;
     bottom: 17px;
     right: 43%;
   }
-
 
   .bgIconAdd {
     position: fixed;
@@ -131,11 +117,11 @@
 
   .Main {
     padding-bottom: 80px;
-
   }
 
   .mainGlobal {
     background-color: #fff;
+    height: 100vh;
   }
 }
 
@@ -151,20 +137,20 @@
     scroll-behavior: smooth;
   }
 
+  .noTransaction {
+    padding: 100px 0;
+  }
   .list::-webkit-scrollbar {
     width: 5px;
-
   }
 
   .list::-webkit-scrollbar-track {
     background: #ddd;
-
   }
 
   .list::-webkit-scrollbar-thumb {
     background: #3a5374;
     border-radius: 2px;
-
   }
 
   .item {
@@ -200,25 +186,22 @@
 
   .mainGlobal {
     margin-bottom: 48px;
-    background-image: url('../../img/currencyExchange/bg.png');
+    background-image: url("../../img/currencyExchange/bg.png");
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: auto 460px;
-
   }
 
   .textMoney {
     composes: text;
     text-align: right;
     margin-right: 40px;
-
   }
 
   .textOrange {
     composes: textMoney;
     font-weight: bold;
     color: #ff6c00;
-
   }
 
   .textBlue {
@@ -236,11 +219,9 @@
   .buttonsMobile {
     text-align: center;
   }
-
 }
 
 @media (min-width: 1192px) {
-
   .Main {
     min-height: 675px;
   }
@@ -271,11 +252,6 @@
   }
 
   .bgMainImage {
-
     display: none;
   }
-
-
-
-
 }

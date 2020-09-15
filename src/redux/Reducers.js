@@ -56,10 +56,7 @@ export const global = (state = initialStateGlobal, { type, payload }) => {
 };
 
 const initialStateFinance = {
-  data: [
-    { id: "5f5b6054a375e00024070433", type: "expense", amount: 200, category: "Car", transactionDate: "2020-09-10T21:00:00.000Z", comment: "zarplataqceaeaxewcexaweawexwazewcexw", userId: "123123123", balanceAfter: -200, balanceAfterSign: "-", createdAt: "2020-09-11T11:32:36.238Z", updatedAt: "2020-09-11T11:32:36.238Z" },
-    { id: "5f5b60baa375e00024070434", type: "income", amount: 100000, category: "income", transactionDate: "2020-09-10T21:00:00.000Z", comment: "zarplataqceaeaxewcexaweawexwazewcexw", userId: "123123123", balanceAfter: 9999800, balanceAfterSign: "+", createdData: "2020-09-11T11:34:18.615Z", updatedData: "2020-09-11T11:34:18.615Z" },
-  ],
+  data: [],
   balance: 0,
 };
 export const finance = (state = initialStateFinance, { type, payload }) => {

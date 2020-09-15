@@ -39,36 +39,8 @@ const App = () => {
           <Loader type="ThreeDots" color="#284060" height={300} width={300} />
         </div>
       )}
-      {error && <h1>{Error}</h1>}
+      {error && <h1>{error.message}</h1>}
       <Suspense fallback={<p>Compaling...</p>}>
-        {/* <Header />
-        <main className="main">
-          <Switch>
-            <Route
-              path={navigation.main}
-              exact
-              render={(props) => <Main {...props} />}
-            />
-            <Route
-              path={navigation.login}
-              render={(props) => <Login {...props} />}
-            />
-            <Route
-              path={navigation.registration}
-              render={(props) => <Registration {...props} />}
-            />
-            <Route
-              path={navigation.diagram}
-              render={(props) => <Diagram {...props} />}
-            />
-            <Route
-              path={navigation.currency}
-              render={(props) => <CurrencyExchage {...props} />}
-            />
-            <Redirect to={navigation.main} />
-          </Switch>
-        </main> */}
-        {/* ЗАКОМЕНТОВАНИЙ ТЕКСТ НЕ ЧІПАЄМО! */}
         {token && <Header />}
         <main className="main">
           <Switch>
@@ -88,7 +60,6 @@ const App = () => {
             )}
           </Switch>
         </main>
-        {/* ЗАКОМЕНТОВАНИЙ ТЕКСТ НЕ ЧІПАЄМО! */}
       </Suspense>
     </>
   );

@@ -72,7 +72,7 @@ const Main = () => {
               </li>
             ))
           ) : (
-            <p>Please add transaction</p>
+            <h1 className={styles.noTransaction}>Please add transaction</h1>
           )}
         </ul>
         <div className={styles.bgIconAdd}></div>
