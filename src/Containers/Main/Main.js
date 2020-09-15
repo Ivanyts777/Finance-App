@@ -37,7 +37,7 @@ const Main = () => {
               <p
                 key={title}
                 className={
-                  title === "Sum" || title === "Balance"
+                  title === "Sum" || title === "Balance" || title === "Edit"
                     ? styles.titleMoney
                     : styles.title
                 }
