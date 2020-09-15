@@ -12,12 +12,10 @@
   margin-top: 66px;
 }
 
-.googleDescr {
+.descr {
   margin: 0 auto;
   font-size: 11px;
   font-weight: bold;
-  text-align: center;
-  margin-bottom: 26px;
   line-height: 17px;
   color: #52555f;
 }
@@ -28,10 +26,8 @@
   font-weight: 600;
   line-height: 23px;
   display: flex;
-  margin: 0 auto;
   width: 120px;
-  height: 40px;
-  margin-bottom: 40px;
+  min-height: 45px;
   text-align: center;
   align-items: center;
   justify-content: center;
@@ -97,6 +93,10 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+}
+
+.authBtnWrapper:not(:last-child) {
+  margin-bottom: 40px;
 }
 
 .buttonLogin,

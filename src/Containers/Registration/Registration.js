@@ -1,19 +1,17 @@
 import React, { useState } from "react";
 import styles from "./Registration.module.css";
 import googleIcon from "../../Components/SVG/gicon.png";
-import {
-  userLogin,
-  createNewUser,
-} from "../../Components/Operations/operationsAuth";
+import { createNewUser } from "../../Components/Operations/operationsAuth";
 import { useDispatch } from "react-redux";
 import { Email, LockClose, Account } from "../../Components/SVG/sprite";
+import { NavLink } from "react-router-dom";
+import { navigation } from "../../constants";
 
 const Registration = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [typeRegister, setTypeRegister] = useState("");
 
   const dispatch = useDispatch();
 
@@ -33,42 +31,21 @@ const Registration = () => {
     e.preventDefault();
     setPassword(e.target.value);
   };
-  const handleTypeRegister = () => {
-    setTypeRegister((currentState) => {
-      if (currentState) {
-        return false;
-      } else {
-        return true;
-      }
-    });
-  };
 
-  const handleSubmit = (e) => {
+  const handleTypeRegister = (e) => {
     e.preventDefault();
-
-    if (typeRegister) {
-      const regParams = (firstName, lastName, email, password) => ({
+    dispatch(
+      createNewUser({
+        name: `${firstName} ${lastName}`,
         email: email,
         password: password,
-        name: {
-          fullName: `${firstName} ${lastName}`,
-          firstName: firstName,
-          lastName: lastName,
-        },
-      });
-      dispatch(createNewUser(regParams(firstName, lastName, email, password)));
-    } else {
-      const loginParams = (email, password) => ({
-        email: email,
-        password: password,
-      });
-      dispatch(userLogin(loginParams(email, password)));
-    }
+      })
+    );
   };
 
   return (
     <div className={styles.authWrapper}>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleTypeRegister}>
         {/* - FORM START - */}
 
         <>
@@ -145,33 +122,28 @@ const Registration = () => {
             />
           </div>
         </>
-
-        <p className={styles.googleDescr}>Autorization with Google:</p>
-
-        {/* - GOOGLE BUTTON - */}
-        <button
-          type="button"
-          /*onClick={googleSignIn}*/ className={styles.google}
-        >
-          <img
-            className={styles.googleIcon}
-            src={googleIcon}
-            alt="google-icon"
-          />
-          Google
-        </button>
-
-        {/* - BUTTONS LOGIN/REGISTER - */}
         <div className={styles.authBtnWrapper}>
-          <button className={styles.buttonLogin} type="submit">
-            Login
+          <button className={styles.buttonRegister} type="submit">
+            Registration
           </button>
           <button
-            className={styles.buttonRegister}
             type="button"
-            onClick={handleTypeRegister}
+            /*onClick={googleSignIn}*/ className={styles.google}
           >
-            Registration
+            <img
+              className={styles.googleIcon}
+              src={googleIcon}
+              alt="google-icon"
+            />
+            Google
+          </button>
+        </div>
+        <div className={styles.authBtnWrapper}>
+          <p className={styles.descr}>If you already have an account please</p>
+          <button className={styles.buttonLogin}>
+            <NavLink to={navigation.login} exact>
+              Login
+            </NavLink>
           </button>
         </div>
 

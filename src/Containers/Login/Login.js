@@ -4,24 +4,14 @@ import googleIcon from "../../Components/SVG/gicon.png";
 import { userLogin } from "../../Components/Operations/operationsAuth";
 import { useDispatch } from "react-redux";
 import { Email, LockClose } from "../../Components/SVG/sprite";
+import { NavLink } from "react-router-dom";
+import { navigation } from "../../constants";
 
 const Login = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [typeRegister, setTypeRegister] = useState("");
-
   const dispatch = useDispatch();
 
-  const handleInputFirstName = (e) => {
-    e.preventDefault();
-    setFirstName(e.target.value);
-  };
-  const handleInputLastName = (e) => {
-    e.preventDefault();
-    setLastName(e.target.value);
-  };
   const handleInputEmail = (e) => {
     e.preventDefault();
     setEmail(e.target.value);
@@ -30,82 +20,23 @@ const Login = () => {
     e.preventDefault();
     setPassword(e.target.value);
   };
-  const handleTypeRegister = () => {
-    setTypeRegister((currentState) => {
-      if (currentState) {
-        return false;
-      } else {
-        return true;
-      }
-    });
-  };
 
-  const handleSubmit = (e) => {
+  const handleTypeRegister = (e) => {
     e.preventDefault();
-
-    if (typeRegister) {
-      const regParams = (firstName, lastName, email, password) => ({
+    dispatch(
+      userLogin({
         email: email,
         password: password,
-        name: {
-          fullName: `${firstName} ${lastName}`,
-          firstName: firstName,
-          lastName: lastName,
-        },
-      });
-      dispatch(createNewUser(regParams(firstName, lastName, email, password)));
-    } else {
-      const loginParams = (email, password) => ({
-        email: email,
-        password: password,
-      });
-      dispatch(userLogin(loginParams(email, password)));
-    }
+      })
+    );
   };
 
   return (
     <div className={styles.authWrapper}>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleTypeRegister}>
         {/* - FORM START - */}
 
         <>
-          {/* - FIRST NAME IMPUT -
-          <div className={styles.field}>
-            <div className={styles.icon}>
-              <Account />
-            </div>
-            <input
-              className={styles.input}
-              maxLength="25"
-              id="name"
-              type="text"
-              placeholder="First name"
-              name="firstName"
-              value={firstName}
-              onChange={handleInputFirstName}
-              required
-              autoFocus
-            />
-          </div>
-
-          {/* - LAST NAME INPUT - */}
-          <div className={styles.field}>
-            <div className={styles.icon}>
-              <Account />
-            </div>
-            <input
-              className={styles.input}
-              maxLength="25"
-              id="lastName"
-              placeholder="Last name"
-              name="lastName"
-              type="text"
-              value={lastName}
-              onChange={handleInputLastName}
-              required
-            />
-          </div>{" "}
-          */}
           {/* - EMAIL INPUT - */}
           <div className={styles.field}>
             <div className={styles.icon}>
@@ -141,33 +72,28 @@ const Login = () => {
             />
           </div>
         </>
-
-        <p className={styles.googleDescr}>Autorization with Google:</p>
-
-        {/* - GOOGLE BUTTON - */}
-        <button
-          type="button"
-          /*onClick={googleSignIn}*/ className={styles.google}
-        >
-          <img
-            className={styles.googleIcon}
-            src={googleIcon}
-            alt="google-icon"
-          />
-          Google
-        </button>
-
-        {/* - BUTTONS LOGIN/REGISTER - */}
         <div className={styles.authBtnWrapper}>
           <button className={styles.buttonLogin} type="submit">
             Login
           </button>
           <button
-            className={styles.buttonRegister}
             type="button"
-            onClick={handleTypeRegister}
+            /*onClick={googleSignIn}*/ className={styles.google}
           >
-            Registration
+            <img
+              className={styles.googleIcon}
+              src={googleIcon}
+              alt="google-icon"
+            />
+            Google
+          </button>
+        </div>
+        <div className={styles.authBtnWrapper}>
+          <p className={styles.descr}>If you don't have an account please</p>
+          <button className={styles.buttonRegister}>
+            <NavLink to={navigation.registration} exact>
+              Registration
+            </NavLink>
           </button>
         </div>
 
