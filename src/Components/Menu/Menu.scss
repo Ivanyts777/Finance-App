@@ -4,13 +4,19 @@
   padding: 7px 8px;
   background-color: #3a5374;
   &__item {
-    display: inline-block;
-    padding: 7px 10px;
-    background-color: #2a4262;
-    border-radius: 5px;
     font-size: 15px;
     font-weight: 700;
-    max-height: 38px;
+    color: #6b7d83;
+    list-style: none;
+    & a {
+      display: inline-block;
+      padding: 7px 10px;
+      background-color: #2a4262;
+      border-radius: 5px;
+      font-size: 15px;
+      font-weight: 700;
+      max-height: 38px;
+    }
     &:not(:last-child) {
       margin-right: 13px;
     }
@@ -25,12 +31,15 @@
 }
 @media (max-width: 747px) {
   .menu__item {
-    &:hover {
-      background-color: #66778e;
-      & svg {
-        fill: #ffffff;
+    & a {
+      &.active {
+        background-color: rgba(256, 256, 256, 0.3);
+        & svg {
+          fill: #ffffff;
+        }
       }
     }
+
     &.balance {
       display: none;
     }
@@ -44,15 +53,18 @@
     align-items: center;
     padding: 0;
     background: none;
+    margin-bottom: 25px;
     &__item {
-      display: flex;
-      align-items: center;
-      background: none;
-      padding: 0;
-      color: #6b7d83;
-      &.active > * {
-        fill: #3a5374;
-        color: #3a5374;
+      & a {
+        background: none;
+        padding: 0;
+        color: #6b7d83;
+        display: flex;
+        align-items: center;
+        &.active > * {
+          color: #3a5374;
+          fill: #3a5374;
+        }
       }
       & span {
         color: #3a5374;
@@ -72,7 +84,47 @@
   }
 }
 @media (min-width: 1192px) {
-  .menu__item.separator {
-    display: none;
+  .menu {
+    background-color: #3a5374;
+    border-radius: 4px;
+    box-shadow: 14.095px 5.13px 9px 0px rgba(1, 1, 0, 0.08);
+    max-width: 312px;
+    background-color: #284060;
+    flex-direction: column;
+    align-items: inherit;
+    padding: 40px 0;
+    &__text {
+      margin-left: 25px;
+      font-weight: 500;
+    }
+    &__item {
+      color: #ffffff;
+      & > a {
+        border-radius: 0;
+        padding: 12px 0 12px 30px;
+        & > * {
+          color: #ffffff;
+          fill: #ffffff;
+        }
+        &.active {
+          background-color: rgba(256, 256, 256, 0.3);
+          & > * {
+            color: #ffffff;
+            fill: #ffffff;
+            font-weight: 700;
+          }
+        }
+      }
+
+      &.separator {
+        display: none;
+      }
+      &:not(:last-child) {
+        margin-right: 0;
+      }
+      &.balance {
+        display: none;
+      }
+    }
   }
 }

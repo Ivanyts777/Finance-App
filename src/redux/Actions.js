@@ -1,4 +1,4 @@
-import { LOADERTYPE, ERRORTYPE, TOKENTYPE, USERINFO, MODALADDTYPE, MODALLOGINTYPE, DATAADDTYPE, DATAREMOVETYPE, DATAEDITTYPE } from "../constants";
+import { LOADERTYPE, ERRORTYPE, TOKENTYPE, USERINFOTYPE, LOGINOUTTYPE, MODALADDTYPE, MODALLOGINTYPE, DATAADDTYPE, DATAREMOVETYPE, DATAEDITTYPE, DATASETTYPE } from "../constants";
 
 // Loader (true or false)
 export const Loader = (value) => ({
@@ -21,19 +21,17 @@ export const setToken = (value) => ({
 // removeToken (null)
 export const removeToken = () => ({
   type: TOKENTYPE,
-  payload: "",
+  payload: null,
 });
 
 // setUserInfo ({id: '', name: '', email: '', regData: ''})
 export const setUserInfo = (value) => ({
-  type: USERINFO,
+  type: USERINFOTYPE,
   payload: value,
 });
-
-// removeUserInfo (null)
-export const removeUserInfo = () => ({
-  type: USERINFO,
-  payload: {},
+// loginOut ()
+export const loginOut = () => ({
+  type: LOGINOUTTYPE,
 });
 
 // modalAdd (true or false)
@@ -63,5 +61,11 @@ export const removeData = (value) => ({
 // editData ({...})
 export const editData = (value) => ({
   type: DATAEDITTYPE,
+  payload: value,
+});
+
+// setUserData ([{},{},{}])
+export const setUserData = (value) => ({
+  type: DATASETTYPE,
   payload: value,
 });

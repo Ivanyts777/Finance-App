@@ -1,6 +1,6 @@
 .balance {
   margin: 20px auto;
-  width: 306px;
+  width: 300px;
   height: 91px;
   background-color: #3a5374;
   border-radius: 4px;
@@ -28,6 +28,7 @@
 
 @media (min-width: 1192px) {
   .balance {
+    margin: 20px 0;
     display: block;
     width: 312px;
   }

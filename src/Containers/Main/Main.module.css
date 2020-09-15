@@ -1,0 +1,150 @@
+.showTabletDesktop {
+  display: none;
+}
+.showDesktop {
+  display: none;
+}
+.list {
+  margin: 0;
+  padding: 0 10px;
+  list-style: none;
+}
+
+.titleContainer {
+  display: none;
+}
+
+.title {
+  font-size: 15px;
+  letter-spacing: 0px;
+  line-height: 18px;
+  color: #282828;
+  font-weight: bold;
+  font-family: "HelveticaNeueCyr";
+}
+
+.text {
+  font-size: 13px;
+  letter-spacing: 0px;
+  color: #282828;
+  font-weight: 400;
+  font-family: "HelveticaNeueCyr";
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.textType {
+  composes: text;
+}
+
+.textOrange {
+  composes: text;
+  font-weight: bold;
+  color: #ff6c00;
+}
+
+.textBlue {
+  composes: text;
+  font-weight: bold;
+  color: #415b7d;
+}
+
+.button {
+  all: unset;
+}
+.buttonsMobile > *:first-child {
+  margin-right: 20px;
+}
+@media (max-width: 747px) {
+  .item {
+    width: 100%;
+    border-left: 8px solid #7e8c9e;
+    margin-bottom: 15px;
+    filter: drop-shadow(14.095px 5.13px 4.5px rgba(1, 1, 0, 0.08));
+  }
+
+  .item:nth-child(even) {
+    border-left: 8px solid #e28b20;
+  }
+
+  .text {
+    font-size: 13px;
+    letter-spacing: 0px;
+    color: #282828;
+    width: 100%;
+    font-weight: 300;
+    font-family: "HelveticaNeueCyr";
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    height: 45px;
+    align-items: center;
+    padding-left: 20px;
+    background-color: #f3f6f6;
+  }
+
+  .text:nth-child(even) {
+    background-color: #fff;
+  }
+
+  .titleMobile {
+    font-weight: 400;
+  }
+}
+
+@media (min-width: 748px) {
+  .titleContainer {
+    background-color: #fff;
+    display: grid;
+    grid-template-columns: repeat(7, calc(100% / 7));
+    max-width: 1992px;
+    height: 72px;
+    padding-left: 30px;
+    align-items: center;
+    /* margin: 0 50px; */
+  }
+
+  .item {
+    display: grid;
+    grid-template-columns: repeat(7, calc(100% / 7));
+    max-width: 1192px;
+    padding-left: 30px;
+    height: 62px;
+    align-items: center;
+    /* margin: 0 5px; */
+  }
+
+  .item:nth-child(even) {
+    background-color: #f3f6f6;
+  }
+
+  .titleMobile {
+    display: none;
+  }
+  .showTabletDesktop {
+    display: block;
+  }
+  .list {
+    padding: 0;
+  }
+}
+
+@media (min-width: 1192px) {
+  .titleContainer {
+    width: 850px;
+    margin-left: 21px;
+  }
+  .list {
+    width: 850px;
+    margin-left: 21px;
+  }
+  .item {
+    margin: 0;
+  }
+  .mainGlobal {
+    display: grid;
+    grid-template-columns: 316px 1fr;
+  }
+  .showDesktop {
+    display: block;
+  }
+}

@@ -56,16 +56,20 @@
     background-image: none;
     padding-top: 0;
     box-shadow: 10px 17.321px 40px 0px rgba(1, 1, 0, 0.15);
-    position: static;
+    position: fixed;
     height: 193px;
     width: 352px;
-    /* left: 33px; */
-    /* top: 783px; */
+    left: 35px;
+    bottom: 35px;
+  }
+  .menuMobile {
+    display: none;
   }
 }
 @media (min-width: 1192px) {
   .currency__exchage_background {
-    margin: 0 auto;
+    margin: 0;
     width: 312px;
+    position: static;
   }
 }
