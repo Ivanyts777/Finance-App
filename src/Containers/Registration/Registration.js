@@ -8,73 +8,45 @@ import { NavLink } from "react-router-dom";
 import { navigation } from "../../constants";
 
 const Registration = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
+  const [userInfo, setUserInfo] = useState({});
   const dispatch = useDispatch();
-
-  const handleInputFirstName = (e) => {
+  const handleInput = (e) => {
     e.preventDefault();
-    setFirstName(e.target.value);
-  };
-  const handleInputLastName = (e) => {
-    e.preventDefault();
-    setLastName(e.target.value);
-  };
-  const handleInputEmail = (e) => {
-    e.preventDefault();
-    setEmail(e.target.value);
-  };
-  const handleInputPassword = (e) => {
-    e.preventDefault();
-    setPassword(e.target.value);
+    setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
   };
 
-  const handleTypeRegister = (e) => {
+  const handleRegister = (e) => {
     e.preventDefault();
-    dispatch(createNewUser({ name: `${firstName} ${lastName}`, email: email, password: password }));
+    dispatch(createNewUser({ name: `${userInfo.firstName} ${userInfo.lastName}`, email: userInfo.email, password: userInfo.password }));
   };
 
   return (
     <div className={styles.authWrapper}>
-      <form onSubmit={handleTypeRegister}>
-        {/* - FORM START - */}
-
-        <>
-          {/* - FIRST NAME IMPUT - */}
-          <div className={styles.field}>
-            <div className={styles.icon}>
-              <Account />
-            </div>
-            <input className={styles.input} maxLength="25" id="name" type="text" placeholder="First name" name="firstName" value={firstName} onChange={handleInputFirstName} required autoFocus />
+      <form onSubmit={handleRegister}>
+        <div className={styles.field}>
+          <div className={styles.icon}>
+            <Account />
           </div>
-
-          {/* - LAST NAME INPUT - */}
-          <div className={styles.field}>
-            <div className={styles.icon}>
-              <Account />
-            </div>
-            <input className={styles.input} maxLength="25" id="lastName" placeholder="Last name" name="lastName" type="text" value={lastName} onChange={handleInputLastName} required />
+          <input className={styles.input} maxLength="25" id="name" type="text" placeholder="First name" name="firstName" value={userInfo.firstName} onChange={handleInput} required autoFocus />
+        </div>
+        <div className={styles.field}>
+          <div className={styles.icon}>
+            <Account />
           </div>
-
-          {/* - EMAIL INPUT - */}
-          <div className={styles.field}>
-            <div className={styles.icon}>
-              <Email />
-            </div>
-            <input id="email" className={styles.input} type="email" placeholder="Email" name="email" value={email} onChange={handleInputEmail} required autoFocus />
+          <input className={styles.input} maxLength="25" id="lastName" placeholder="Last name" name="lastName" type="text" value={userInfo.lastName} onChange={handleInput} required />
+        </div>
+        <div className={styles.field}>
+          <div className={styles.icon}>
+            <Email />
           </div>
-
-          {/* - PASSWORD INPUT - */}
-          <div className={styles.field}>
-            <div className={styles.icon}>
-              <LockClose />
-            </div>
-            <input className={styles.input + " " + styles.inputPassword} placeholder="Password" id="password" type="password" name="password" value={password} onChange={handleInputPassword} minLength="6" required />
+          <input id="email" className={styles.input} type="email" placeholder="Email" name="email" value={userInfo.email} onChange={handleInput} required autoFocus />
+        </div>
+        <div className={styles.field}>
+          <div className={styles.icon}>
+            <LockClose />
           </div>
-        </>
+          <input className={styles.input + " " + styles.inputPassword} placeholder="Password" id="password" type="password" name="password" value={userInfo.password} onChange={handleInput} minLength="6" required />
+        </div>
         <div className={styles.authBtnWrapper}>
           <button className={styles.buttonRegister} type="submit">
             Registration
@@ -92,8 +64,6 @@ const Registration = () => {
             </NavLink>
           </button>
         </div>
-
-        {/* - FORM END - */}
       </form>
     </div>
   );
