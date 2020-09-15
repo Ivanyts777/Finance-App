@@ -3,6 +3,24 @@ import Select from 'react-select';
 import PropTypes from 'prop-types';
 import styles from './Table.module.css';
 
+const {
+  stateless,
+  statelessSelect,
+  statelessSelectGroup,
+  statelessHeader,
+  statelessListTablet,
+  statelessList,
+  statelessListItem,
+  statelessIcone,
+  statelessTitle,
+  statelessAmount,
+  statelessLine,
+  statelessLineLast,
+  statelessFooter,
+  tableExpenses,
+  tableSpan,
+} = styles
+
 
 const Table = ({
     data,
@@ -14,16 +32,16 @@ const Table = ({
     currentMonth,
     currentYear,
   }) => (
-      <div className={styles.stateless}>
-        <div className={styles.statelessSelect}>
-          <div className={styles.statelessSelectGroup}>
+      <div className={stateless}>
+        <div className={statelessSelect}>
+          <div className={statelessSelectGroup}>
             <Select
               onChange={handleChange}
               options={month}
               defaultValue={{ label: currentMonth, value: currentMonth }}
             />
           </div>
-          <div className={styles.statelessSelectGroup}>
+          <div className={statelessSelectGroup}>
             <Select
               onChange={handleChange}
               options={year}
@@ -31,38 +49,38 @@ const Table = ({
             />
           </div>
         </div>
-        <div className={styles.statelessHeader}>
+        <div className={statelessHeader}>
           <p>Category</p>
           <p>Amount</p>
         </div>
         <div>
-        <ul className={styles.statelessListTablet}>
+        <ul className={statelessListTablet}>
           {data.map(d => (
-            <li className = {styles.statelessList} key={d.id}>
-              <span className={styles.statelessListItem}>
+            <li className = {statelessList} key={d.id}>
+              <span className={statelessListItem}>
                 <div>
                   <span
-                    className={styles.statelessIcone}
+                    className={statelessIcone}
                     style={{ backgroundColor: `${d.color}` }}
                   />
-                  <span className={styles.statelessTitle}>{d.category}</span>
+                  <span className={statelessTitle}>{d.category}</span>
                 </div>
-                <span className={styles.statelessAmount}>{d.amount}</span>
+                <span className={statelessAmount}>{d.amount.toFixed(2)}</span>
               </span>
-              <div className={styles.statelessLine} />
+              <div className={statelessLine} />
             </li>
           ))}
         </ul>
       </div>
-      <div className={styles.statelessLineLast} />
-      <div className={styles.statelessFooter}>
-        <p className={styles.tableExpenses}>
-          <span className={styles.tableSpan}>Expenses: </span>
-          <span style={{ color: '#3a5374' }}>{expenses} UAH</span>
+      <div className={statelessLineLast} />
+      <div className={statelessFooter}>
+        <p className={tableExpenses}>
+          <span className={tableSpan}>Expenses: </span>
+          <span style={{ color: '#ff6c00' }}>{expenses.toFixed(2)} UAH</span>
         </p>
-        <p className={styles.tableExpenses}>
-          <span className={styles.tableSpan}>Incoming:</span>
-          <span style={{ color: '#ff6c00' }}>{income} UAH</span>
+        <p className={tableExpenses}>
+          <span className={tableSpan}>Incoming:</span>
+          <span style={{ color: '#415b7d' }}>{income.toFixed(2)} UAH</span>
         </p>
       </div>
     </div>

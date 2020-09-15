@@ -50,8 +50,6 @@ const calendarMonths = [
 
 const Diagram = () => {
 
-
-
 const [expenses, setExpenses] = useState([25]);
 const [income, setIncome] = useState([15]);
 const [statistics, setStatistics] = useState([]);
@@ -184,7 +182,7 @@ const handleChange = ({ value }) => {
 
 
   return (
-    <div className= {styles.diagramGlobal}>
+    <div>
         <div className={mainGlobal}>
         <div>
           <Menu />

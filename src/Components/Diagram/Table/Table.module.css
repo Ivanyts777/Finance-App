@@ -11,12 +11,19 @@
     font-size: 18px;
   }
   
+  
+  
+  
   .statelessHeader {
     background-color: #f3f6f6;
     height: 3em;
     line-height: 3em;
     padding-left: 26px;
     padding-right: 26px;
+    font-size: 15px;
+    font-family: "HelveticaNeueCyr";
+    color: rgb(40, 40, 40);
+    font-weight: bold;
   }
   
   .statelessSelectGroup {
@@ -28,12 +35,19 @@
     justify-content: space-between;
     flex-wrap: wrap;
     margin: 0 auto;
+    font-size: 13px;
+    font-family: "HelveticaNeueCyr";
+    color: rgb(40, 40, 40);
   }
   
   .tableSpan {
     padding-right: 20px;
-    text-transform: uppercase;
+    font-size: 15px;
+    font-family: "HelveticaNeueCyr";
+    color: rgb(40, 40, 40);
+    font-weight: bold;
   }
+  
   
   .statelessList {
     list-style-type: none;
@@ -63,6 +77,7 @@
     display: inline-block;
     max-width: 300px;
   }
+  
   
   .statelessAmount {
     padding-left: 14%;
