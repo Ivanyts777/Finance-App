@@ -3,9 +3,10 @@ import React, { Suspense, lazy } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Loader from "react-loader-spinner";
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { navigation } from "./constants";
+import { setSizeWindow } from "./redux/Actions";
 
 // Components
 import Header from "./Components/Header/Header";
@@ -24,6 +25,11 @@ const Login = lazy(() => import("./Containers/Login/Login"));
 const Registration = lazy(() => import("./Containers/Registration/Registration"));
 
 const App = () => {
+  const dispatch = useDispatch();
+  window.onresize = ({ target }) => {
+    dispatch(setSizeWindow(target.innerWidth));
+  };
+
   const { loader, error, token } = useSelector((state) => state);
   return (
     <>

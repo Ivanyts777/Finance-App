@@ -1,4 +1,4 @@
-import { LOADERTYPE, ERRORTYPE, TOKENTYPE, USERINFOTYPE, LOGINOUTTYPE, MODALADDTYPE, MODALLOGINTYPE, DATAADDTYPE, DATAREMOVETYPE, DATAEDITTYPE, DATASETTYPE } from "../constants";
+import { LOADERTYPE, ERRORTYPE, TOKENTYPE, USERINFOTYPE, LOGINOUTTYPE, MODALADDTYPE, MODALLOGINTYPE, DATAADDTYPE, DATAREMOVETYPE, DATAEDITTYPE, DATASETTYPE, WINDOWTYPE } from "../constants";
 
 const initialStateSession = {
   user: {},
@@ -31,6 +31,7 @@ const initialStateGlobal = {
   isModalAddTransactionOpen: false,
   isModalLoginOut: false,
   loader: false,
+  windowSize: window.innerWidth,
 };
 export const global = (state = initialStateGlobal, { type, payload }) => {
   let newState = {};
@@ -44,6 +45,9 @@ export const global = (state = initialStateGlobal, { type, payload }) => {
     case MODALLOGINTYPE:
       newState = { ...state, isModalLoginOut: payload };
       break;
+    case WINDOWTYPE:
+      newState = { ...state, windowSize: payload };
+      break;
     default:
       newState = state;
       break;
@@ -53,19 +57,7 @@ export const global = (state = initialStateGlobal, { type, payload }) => {
 
 const initialStateFinance = {
   data: [
-    {
-      id: "5f5b6054a375e00024070433",
-      type: "expense",
-      amount: 200,
-      category: "Car",
-      transactionDate: "2020-09-10T21:00:00.000Z",
-      comment: "zarplataqceaeaxewcexaweawexwazewcexw",
-      userId: "123123123",
-      balanceAfter: -200,
-      balanceAfterSign: "-",
-      createdAt: "2020-09-11T11:32:36.238Z",
-      updatedAt: "2020-09-11T11:32:36.238Z",
-    },
+    { id: "5f5b6054a375e00024070433", type: "expense", amount: 200, category: "Car", transactionDate: "2020-09-10T21:00:00.000Z", comment: "zarplataqceaeaxewcexaweawexwazewcexw", userId: "123123123", balanceAfter: -200, balanceAfterSign: "-", createdAt: "2020-09-11T11:32:36.238Z", updatedAt: "2020-09-11T11:32:36.238Z" },
     {
       id: "5f5b60baa375e00024070434",
       type: "income",

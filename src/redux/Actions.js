@@ -1,4 +1,4 @@
-import { LOADERTYPE, ERRORTYPE, TOKENTYPE, USERINFOTYPE, LOGINOUTTYPE, MODALADDTYPE, MODALLOGINTYPE, DATAADDTYPE, DATAREMOVETYPE, DATAEDITTYPE, DATASETTYPE } from "../constants";
+import { LOADERTYPE, ERRORTYPE, TOKENTYPE, USERINFOTYPE, LOGINOUTTYPE, MODALADDTYPE, MODALLOGINTYPE, DATAADDTYPE, DATAREMOVETYPE, DATAEDITTYPE, DATASETTYPE, WINDOWTYPE } from "../constants";
 
 // Loader (true or false)
 export const Loader = (value) => ({
@@ -67,5 +67,11 @@ export const editData = (value) => ({
 // setUserData ([{},{},{}])
 export const setUserData = (value) => ({
   type: DATASETTYPE,
+  payload: value,
+});
+
+// setUserData ([{},{},{}])
+export const setSizeWindow = (value) => ({
+  type: WINDOWTYPE,
   payload: value,
 });

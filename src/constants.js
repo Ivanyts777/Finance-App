@@ -18,6 +18,7 @@ const TYPESTATEG = "global/";
 export const LOADERTYPE = TYPESTATEG + "loader";
 export const MODALADDTYPE = TYPESTATEG + "modal";
 export const MODALLOGINTYPE = TYPESTATEG + "modal";
+export const WINDOWTYPE = TYPESTATEG + "window";
 
 // Finance
 const TYPESTATEF = "finance/";

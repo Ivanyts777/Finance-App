@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { navigation } from "../../constants";
 import { NavLink } from "react-router-dom";
 
+import exchangeStyles from "../CurrencyExchage/CurrencyExchage.module.css";
 import "./Menu.scss";
 const Menu = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,9 @@ const Menu = () => {
 
     dispatch(Loader(false));
   }, [dispatch]);
+  const onExchange = () => {
+    document.getElementById("exchange").classList.remove(exchangeStyles.none);
+  };
   return (
     <ul className="menu">
       <li className="menu__item">
@@ -32,14 +36,21 @@ const Menu = () => {
         </NavLink>
       </li>
       <li className="menu__item separator"> | </li>
-      <li className="menu__item money">
-        <NavLink to={navigation.currency} exact>
+      <li className="menu__item">
+        <span className="money-link">
+          <NavLink to={navigation.currency} exact>
+            <Money />
+          </NavLink>
+        </span>
+        <span className="money-button" onClick={onExchange}>
           <Money />
-        </NavLink>
+          <p className="menu__text">Exchange</p>
+        </span>
       </li>
+      <li className="menu__item separator"> | </li>
       <li className="menu__item balance">
         Balance:
-        <span> {balance} UAH</span>
+        <span className="balance-text"> {balance} UAH</span>
       </li>
     </ul>
   );
