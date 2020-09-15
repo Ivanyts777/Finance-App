@@ -10,8 +10,6 @@ import CurrencyExchage from "../CurrencyExchage/CurrencyExchage";
 import Menu from "../Menu/Menu";
 
 
-// const pickColor = state => state.data.datasets[0].backgroundColor;
-
 const {
   diagram,
   chartBlock,
@@ -109,9 +107,11 @@ useEffect(() => {
         : null,
     );
   });
+}, [currentMonth,currentYear,finance])
 
+
+useEffect(() => {
   filterStatistics();
-  sortTransactions(finance.data, currentMonth, currentYear);
 }, [currentMonth,currentYear,statistics])
 
 
@@ -154,7 +154,7 @@ const formStatistics = costs => {
       datasets: [...stateCopy.datasets]})
   };
 
-  const sortTransactions = (transactions, currentMonth, currentYear) => {
+  const sortTransactions = (transactions) => {
     const sorted = transactions.filter(trans => {
       const date = moment(Date.parse(trans.transactionDate)).format(
         'YYYY MMMM',

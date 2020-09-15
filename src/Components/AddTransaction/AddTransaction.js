@@ -11,32 +11,21 @@ import styles from './AddTransaction.css';
 const {backdrop,modal} = styles
 
 const AddTransaction = () => {
-  // const backdropRef = createRef();
-
-
 
 
 
   return (
     <div
         className={backdrop}
-        // ref={backdropRef}
-        // onClick={handleBackdropClick}
         role="presentation"
       >
         <div className={modal}>
           <AddTransactionForm
-            // closeModalAddTransaction={closeModalAddTransaction()}
-            // addTransaction={addTransaction()}
           />
         </div>
       </div>
   );
 };
 
-// AddTransaction.propTypes = {
-//   closeModalAddTransaction: PropTypes.func.isRequired,
-//   addTransaction: PropTypes.func.isRequired,
-// };
 
 export default AddTransaction;
