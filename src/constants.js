@@ -16,8 +16,8 @@ export const LOGINOUTTYPE = TYPESTATES + "user/loginout";
 // Global
 const TYPESTATEG = "global/";
 export const LOADERTYPE = TYPESTATEG + "loader";
-export const MODALADDTYPE = TYPESTATEG + "modal";
-export const MODALLOGINTYPE = TYPESTATEG + "modal";
+export const MODALADDTYPE = TYPESTATEG + "modal/add";
+export const MODALLOGINTYPE = TYPESTATEG + "modal/loginOut";
 export const WINDOWTYPE = TYPESTATEG + "window";
 
 // Finance

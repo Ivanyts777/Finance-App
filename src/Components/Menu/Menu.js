@@ -1,23 +1,16 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import { Home, TimeLine, Money } from "../SVG/sprite";
-import { Loader } from "../../redux/Actions";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { navigation } from "../../constants";
 import { NavLink } from "react-router-dom";
 
 import exchangeStyles from "../CurrencyExchage/CurrencyExchage.module.css";
 import "./Menu.scss";
 const Menu = () => {
-  const dispatch = useDispatch();
   const balance = useSelector((state) => state.finance.balance);
-  useEffect(() => {
-    dispatch(Loader(true));
-
-    dispatch(Loader(false));
-  }, [dispatch]);
   const onExchange = () => {
-    document.getElementById("exchange").classList.remove(exchangeStyles.none);
+    document.getElementById("exchange").classList.toggle(exchangeStyles.none);
   };
   return (
     <ul className="menu">

@@ -12,9 +12,9 @@ export const createNewUser = (userData) => async (dispatch) => {
       url: baseURL + "register",
       data: userData,
     });
+    console.log(result);
     dispatch(setToken(result.data.token));
     dispatch(setUserInfo(result.data.user));
-    getUserData(result.data.user.id, result.data.token);
     dispatch(Error(null));
   } catch (error) {
     dispatch(Error(error));
@@ -31,6 +31,7 @@ export const userLogin = (userData) => async (dispatch) => {
       url: baseURL + "login",
       data: userData,
     });
+    console.log(result);
     dispatch(setToken(result.token));
     dispatch(setUserInfo(result.user));
     getUserData(result.user.id, result.token);

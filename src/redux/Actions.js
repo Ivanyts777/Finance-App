@@ -70,7 +70,7 @@ export const setUserData = (value) => ({
   payload: value,
 });
 
-// setUserData ([{},{},{}])
+// setSizeWindow (123)
 export const setSizeWindow = (value) => ({
   type: WINDOWTYPE,
   payload: value,
