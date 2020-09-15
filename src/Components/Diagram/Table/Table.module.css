@@ -1,0 +1,163 @@
+.stateless {
+    width: 100%;
+    font-family: 'HelveticaNeueCyr';
+  }
+  
+  .statelessSelect,
+  .statelessHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8%;
+    font-size: 18px;
+  }
+  
+  
+  
+  
+  .statelessHeader {
+    background-color: #f3f6f6;
+    height: 3em;
+    line-height: 3em;
+    padding-left: 26px;
+    padding-right: 26px;
+    font-size: 15px;
+    font-family: "HelveticaNeueCyr";
+    color: rgb(40, 40, 40);
+    font-weight: bold;
+  }
+  
+  .statelessSelectGroup {
+    width: 130px;
+  }
+  
+  .statelessListItem {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    font-size: 13px;
+    font-family: "HelveticaNeueCyr";
+    color: rgb(40, 40, 40);
+  }
+  
+  .tableSpan {
+    padding-right: 20px;
+    font-size: 15px;
+    font-family: "HelveticaNeueCyr";
+    color: rgb(40, 40, 40);
+    font-weight: bold;
+  }
+  
+  
+  .statelessList {
+    list-style-type: none;
+    padding-bottom: 10px;
+  }
+  
+  .statelessLine {
+    display: inline-block;
+    width: 100%;
+    height: 2px;
+    border: 2px solid #f3f6f6;
+  }
+  
+  .statelessList:last-child:nth-child(2n + 1) > .statelessLine {
+    border: 2px solid #b9c9d4;
+  }
+  
+  .statelessIcone {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border: 1px solid black;
+    margin-right: 12px;
+  }
+  
+  .statelessTitle {
+    display: inline-block;
+    max-width: 300px;
+  }
+  
+  
+  .statelessAmount {
+    padding-left: 14%;
+  }
+  
+  .tableExpenses {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+  }
+  
+  @media (min-width: 768px) {
+    .stateless {
+      width: 90%;
+    }
+    .statelessHeader {
+      display: none;
+    }
+    .statelessSelect {
+      justify-content: center;
+    }
+    .statelessSelectGroup {
+      width: 200px;
+      margin-left: 20px;
+    }
+    .statelessListTablet {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    .statelessListItem {
+      width: 320px;
+    }
+    .statelessFooter {
+      text-align: end;
+    }
+    .tableExpenses {
+      padding-left: 20px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    li:last-child:nth-child(2n + 1) > .statelessLine {
+      visibility: hidden;
+    }
+    .statelessLineLast {
+      border: 2px solid #b9c9d4;
+      max-width: 800px;
+      margin-bottom: 20px;
+    }
+  }
+  
+  @media (min-width: 1280px) {
+    .stateless {
+      width: 360px;
+    }
+    .statelessFooter {
+      text-align: start;
+    }
+    .statelessListItem {
+      width: 300px;
+      margin: 0 auto;
+    }
+    .statelessHeader {
+      display: flex;
+    }
+    .statelessLine {
+      display: inline-block;
+      width: 360px;
+      height: 2px;
+      border: 2px solid #f3f6f6;
+    }
+    .statelessListItem {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .tableExpenses {
+      text-transform: none;
+      font-weight: 700;
+    }
+  }
+  
