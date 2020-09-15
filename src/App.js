@@ -21,7 +21,9 @@ import Main from "./Containers/Main/Main";
 import "./App.css";
 
 const Login = lazy(() => import("./Containers/Login/Login"));
-const Registration = lazy(() => import("./Containers/Registration/Registration"));
+const Registration = lazy(() =>
+  import("./Containers/Registration/Registration")
+);
 
 const App = () => {
   const { loader, error, token } = useSelector((state) => state);
@@ -37,11 +39,27 @@ const App = () => {
         <Header />
         <main className="main">
           <Switch>
-            <Route path={navigation.main} exact render={(props) => <Main {...props} />} />
-            <Route path={navigation.login} render={(props) => <Login {...props} />} />
-            <Route path={navigation.registration} render={(props) => <Registration {...props} />} />
-            <Route path={navigation.diagram} render={(props) => <Diagram {...props} />} />
-            <Route path={navigation.currency} render={(props) => <CurrencyExchage {...props} />} />
+            <Route
+              path={navigation.main}
+              exact
+              render={(props) => <Main {...props} />}
+            />
+            <Route
+              path={navigation.login}
+              render={(props) => <Login {...props} />}
+            />
+            <Route
+              path={navigation.registration}
+              render={(props) => <Registration {...props} />}
+            />
+            <Route
+              path={navigation.diagram}
+              render={(props) => <Diagram {...props} />}
+            />
+            <Route
+              path={navigation.currency}
+              render={(props) => <CurrencyExchage {...props} />}
+            />
             <Redirect to={navigation.main} />
           </Switch>
         </main>
