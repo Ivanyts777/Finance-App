@@ -213,7 +213,7 @@
     display: block;
     width: 280px;
     min-height: 40px;
-    position: fixed;
+    /* position: fixed; */
     bottom: 30px;
     margin-bottom: 50px;
   }

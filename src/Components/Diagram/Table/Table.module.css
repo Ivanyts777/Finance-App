@@ -35,7 +35,7 @@
     text-transform: uppercase;
   }
   
-  li {
+  .statelessList {
     list-style-type: none;
     padding-bottom: 10px;
   }
@@ -47,7 +47,7 @@
     border: 2px solid #f3f6f6;
   }
   
-  li:last-child:nth-child(2n + 1) > .statelessLine {
+  .statelessList:last-child:nth-child(2n + 1) > .statelessLine {
     border: 2px solid #b9c9d4;
   }
   

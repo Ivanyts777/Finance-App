@@ -1,18 +1,38 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 import moment from 'moment';
+
 import { Field, withFormik, Form } from 'formik';
 import AddTransactionSchema from './AddTransactionSchema';
 import SelectForFormik from './SelectForFormik';
 import ReactDatetimeForFormik from './ReactDatetimeForFormik';
-import styles from './AddTransactionForm.module.css';
 import {ArrowRight} from '../../SVG/sprite'
+
+import styles from './AddTransactionForm.module.css';
+
+const {transactionForm,
+  typeOfTransactionWrapper,
+  typeRadio,
+  valueInput,
+  dateAndValueWrapper,
+  comment,
+  inputComment,
+  errorsContainer,
+  error,
+  transactionModalButton,
+  transactionButton,
+  titleWrapper,
+  controlWrapper,
+  closeModalButton,
+  closeModalButtonImg,
+  title
+ } =styles
 
 const innerForm = props => {
     const { values, touched, errors, setFieldValue, setFieldTouched } = props;
     return (
-      <Form className={styles.transactionForm}>
-        <div className={styles.typeOfTransactionWrapper}>
+      <Form className={transactionForm}>
+        <div className={typeOfTransactionWrapper}>
           <input
             type="radio"
             id="contactChoice1"
@@ -23,7 +43,7 @@ const innerForm = props => {
               setFieldValue('typeOfTransaction', 'income');
               setFieldValue('category', '');
             }}
-            className={styles.typeRadio}
+            className={typeRadio}
           />
           <label htmlFor="contactChoice1">Income</label>
   
@@ -36,7 +56,7 @@ const innerForm = props => {
             onChange={() => {
               setFieldValue('typeOfTransaction', 'expense');
             }}
-            className={styles.typeRadio}
+            className={typeRadio}
           />
           <label htmlFor="contactChoice2">Expense</label>
         </div>
@@ -49,12 +69,12 @@ const innerForm = props => {
             touched={touched.category}
           />
         )}
-        <div className={styles.dateAndValueWrapper}>
+        <div className={dateAndValueWrapper}>
           <Field
             type="text"
             name="value"
             placeholder="0.00"
-            className={styles.valueInput}
+            className={valueInput}
             autoComplete="off"
           />
           <Field
@@ -63,7 +83,7 @@ const innerForm = props => {
             component={ReactDatetimeForFormik}
           />
         </div>
-        <label htmlFor="comment" className={styles.comment}>
+        <label htmlFor="comment" className={comment}>
           <p>Comment</p>
         </label>
         <Field
@@ -71,23 +91,23 @@ const innerForm = props => {
           id="comment"
           name="comment"
           placeholder="You can input comment here"
-          className={styles.inputComment}
+          className={inputComment}
         />
-        <div className={styles.errorsContainer}>
+        <div className={errorsContainer}>
           {!!errors.category &&
             touched.category &&
             values.typeOfTransaction === 'expense' && (
-              <div className={styles.error}>{errors.category}</div>
+              <div className={error}>{errors.category}</div>
             )}
           {!!errors.value && touched.value && (
-            <div className={styles.error}>{errors.value}</div>
+            <div className={error}>{errors.value}</div>
           )}
           {!!errors.timeOfTransaction && touched.timeOfTransaction && (
-            <div className={styles.error}>{errors.timeOfTransaction}</div>
+            <div className={error}>{errors.timeOfTransaction}</div>
           )}
         </div>
-        <div className = {styles.transactionModalButton}> 
-            <button type="submit" className={styles.transactionButton}>
+        <div className = {transactionModalButton}> 
+            <button type="submit" className={transactionButton}>
           Add
         </button>
         </div>
@@ -150,21 +170,22 @@ const EnhancedForm = withFormik({
   })(innerForm);
 
 
-const AddTransactionForm = ({ closeModalAddTransaction, addTransaction }) => {
+const AddTransactionForm = () => {  //Сюди передати
     return (
         <>
-        <div className={styles.titleWrapper}>
-            <div className={styles.controlWrapper}>
+        <div className={titleWrapper}>
+            <div className={controlWrapper}>
                 <button
                 type="button"
-                className={styles.closeModalButton}
-                onClick={closeModalAddTransaction}
+                className={closeModalButton}
+                // onClick={closeModalAddTransaction}
                 >
-                    <ArrowRight className = {styles.closeModalButtonImg}/>
+                    <ArrowRight className = {closeModalButtonImg}/>
                 </button>
-            <h2 className={styles.title}>add transaction</h2>
+            <h2 className={title}>add transaction</h2>
             </div>
         </div>
+        {/* <EnhancedForm onSubmit={addTransaction} /> */}
         <EnhancedForm onSubmit={addTransaction} />
     </>
     )

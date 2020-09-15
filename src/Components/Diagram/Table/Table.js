@@ -38,7 +38,7 @@ const Table = ({
         <div>
         <ul className={styles.statelessListTablet}>
           {data.map(d => (
-            <li key={d.id}>
+            <li className = {styles.statelessList} key={d.id}>
               <span className={styles.statelessListItem}>
                 <div>
                   <span

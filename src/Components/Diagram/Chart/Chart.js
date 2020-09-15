@@ -4,11 +4,13 @@ import { Pie } from 'react-chartjs-2';
 import 'chartjs-plugin-labels';
 import styles from './Chart.module.css';
 
+const {canvasContainer,pie,} = styles
+
 const Chart = ({ data }) => (
-    <div className={styles.canvasContainer}>
+    <div className={canvasContainer}>
       <Pie
-        className={styles.pie}
-        data= {data}
+        className={pie}
+        data={data}
         options={{
           maintainAspectRatio: false,
           legend: {
