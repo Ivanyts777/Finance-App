@@ -1,18 +1,21 @@
 .showTabletDesktop {
   display: none;
 }
+
 .showDesktop {
   display: none;
 }
+
 .list {
   margin: 0;
-  padding: 0;
+  padding: 0 10px;
   list-style: none;
 }
 
-.titleContainer {
+.item:first-child {
   display: none;
 }
+
 
 .title {
   font-size: 15px;
@@ -23,39 +26,43 @@
   font-family: "HelveticaNeueCyr";
 }
 
+.titleMoney {
+  composes: title;
+  text-align: center;
+}
+
+
 .text {
   font-size: 13px;
   letter-spacing: 0px;
   color: #282828;
   font-weight: 400;
   font-family: "HelveticaNeueCyr";
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.textType {
-  composes: text;
-  padding-left: 10px;
-}
 
-.textOrange {
-  composes: text;
-  font-weight: bold;
-  color: #ff6c00;
-  padding-left: 10px;
-}
-
-.textBlue {
-  composes: text;
-  font-weight: bold;
-  color: #415b7d;
-}
 
 .button {
   all: unset;
 }
-.buttonsMobile > *:first-child {
+
+
+
+.buttonsMobile>*:first-child {
   margin-right: 20px;
+
 }
+
+.Main {
+  position: relative;
+}
+
+
 @media (max-width: 747px) {
+
+
   .item {
     width: 100%;
     border-left: 8px solid #7e8c9e;
@@ -63,7 +70,8 @@
     filter: drop-shadow(14.095px 5.13px 4.5px rgba(1, 1, 0, 0.08));
   }
 
-  .item:nth-child(even) {
+
+  .item:nth-child(odd) {
     border-left: 8px solid #e28b20;
   }
 
@@ -75,73 +83,199 @@
     font-weight: 300;
     font-family: "HelveticaNeueCyr";
     display: grid;
-    grid-template-columns: 160px 1fr;
+    grid-template-columns: 120px 1fr;
     height: 45px;
     align-items: center;
     padding-left: 20px;
     background-color: #f3f6f6;
+
+  }
+
+  .textOrange {
+    composes: text;
+    font-weight: bold;
+    color: #ff6c00;
+
+  }
+
+  .textBlue {
+    composes: text;
+    font-weight: bold;
+    color: #415b7d;
+  }
+
+  .titleMobile {
+    color: #282828;
+    font-weight: 400;
   }
 
   .text:nth-child(even) {
     background-color: #fff;
   }
 
-  .titleMobile {
-    font-weight: 400;
+
+  .iconAdd {
+    position: fixed;
+    bottom: 17px;
+    right: 43%;
+  }
+
+
+  .bgIconAdd {
+    position: fixed;
+    width: 100%;
+    height: 42px;
+    background-color: rgba(40, 64, 96, 0.8);
+    bottom: 0;
+  }
+
+  .Main {
+    padding-bottom: 80px;
+
+  }
+
+  .mainGlobal {
+    background-color: #fff;
   }
 }
 
 @media (min-width: 748px) {
-  .titleContainer {
-    background-color: #fff;
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    max-width: 1992px;
-    height: 72px;
-    padding-left: 30px;
-    align-items: center;
-    /* margin: 0 50px; */
+  .Main {
+    min-height: 805px;
+    overflow-y: hidden;
+  }
+
+  .list {
+    max-height: 805px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+  }
+
+  .list::-webkit-scrollbar {
+    width: 5px;
+
+  }
+
+  .list::-webkit-scrollbar-track {
+    background: #ddd;
+
+  }
+
+  .list::-webkit-scrollbar-thumb {
+    background: #3a5374;
+    border-radius: 2px;
+
   }
 
   .item {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(7, calc(100% / 7));
     max-width: 1192px;
     padding-left: 30px;
     height: 62px;
     align-items: center;
-    /* margin: 0 5px; */
   }
 
-  .item:nth-child(even) {
+  .item:nth-child(odd) {
     background-color: #f3f6f6;
+  }
+
+  .item:first-child {
+    background-color: #fff;
+    display: grid;
+    grid-template-columns: repeat(7, calc(100% / 7));
+    max-width: 1992px;
+    height: 72px;
+    padding-left: 30px;
+    align-items: center;
   }
 
   .titleMobile {
     display: none;
   }
+
   .showTabletDesktop {
     display: block;
   }
+
+  .mainGlobal {
+    margin-bottom: 48px;
+    background-image: url('../../img/currencyExchange/bg.png');
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: auto 460px;
+
+  }
+
+  .textMoney {
+    composes: text;
+    text-align: right;
+    margin-right: 40px;
+
+  }
+
+  .textOrange {
+    composes: textMoney;
+    font-weight: bold;
+    color: #ff6c00;
+
+  }
+
+  .textBlue {
+    composes: textMoney;
+    font-weight: bold;
+    color: #415b7d;
+  }
+
+  .iconAdd {
+    position: absolute;
+    bottom: 7px;
+    right: 17px;
+  }
+
+  .buttonsMobile {
+    text-align: center;
+  }
+
 }
 
 @media (min-width: 1192px) {
-  .titleContainer {
-    width: 850px;
-    margin-left: 21px;
+
+  .Main {
+    min-height: 675px;
   }
+
+  .list {
+    max-height: 675px;
+  }
+
   .list {
     width: 850px;
     margin-left: 21px;
   }
+
   .item {
     margin: 0;
   }
+
   .mainGlobal {
+    margin-bottom: 0px;
+    padding-bottom: 48px;
     display: grid;
     grid-template-columns: 316px 1fr;
+    background: none;
   }
+
   .showDesktop {
     display: block;
   }
+
+  .bgMainImage {
+
+    display: none;
+  }
+
+
+
+
 }

@@ -1,11 +1,4 @@
-import { LOADERTYPE, ERRORTYPE, TOKENTYPE, USERINFOTYPE, LOGINOUTTYPE, MODALADDTYPE, MODALLOGINTYPE, DATAADDTYPE, DATAREMOVETYPE, DATAEDITTYPE, DATASETTYPE } from "../constants";
-
-// {
-//     id: "5f5f40d13b62e40d0f7b0f00",
-//     name: "Peter Shevchuk",
-//     email: "raf02041994@gmail.com",
-//     createdAt: "2020-09-14T10:07:13.179Z",
-//   },
+import { LOADERTYPE, ERRORTYPE, TOKENTYPE, USERINFOTYPE, LOGINOUTTYPE, MODALADDTYPE, MODALLOGINTYPE, DATAADDTYPE, DATAREMOVETYPE, DATAEDITTYPE, DATASETTYPE, WINDOWTYPE } from "../constants";
 
 const initialStateSession = {
   user: {},
@@ -38,6 +31,7 @@ const initialStateGlobal = {
   isModalAddTransactionOpen: false,
   isModalLoginOut: false,
   loader: false,
+  windowSize: window.innerWidth,
 };
 export const global = (state = initialStateGlobal, { type, payload }) => {
   let newState = {};
@@ -51,6 +45,9 @@ export const global = (state = initialStateGlobal, { type, payload }) => {
     case MODALLOGINTYPE:
       newState = { ...state, isModalLoginOut: payload };
       break;
+    case WINDOWTYPE:
+      newState = { ...state, windowSize: payload };
+      break;
     default:
       newState = state;
       break;
@@ -60,32 +57,8 @@ export const global = (state = initialStateGlobal, { type, payload }) => {
 
 const initialStateFinance = {
   data: [
-    {
-      id: "5f5b6054a375e00024070433",
-      type: "expense",
-      amount: 200,
-      category: "Car",
-      transactionDate: "2020-09-10T21:00:00.000Z",
-      comment: "oil",
-      userId: "123123123",
-      balanceAfter: -200,
-      balanceAfterSign: "-",
-      createdAt: "2020-09-11T11:32:36.238Z",
-      updatedAt: "2020-09-11T11:32:36.238Z",
-    },
-    {
-      id: "5f5b60baa375e00024070434",
-      type: "income",
-      amount: 10000000,
-      category: "income",
-      transactionDate: "2020-09-10T21:00:00.000Z",
-      comment: "zarplata",
-      userId: "123123123",
-      balanceAfter: 9999800,
-      balanceAfterSign: "+",
-      createdData: "2020-09-11T11:34:18.615Z",
-      updatedData: "2020-09-11T11:34:18.615Z",
-    },
+    { id: "5f5b6054a375e00024070433", type: "expense", amount: 200, category: "Car", transactionDate: "2020-09-10T21:00:00.000Z", comment: "zarplataqceaeaxewcexaweawexwazewcexw", userId: "123123123", balanceAfter: -200, balanceAfterSign: "-", createdAt: "2020-09-11T11:32:36.238Z", updatedAt: "2020-09-11T11:32:36.238Z" },
+    { id: "5f5b60baa375e00024070434", type: "income", amount: 100000, category: "income", transactionDate: "2020-09-10T21:00:00.000Z", comment: "zarplataqceaeaxewcexaweawexwazewcexw", userId: "123123123", balanceAfter: 9999800, balanceAfterSign: "+", createdData: "2020-09-11T11:34:18.615Z", updatedData: "2020-09-11T11:34:18.615Z" },
   ],
   balance: 0,
 };
