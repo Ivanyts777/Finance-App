@@ -100,7 +100,8 @@
 @media (min-width: 748px) {
   .Main {
     max-height: 675px;
-    overflow-y: hidden
+    overflow-y: hidden;
+
   }
 
   .titleContainer {
@@ -111,7 +112,7 @@
     height: 72px;
     padding-left: 30px;
     align-items: center;
-    /* margin: 0 50px; */
+
   }
 
   .list {
@@ -119,8 +120,6 @@
     max-height: 602px;
     overflow-y: scroll;
     scroll-behavior: smooth;
-
-
   }
 
   .list::-webkit-scrollbar {
@@ -140,9 +139,6 @@
 
   }
 
-
-
-
   .item {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -150,7 +146,6 @@
     padding-left: 30px;
     height: 62px;
     align-items: center;
-    /* margin: 0 5px; */
 
   }
 
