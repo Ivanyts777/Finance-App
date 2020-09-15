@@ -1,42 +1,37 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import Menu from "../Menu/Menu";
 import styles from "./CurrencyExchage.module.css";
 
 const CurrencyExchage = () => {
+  const [currency, setCurrency] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5`)
+      .then(({ data }) => setCurrency(data));
+  }, []);
+
   return (
     <>
       <div className={styles.menuMobile}>
         <Menu />
       </div>
       <div className={styles.currency__exchage_background}>
-        <div className={styles.currency__exchage_title_bg}>
-          <div className={styles.currency__exchage_container}>
-            <p className={styles.currency__exchage_transactions}>Валюта</p>
-            <p className={styles.currency__exchage_transactions}>Продажа</p>
-            <p className={styles.currency__exchage_transactions}>Покупка</p>
-          </div>
-          <div className={styles.currency__exchage}>
-            <div className={styles.currency__exchage_container_1}>
-              <p className={styles.currency__exchage_name}>USD</p>
-              <p className={styles.currency__exchage_sell}>12.25</p>
-              <p className={styles.currency__exchage_buy}>23.32</p>
-            </div>
-          </div>
-          <div className={styles.currency__exchage}>
-            <div className={styles.currency__exchage_container_1}>
-              <p className={styles.currency__exchage_name}>EUR</p>
-              <p className={styles.currency__exchage_sell}>23.69</p>
-              <p className={styles.currency__exchage_buy}>34.85</p>
-            </div>
-          </div>
-          <div className={styles.currency__exchage}>
-            <div className={styles.currency__exchage_container_1}>
-              <p className={styles.currency__exchage_name}>UAH</p>
-              <p className={styles.currency__exchage_sell}>66.36</p>
-              <p className={styles.currency__exchage_buy}>45.15</p>
-            </div>
-          </div>
-        </div>
+        <ul className={styles.currency__exchage_list}>
+          <li className={styles.currency__exchage_title}>
+            <p className={styles.currency__exchage_name}>Валюта</p>
+            <p className={styles.currency__exchage_name}>Продажа</p>
+            <p className={styles.currency__exchage_name}>Купівля</p>
+          </li>
+          {currency.map((el) => (
+            <li key={el.ccy} className={styles.currency__exchage_money}>
+              <p>{el.ccy}</p>
+              <p>{Number(el.sale).toFixed(2)}</p>
+              <p>{Number(el.buy).toFixed(2)}</p>
+            </li>
+          ))}
+        </ul>
       </div>
     </>
   );
