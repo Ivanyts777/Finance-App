@@ -1,0 +1,16 @@
+@media (min-width: 748px) {
+    .canvasContainer {
+      height: 374px;
+    }
+  }
+  
+  @media (min-width: 1192px) {
+    .canvasContainer {
+      height: 336px;
+    }
+  
+    canvas {
+      border-radius: 50%;
+      box-shadow: 6px 10.4px 18px rgba(1, 1, 0, 0.1);
+    }
+  }

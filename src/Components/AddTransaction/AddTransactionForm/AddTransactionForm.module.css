@@ -1,0 +1,265 @@
+.title {
+    font-size: 12px;
+    letter-spacing: 0px;
+    line-height: 30px;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'HelveticaNeueCyr';
+  }
+  
+  .titleWrapper {
+    background-color: #3a5374;
+  }
+  
+  .controlWrapper {
+    margin: 0 auto;
+    width: 320px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 20px;
+  }
+  
+  .closeModalButton {
+    width: 44px;
+    height: 100%;
+    background-color: #3a5374;
+    border: none;
+    outline: none;
+    color: #fff;
+    cursor: pointer;
+  }
+  /* .closeModalButton img {
+    width: 44px;
+    height: 14px;
+    display: inherit;
+  } */
+  .closeModalButtonImg {
+    width: 44px;
+    height: 14px;
+    display: inherit;
+  }
+
+  
+  .transactionForm {
+    margin: 0 auto;
+    width: 320px;
+    padding: 20px;
+    outline: none;
+    color: #3a5374;
+    font-family: 'HelveticaNeueCyr';
+  }
+  
+  .typeOfTransactionWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    position: relative;
+    margin-bottom: 30px;
+  }
+  
+  .typeOfTransactionWrapper::after {
+    width: 1px;
+    height: 100%;
+    left: 50%;
+    background-color: #b9c9d4;
+    transform: translateX(-50%);
+    position: absolute;
+    content: '';
+    display: block;
+    visibility: visible;
+  }
+  
+  .typeRadio {
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .typeRadio + label {
+    font-size: 13px;
+    letter-spacing: 1px;
+    line-height: 18px;
+    color: #b9c9d4;
+    cursor: pointer;
+  }
+  
+  .typeRadio:checked + label {
+    color: #3a5374;
+  }
+  
+  .typeRadio[value='expense']:checked + label {
+    color: #ff6c00;
+  }
+  
+  .typeRadio:after {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    top: -80%;
+    left: -87%;
+    transform: translate(52%, 47%);
+    position: absolute;
+    background-color: white;
+    content: '';
+    display: block;
+    visibility: visible;
+    border: 2px solid #3a5374;
+  }
+  
+  .typeRadio:checked:before {
+    width: 40%;
+    height: 40%;
+    border-radius: 50%;
+    top: 50%;
+    left: 49%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    background-color: #3a5374;
+    content: '';
+    display: block;
+    visibility: visible;
+    border: none;
+    z-index: 1;
+  }
+  
+  .typeRadio[value='expense']:checked:before {
+    background-color:#ff6c00;
+  }
+  
+  .dateAndValueWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 30px;
+  }
+  
+  .dateAndValueWrapper input {
+    width: 130px;
+  }
+  
+  .select {
+    margin-bottom: 30px;
+  }
+  
+  .valueInput {
+    width: 130px;
+    font-size: 13px;
+    letter-spacing: 0px;
+    line-height: 30px;
+    color: #3a5374;
+    border: 2px solid #b9c9d4;
+    border-radius: 4px;
+    outline: none;
+    font-weight: bold;
+    text-align: right;
+    padding-right: 26px;
+  }
+  
+  .comment {
+    width: 280px;
+    margin: 0 auto;
+  }
+  
+  .inputComment {
+    min-height: 54px;
+    resize: none;
+    width: 100%;
+    font-size: 13px;
+    letter-spacing: 1px;
+    line-height: 18px;
+    color: #3a5374;
+    border: 2px solid #b9c9d4;
+    border-radius: 4px;
+    outline: none;
+    padding: 8px;
+    overflow-y: visible;
+  }
+  
+  .valueInput::placeholder,
+  .inputComment::placeholder {
+    color: #3a5374;
+    line-height: 18px;
+  }
+  
+  .comment p {
+    font-size: 15px;
+    letter-spacing: 0px;
+    line-height: 30px;
+    color: #3a5374;
+    font-weight: bold;
+  }
+
+  /* .transactionModalButton {
+    position: fixed;
+    width: 100%;
+    height: 42px;
+    background-color: rgba(40, 64, 96, 0.8);
+    bottom: 0;
+  } */
+  
+  .transactionButton {
+    border-radius: 4px;
+    background-color: #ff6c00;
+    border: none;
+    color: #fff;
+    font-size: 15px;
+    letter-spacing: 0px;
+    line-height: 30px;
+    font-weight: bold;
+    text-align: center;
+    display: block;
+    width: 280px;
+    min-height: 40px;
+    /* position: fixed; */
+    bottom: 30px;
+    margin-bottom: 50px;
+  }
+  
+  input:focus,
+  textarea:focus {
+    border-color: #284060;
+  }
+  
+  .errorsContainer {
+    margin-bottom: 30px;
+  }
+  
+  .error {
+    color: red;
+  }
+  
+  @media (min-width: 748px) {
+    .closeModalButton {
+      display: none;
+    }
+    .transactionButton {
+      position: static;
+      background-color: #3a5374;
+    }
+  
+    .inputComment {
+      margin-bottom: 30px;
+    }
+  
+    .titleWrapper {
+      background-color: #f3f6f6;
+      border-top-left-radius: 6px;
+      border-top-right-radius: 6px;
+    }
+  
+    .title {
+      color: #282828;
+      font-size: 15px;
+      text-align: center;
+      padding: 20px 0;
+    }
+    .controlWrapper {
+      justify-content: center;
+    }
+
+    .transactionButton {
+      margin-bottom: 0;
+    }
+  }
