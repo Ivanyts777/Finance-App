@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import * as Datetime from 'react-datetime';
+import Datetime from 'react-datetime';
 import moment from 'moment';
 import './ReactDatetimeForFormik.css';
 

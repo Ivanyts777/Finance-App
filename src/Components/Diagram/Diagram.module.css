@@ -118,6 +118,13 @@
 .showDesktop {
   display: none;
 }
+@media (max-width: 748px) {
+  .diagramGlobal {
+    background-color: #fff;
+  }
+}
+
+
 
 @media (min-width: 748px) {
   .showTabletDesktop {

@@ -184,7 +184,7 @@ const handleChange = ({ value }) => {
 
 
   return (
-    <div>
+    <div className= {styles.diagramGlobal}>
         <div className={mainGlobal}>
         <div>
           <Menu />

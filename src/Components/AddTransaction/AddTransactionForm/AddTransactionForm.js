@@ -170,7 +170,7 @@ const EnhancedForm = withFormik({
   })(innerForm);
 
 
-const AddTransactionForm = () => {  //Сюди передати
+const AddTransactionForm = ({addTransaction, closeModalAddTransaction}) => {  //Сюди передати
     return (
         <>
         <div className={titleWrapper}>
@@ -178,15 +178,15 @@ const AddTransactionForm = () => {  //Сюди передати
                 <button
                 type="button"
                 className={closeModalButton}
-                // onClick={closeModalAddTransaction}
+                onClick={closeModalAddTransaction}
                 >
                     <ArrowRight className = {closeModalButtonImg}/>
                 </button>
             <h2 className={title}>add transaction</h2>
             </div>
         </div>
-        {/* <EnhancedForm onSubmit={addTransaction} /> */}
         <EnhancedForm onSubmit={addTransaction} />
+        {/* <EnhancedForm onSubmit={addTransaction} /> */}
     </>
     )
 }
