@@ -3,9 +3,10 @@ import React, { Suspense, lazy } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Loader from "react-loader-spinner";
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { navigation } from "./constants";
+import { setSizeWindow } from "./redux/Actions";
 
 // Components
 import Header from "./Components/Header/Header";
@@ -21,12 +22,16 @@ import Main from "./Containers/Main/Main";
 import "./App.css";
 
 const Login = lazy(() => import("./Containers/Login/Login"));
-const Registration = lazy(() =>
-  import("./Containers/Registration/Registration")
-);
+const Registration = lazy(() => import("./Containers/Registration/Registration"));
 
 const App = () => {
-  const { loader, error, token } = useSelector((state) => state);
+  const dispatch = useDispatch();
+  window.onresize = ({ target }) => {
+    dispatch(setSizeWindow(target.innerWidth));
+  };
+
+  const { error, token } = useSelector((state) => state.session);
+  const { loader } = useSelector((state) => state.global);
   return (
     <>
       {loader && (
@@ -36,7 +41,7 @@ const App = () => {
       )}
       {error && <h1>{Error}</h1>}
       <Suspense fallback={<p>Compaling...</p>}>
-        <Header />
+        {/* <Header />
         <main className="main">
           <Switch>
             <Route
@@ -62,19 +67,16 @@ const App = () => {
             />
             <Redirect to={navigation.main} />
           </Switch>
-        </main>
+        </main> */}
         {/* ЗАКОМЕНТОВАНИЙ ТЕКСТ НЕ ЧІПАЄМО! */}
-        {/* {token && (
-          <>
-            <Header />
-            <Menu />
-          </>
-        )}
+        {token && <Header />}
         <main className="main">
           <Switch>
             {token ? (
               <>
                 <Route path={navigation.main} exact render={(props) => <Main {...props} />} />
+                <Route path={navigation.diagram} render={(props) => <Diagram {...props} />} />
+                <Route path={navigation.currency} render={(props) => <CurrencyExchage {...props} />} />
                 <Redirect to={navigation.main} />
               </>
             ) : (
@@ -85,7 +87,7 @@ const App = () => {
               </>
             )}
           </Switch>
-        </main> */}
+        </main>
         {/* ЗАКОМЕНТОВАНИЙ ТЕКСТ НЕ ЧІПАЄМО! */}
       </Suspense>
     </>

@@ -6,6 +6,10 @@
   background-repeat: no-repeat;
   padding-top: 30px;
 }
+.none {
+  display: none;
+}
+
 .currency__exchage_list {
   background-color: #f3f6f6;
   max-width: 100%;
