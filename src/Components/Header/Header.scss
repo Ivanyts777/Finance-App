@@ -21,6 +21,9 @@
     &:not(:last-child) {
       margin-right: 10px;
     }
+    &.loginOut {
+      cursor: pointer;
+    }
   }
   &__link-text {
     display: none;
