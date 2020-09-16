@@ -1,6 +1,13 @@
 import axios from "axios";
 import { useSelector } from "react-redux";
-import { Loader, Error, setUserData, setData, removeData, modalAdd } from "../../redux/Actions";
+import {
+  Loader,
+  Error,
+  setUserData,
+  setData,
+  removeData,
+  modalAdd,
+} from "../../redux/Actions";
 
 const baseURL = "https://mywallet.goit.co.ua/api/";
 
@@ -27,7 +34,7 @@ export const setPost = (token, dataPost) => async (dispatch) => {
     await dispatch(Loader(true));
     const result = await axios({
       method: "post",
-      url: "https://app-wallet-14.herokuapp.com/api/transactions/",
+      url: "https://app-wallet-14.herokuapp.com/api/transactions111/",
       data: dataPost,
       headers: { Authorization: `Bearer ${token}` },
     });
@@ -46,7 +53,8 @@ export const removePost = (idTransaction, token) => async (dispatch) => {
     await dispatch(Loader(true));
     const result = await axios({
       method: "delete",
-      url: "https://app-wallet-14.herokuapp.com/api/transactions/" + idTransaction,
+      url:
+        "https://app-wallet-14.herokuapp.com/api/transactions/" + idTransaction,
       headers: { Authorization: `Bearer ${token}` },
     });
     await dispatch(removeData(idTransaction));
