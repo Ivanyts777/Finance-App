@@ -28,7 +28,11 @@ const Header = () => {
         <ul className="header__menu">
           <li className="header__item">{session.user.name}</li>
           <li className="header__item separator"> | </li>
-          <li className="header__item loginOut" onClick={() => dispatch(userLoginOut(session.token))} href="/login">
+          <li
+            className="header__item loginOut"
+            onClick={() => dispatch(userLoginOut(session.token))}
+            href="/login"
+          >
             <LoginOut scale="18" />
             <p className="header__link-text">Login out</p>
           </li>
