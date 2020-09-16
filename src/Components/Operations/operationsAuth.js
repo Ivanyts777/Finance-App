@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Loader, Error, setToken, setUserInfo, loginOut } from "../../redux/Actions";
+import { Loader, setError, setToken, setUserInfo, loginOut } from "../../redux/Actions";
 import { getUserData } from "./operationsBD";
 
 const baseURL = " https://app-wallet-14.herokuapp.com/api/auth/";
@@ -16,7 +16,7 @@ export const createNewUser = (userData) => async (dispatch) => {
     dispatch(setUserInfo(result.data.user));
   } catch (error) {
     console.log(error.message);
-    dispatch(Error(error.message));
+    dispatch(setError(error.message));
   } finally {
     dispatch(Loader(false));
   }
@@ -34,7 +34,7 @@ export const userLogin = (userData) => async (dispatch) => {
     dispatch(setUserInfo(result.data.user));
     await dispatch(getUserData(result.data.token, result.data.user.id));
   } catch (error) {
-    dispatch(Error(error.message));
+    dispatch(setError(error.message));
     console.log(error.message);
   } finally {
     dispatch(Loader(false));
@@ -47,7 +47,7 @@ export const userLoginOut = () => async (dispatch) => {
     await dispatch(loginOut());
   } catch (error) {
     console.log(error.message);
-    dispatch(Error(error.message));
+    dispatch(setError(error.message));
   } finally {
     dispatch(Loader(false));
   }

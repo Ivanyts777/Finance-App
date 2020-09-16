@@ -7,7 +7,7 @@ export const Loader = (value) => ({
 });
 
 // Error (null or 'message')
-export const Error = (value) => ({
+export const setError = (value) => ({
   type: ERRORTYPE,
   payload: value,
 });

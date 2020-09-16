@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Loader, Error, setUserData, setData, removeData } from "../../redux/Actions";
+import { Loader, setError, setUserData, setData, removeData } from "../../redux/Actions";
 
 const baseURL = "https://app-wallet-14.herokuapp.com/api/transactions/";
 
@@ -15,7 +15,7 @@ export const getUserData = (token, userId) => async (dispatch) => {
     dispatch(setUserData(result.data.transactionsList));
   } catch (error) {
     console.log(error.message);
-    dispatch(Error(error.message));
+    dispatch(setError(error.message));
   } finally {
     dispatch(Loader(false));
   }
@@ -33,7 +33,7 @@ export const setPost = (token, dataPost) => async (dispatch) => {
     dispatch(setData(result.data.transaction));
   } catch (error) {
     console.log(error.message);
-    dispatch(Error(error.message));
+    dispatch(setError(error.message));
   } finally {
     dispatch(Loader(false));
   }
@@ -50,7 +50,7 @@ export const removePost = (idTransaction, token) => async (dispatch) => {
     await dispatch(removeData(idTransaction));
   } catch (error) {
     console.log(error.message);
-    dispatch(Error(error.message));
+    dispatch(setError(error.message));
   } finally {
     dispatch(Loader(false));
   }
