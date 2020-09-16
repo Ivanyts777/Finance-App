@@ -10,6 +10,8 @@ import CurrencyExchage from "../CurrencyExchage/CurrencyExchage";
 import Menu from "../Menu/Menu";
 
 
+
+
 const {
   diagram,
   chartBlock,
@@ -73,6 +75,8 @@ const [data, setData] = useState({
   ],
 },);
 
+// const pickColor = state => state.data.datasets[0].backgroundColor;
+
 // const dispach = useDispatch;
 const finance = useSelector((state) => state.finance);
 
@@ -97,8 +101,7 @@ useEffect(() => {
 
     years.forEach((year, idx) =>
     years.indexOf(year) === idx
-      ? 
-      setYear([{ label: year, value: year }])
+      ? setYear([{ label: year, value: year }])
       : null,
   );
 
@@ -113,7 +116,7 @@ useEffect(() => {
 
 
 useEffect(() => {
-
+  
   filterStatistics();
 }, [currentMonth,currentYear,statistics])
 
@@ -130,14 +133,14 @@ const getTotal = expenses =>
 const formStatistics = costs => {
   let counter = 0;
   const arr = [];
- 
+  const stateCopy = { ...data.datasets[0].backgroundColor };
 
   Object.keys(costs).forEach(key => {
     arr.push({
       id: counter,
       category: key,
       amount: costs[key],
-      color: "red"[counter],
+      color: stateCopy[counter],
     });
     counter += 1;
   });

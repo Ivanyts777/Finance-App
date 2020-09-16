@@ -61,11 +61,11 @@ const Main = () => {
                 </p>
                 <p className={el.balanceAfterSign === "-" ? styles.textOrange : styles.textBlue}>
                   <span className={styles.titleMobile}>Sum</span>
-                  {el.amount.toFixed(2)}
+                  {el.amount}
                 </p>
                 <p className={styles.textMoney}>
                   <span className={styles.titleMobile}>Balance</span>
-                  {el.balanceAfter.toFixed(2)}
+                  {el.balanceAfter}
                 </p>
                 <div className={styles.text}>
                   <span className={styles.titleMobile}>Edit</span>
