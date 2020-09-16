@@ -23,7 +23,6 @@ import "./App.css";
 
 const Login = lazy(() => import("./Containers/Login/Login"));
 const Registration = lazy(() => import("./Containers/Registration/Registration"));
-console.log(Date.now());
 const App = () => {
   const windowSize = useSelector((state) => state.global.windowSize);
   const dispatch = useDispatch();
