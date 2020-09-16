@@ -23,8 +23,8 @@ import "./App.css";
 
 const Login = lazy(() => import("./Containers/Login/Login"));
 const Registration = lazy(() => import("./Containers/Registration/Registration"));
-
 const App = () => {
+  const windowSize = useSelector((state) => state.global.windowSize);
   const dispatch = useDispatch();
   window.onresize = ({ target }) => {
     dispatch(setSizeWindow(target.innerWidth));
@@ -39,16 +39,17 @@ const App = () => {
           <Loader type="ThreeDots" color="#284060" height={300} width={300} />
         </div>
       )}
-      {error && <h1>{error.message}</h1>}
+      {error && <h1>{error}</h1>}
       <Suspense fallback={<p>Compaling...</p>}>
         {token && <Header />}
-        <main className="main">
+        <main className={token ? "main" : "main guest"}>
           <Switch>
             {token ? (
               <>
                 <Route path={navigation.main} exact render={(props) => <Main {...props} />} />
                 <Route path={navigation.diagram} render={(props) => <Diagram {...props} />} />
-                <Route path={navigation.currency} render={(props) => <CurrencyExchage {...props} />} />
+                {windowSize <= 748 ? <Route path={navigation.currency} render={(props) => <CurrencyExchage {...props} />} /> : null}
+
                 <Redirect to={navigation.main} />
               </>
             ) : (

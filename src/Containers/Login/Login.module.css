@@ -11,7 +11,6 @@
   margin-bottom: 66px;
   margin-top: 66px;
 }
-
 .googleDescr {
   margin: 0 auto;
   font-size: 11px;
@@ -21,16 +20,17 @@
   line-height: 17px;
   color: #52555f;
 }
-
+.textCenter {
+  text-align: center;
+}
 .google {
   border: none;
   font-size: 14px;
   font-weight: 600;
   line-height: 23px;
   display: flex;
-  margin: 0 auto;
   width: 120px;
-  height: 40px;
+  height: 45px;
   margin-bottom: 40px;
   text-align: center;
   align-items: center;
@@ -40,6 +40,7 @@
   color: #52555f;
   /* border-radius: 20px; */
   text-decoration: none;
+  transition: 0.3s ease-in-out;
 }
 
 .googleIcon {
@@ -98,7 +99,6 @@
   display: flex;
   justify-content: space-between;
 }
-
 .buttonLogin,
 .buttonRegister {
   font-size: 11px;
@@ -112,12 +112,12 @@
   box-shadow: 1px 2px 3px rgba(170, 178, 197, 0.29);
   color: #52555f;
   background-color: #f5f7fa;
+  transition: 0.3s ease-in-out;
 }
 
 .google:hover,
 .buttonLogin:hover,
 .buttonRegister:hover {
-  transition: 0.3s ease-in-out;
   background-color: #ff6c0a85;
   color: #fff;
 }

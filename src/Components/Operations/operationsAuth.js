@@ -16,6 +16,7 @@ export const createNewUser = (userData) => async (dispatch) => {
     dispatch(setUserInfo(result.data.user));
     dispatch(Error(null));
   } catch (error) {
+    console.log(error.message);
     dispatch(Error(error.message));
   } finally {
     dispatch(Loader(false));
@@ -32,10 +33,11 @@ export const userLogin = (userData) => async (dispatch) => {
     });
     dispatch(setToken(result.data.token));
     dispatch(setUserInfo(result.data.user));
-    getUserData(result.user.id, result.token);
+    getUserData(result.data.user.id, result.token);
     dispatch(Error(null));
   } catch (error) {
     dispatch(Error(error.message));
+    console.log(error.message);
   } finally {
     dispatch(Loader(false));
   }
@@ -52,6 +54,7 @@ export const userLoginOut = (token) => async (dispatch) => {
     dispatch(loginOut());
     dispatch(Error(null));
   } catch (error) {
+    console.log(error.message);
     dispatch(Error(error.message));
   } finally {
     dispatch(Loader(false));

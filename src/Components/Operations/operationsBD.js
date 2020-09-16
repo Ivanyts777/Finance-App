@@ -12,7 +12,9 @@ export const getUserData = (userId, token) => async (dispatch) => {
     });
     console.log(result);
     dispatch(setUserData(result.finance));
+    return result ? result : [];
   } catch (error) {
+    console.log(error.message);
     dispatch(Error(error.message));
   }
 };
@@ -29,6 +31,7 @@ export const setPost = (userId, token, dataPost) => async (dispatch) => {
     dispatch(setData(result.finance.data));
     dispatch(Error(null));
   } catch (error) {
+    console.log(error.message);
     dispatch(Error(error.message));
   } finally {
     dispatch(Loader(false));
@@ -48,6 +51,7 @@ export const removePost = (idTransaction, token) => async (dispatch) => {
     // dispatch(setData(result.finance.data));
     dispatch(Error(null));
   } catch (error) {
+    console.log(error.message);
     dispatch(Error(error));
   } finally {
     dispatch(Loader(false));
