@@ -1,4 +1,4 @@
-import { LOADERTYPE, ERRORTYPE, TOKENTYPE, USERINFOTYPE, LOGINOUTTYPE, MODALADDTYPE, MODALLOGINTYPE, DATAADDTYPE, DATAREMOVETYPE, DATAEDITTYPE, DATASETTYPE, WINDOWTYPE } from "../constants";
+import { LOADERTYPE, ERRORTYPE, TOKENTYPE, USERINFOTYPE, LOGINOUTTYPE, MODALADDTYPE, MODALEDITTYPE, MODALLOGINTYPE, DATAADDTYPE, DATAREMOVETYPE, DATAEDITTYPE, DATASETTYPE, WINDOWTYPE } from "../constants";
 
 const initialStateSession = {
   user: {},
@@ -29,6 +29,7 @@ export const session = (state = initialStateSession, { type, payload }) => {
 
 const initialStateGlobal = {
   isModalAddTransactionOpen: false,
+  isModalEditTransactionOpen: false,
   isModalLoginOut: false,
   loader: false,
   windowSize: window.innerWidth,
@@ -41,6 +42,9 @@ export const global = (state = initialStateGlobal, { type, payload }) => {
       break;
     case MODALADDTYPE:
       newState = { ...state, isModalAddTransactionOpen: payload };
+      break;
+    case MODALEDITTYPE:
+      newState = { ...state, isModalEditTransactionOpen: payload };
       break;
     case MODALLOGINTYPE:
       newState = { ...state, isModalLoginOut: payload };
@@ -57,6 +61,7 @@ export const global = (state = initialStateGlobal, { type, payload }) => {
 
 const initialStateFinance = {
   data: [],
+  dataEdit: [],
   balance: 0,
 };
 export const finance = (state = initialStateFinance, { type, payload }) => {
@@ -64,23 +69,25 @@ export const finance = (state = initialStateFinance, { type, payload }) => {
   let newData = [];
   switch (type) {
     case DATAADDTYPE:
-      newData = [payload, ...state.data];
-      newState = { data: newData, balance: newData.reduce((acc, item) => acc + item.amount, 0) };
+      newData = [...state.data, payload];
+      newState = { data: newData, balance: newData.reduce((acc, item) => (item.type === "income" ? acc + item.amount : acc - item.amount), 0) };
       break;
     case DATAREMOVETYPE:
-      newData = [...state.data.filter((item) => item.id !== payload)];
-      newState = { data: newData, balance: newData.reduce((acc, item) => acc + item.amount, 0) };
+      newData = [...state.data.filter((item) => item._id !== payload)];
+      newState = { data: newData, balance: newData.reduce((acc, item) => (item.type === "income" ? acc + item.amount : acc - item.amount), 0) };
       break;
     case DATAEDITTYPE:
       newData = [...state.data.map((item) => (item.id === payload.id ? payload : item))];
-      newState = { data: newData, balance: newData.reduce((acc, item) => acc + item.amount, 0) };
+      newState = { data: newData, balance: newData.reduce((acc, item) => (item.type === "income" ? acc + item.amount : acc - item.amount), 0) };
       break;
     case DATASETTYPE:
-      newState = { data: payload.data, balance: payload.totalBalance };
+      newState = { data: payload, balance: payload.reduce((acc, item) => (item.type === "income" ? acc + item.amount : acc - item.amount), 0) };
       break;
     default:
       newState = state;
       break;
   }
-  return newState;
+  let balanceAfter = 0;
+  const newDataObj = { ...newState, data: newState.data.map((item) => ((balanceAfter = item.type === "income" ? balanceAfter + item.amount : balanceAfter - item.amount), { ...item, balanceAfter: balanceAfter })) };
+  return newDataObj;
 };

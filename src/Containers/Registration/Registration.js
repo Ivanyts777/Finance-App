@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import styles from "./Registration.module.css";
-import googleIcon from "../../Components/SVG/gicon.png";
 import { createNewUser } from "../../Components/Operations/operationsAuth";
 import { useDispatch } from "react-redux";
-import { Email, LockClose, Account, Logo } from "../../Components/SVG/sprite";
+import { Email, LockClose, Account, Google } from "../../Components/SVG/sprite";
 import { NavLink } from "react-router-dom";
 import { navigation } from "../../constants";
 
@@ -132,7 +131,41 @@ const Registration = () => {
             </div>
           </form>
         </div>
-      </div>
+        <div className={styles.field}>
+          <div className={styles.icon}>
+            <Account />
+          </div>
+          <input className={styles.input} maxLength="25" id="lastName" placeholder="Last name" name="lastName" type="text" value={userInfo.lastName} onChange={handleInput} required />
+        </div>
+        <div className={styles.field}>
+          <div className={styles.icon}>
+            <Email />
+          </div>
+          <input id="email" className={styles.input} type="email" placeholder="Email" name="email" value={userInfo.email} onChange={handleInput} required autoFocus />
+        </div>
+        <div className={styles.field}>
+          <div className={styles.icon}>
+            <LockClose />
+          </div>
+          <input className={styles.input + " " + styles.inputPassword} placeholder="Password" id="password" type="password" name="password" value={userInfo.password} onChange={handleInput} minLength="6" required />
+        </div>
+        <div className={styles.authBtnWrapper}>
+          <button className={styles.buttonRegister} type="submit">
+            Registration
+          </button>
+          <button type="button" className={styles.google}>
+            <Google />
+          </button>
+        </div>
+        <div className={styles.textCenter}>
+          <p className={styles.descr}>
+            If you already have an account please{" "}
+            <NavLink to={navigation.login} exact>
+              login
+            </NavLink>
+          </p>
+        </div>
+      </form>
     </div>
   );
 };

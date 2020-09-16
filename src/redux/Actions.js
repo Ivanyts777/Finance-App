@@ -1,4 +1,4 @@
-import { LOADERTYPE, ERRORTYPE, TOKENTYPE, USERINFOTYPE, LOGINOUTTYPE, MODALADDTYPE, MODALLOGINTYPE, DATAADDTYPE, DATAREMOVETYPE, DATAEDITTYPE, DATASETTYPE, WINDOWTYPE } from "../constants";
+import { LOADERTYPE, ERRORTYPE, TOKENTYPE, USERINFOTYPE, LOGINOUTTYPE, MODALADDTYPE, MODALEDITTYPE, MODALLOGINTYPE, DATAADDTYPE, DATAREMOVETYPE, DATAEDITTYPE, DATASETTYPE, WINDOWTYPE } from "../constants";
 
 // Loader (true or false)
 export const Loader = (value) => ({
@@ -7,7 +7,7 @@ export const Loader = (value) => ({
 });
 
 // Error (null or 'message')
-export const Error = (value) => ({
+export const setError = (value) => ({
   type: ERRORTYPE,
   payload: value,
 });
@@ -37,6 +37,12 @@ export const loginOut = () => ({
 // modalAdd (true or false)
 export const modalAdd = (value) => ({
   type: MODALADDTYPE,
+  payload: value,
+});
+
+// modalEdit (true or false)
+export const modalEdit = (value) => ({
+  type: MODALEDITTYPE,
   payload: value,
 });
 

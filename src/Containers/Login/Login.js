@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import styles from "./Login.module.css";
-import googleIcon from "../../Components/SVG/gicon.png";
 import { userLogin } from "../../Components/Operations/operationsAuth";
 import { useDispatch } from "react-redux";
-import { Email, LockClose } from "../../Components/SVG/sprite";
+import { Email, Google, LockClose } from "../../Components/SVG/sprite";
 import { NavLink } from "react-router-dom";
 import { navigation } from "../../constants";
 
@@ -56,20 +55,18 @@ const Login = () => {
           <button className={styles.buttonLogin} type="submit">
             Login
           </button>
-          <button type="button" /*onClick={googleSignIn}*/ className={styles.google}>
-            <img className={styles.googleIcon} src={googleIcon} alt="google-icon" />
-            Google
+          <button type="button" className={styles.google}>
+            <Google />
           </button>
         </div>
         <div className={styles.textCenter}>
-          <p className={styles.descr}>If you don't have an account please</p>
-          <button className={styles.buttonRegister}>
+          <p className={styles.descr}>
+            If you don't have an account please{"  "}
             <NavLink to={navigation.registration} exact>
-              Registration
+              registration
             </NavLink>
-          </button>
+          </p>
         </div>
-        {/* - FORM END - */}
       </form>
     </div>
   );

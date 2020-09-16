@@ -15,16 +15,20 @@
   fill: #fff;
 }
 
+.svg-Error {
+  fill: #f9ca24;
+}
+
 @media (min-width: 748px) {
   .svg-Logo {
     fill: #3a5374;
   }
 }
 
-@media (min-width: 1192px) {}
+@media (min-width: 1192px) {
+}
 
 .svg-Remove,
 .svg-Edit {
-  fill:
-    #3a5374;
+  fill: #3a5374;
 }
