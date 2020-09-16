@@ -1,54 +1,51 @@
-import React, { Component, createRef } from 'react';
-import { createPortal } from 'react-dom';
-import PropTypes from 'prop-types';
-import s from './ModalLogOutForm.module.css';
+import React, { createRef, useEffect } from "react";
+import { createPortal } from "react-dom";
+import PropTypes from "prop-types";
+import styles from "./ModalLogOutForm.module.css";
 
-const MODAL_ROOT = document.getElementById('root');
+const MODAL_ROOT = document.getElementById("root");
+const { modal_div, modal } = styles;
 
-export default class Modal extends Component {
-  static propTypes = {
+const ModalLogOutForm = ({ onClose, children }) => {
+  ModalLogOutForm.propTypes = {
     children: PropTypes.node.isRequired,
     onClose: PropTypes.func.isRequired,
   };
 
-  modalRef = createRef();
+  const modalRef = createRef();
 
-  componentDidMount() {
-    window.addEventListener('keydown', this.handleKeyPress);
-  }
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyPress);
+    return () => {
+      window.removeEventListener("keydown", handleKeyPress);
+    };
+  });
 
-  componentWillUnmount() {
-    window.removeEventListener('keydown', this.handleKeyPress);
-  }
-
-  handleKeyPress = e => {
-    if (e.code !== 'Escape') {
+  const handleKeyPress = (e) => {
+    if (e.code !== "Escape") {
       return;
     }
-    this.props.onClose();
+    onClose();
   };
 
-  handleBackdropClick = e => {
-    if (this.modalRef.current && e.target !== this.modalRef.current) {
+  const handleBackdropClick = (e) => {
+    if (modalRef.current && e.target !== modalRef.current) {
       return;
     }
-    this.props.onClose();
+    onClose();
   };
 
-  render() {
-    const { children } = this.props;
+  return createPortal(
+    <div
+      className={modal_div}
+      ref={modalRef}
+      onClick={handleBackdropClick}
+      role="presentation"
+    >
+      <div className={modal}>{children}</div>
+    </div>,
+    MODAL_ROOT
+  );
+};
 
-    return createPortal(
-      <div
-        className={s.modal_div}
-        ref={this.modalRef}
-        onClick={this.handleBackdropClick}
-        role="presentation"
-      >
-        {/* <div className={s.modal}>{children}</div> */}
-        {children}
-      </div>,
-      MODAL_ROOT,
-    );
-  }
-}
+export default ModalLogOutForm;
