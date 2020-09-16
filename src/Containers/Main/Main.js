@@ -48,7 +48,7 @@ const Main = () => {
                 <li className={styles.item} key={el._id}>
                   <p className={styles.text}>
                     <span className={styles.titleMobile}>Date</span>
-                    {el.updatedAt.slice(0, 10)}
+                    {el.transactionDate.slice(0, 10)}
                   </p>
                   <p className={styles.text}>
                     <span className={styles.titleMobile}>Category</span>
@@ -64,11 +64,11 @@ const Main = () => {
                   </p>
                   <p className={el.type === "expense" ? styles.textOrange : styles.textBlue}>
                     <span className={styles.titleMobile}>Sum</span>
-                    {el.amount}
+                    {el.amount.toFixed(2)}
                   </p>
                   <p className={styles.textMoney}>
                     <span className={styles.titleMobile}>Balance</span>
-                    {el.balanceAfter}
+                    {el.balanceAfter.toFixed(2)}
                   </p>
                   <div className={styles.text}>
                     <span className={styles.titleMobile}>Edit</span>
