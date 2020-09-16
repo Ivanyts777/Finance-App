@@ -42,53 +42,26 @@ const Login = () => {
             <div className={styles.icon}>
               <Email />
             </div>
-            <input
-              id="email"
-              className={styles.input}
-              type="email"
-              placeholder="Email"
-              name="email"
-              value={email}
-              onChange={handleInputEmail}
-              required
-              autoFocus
-            />
+            <input id="email" className={styles.input} type="email" placeholder="Email" name="email" value={email} onChange={handleInputEmail} required autoFocus />
           </div>
           {/* - PASSWORD INPUT - */}
           <div className={styles.field}>
             <div className={styles.icon}>
               <LockClose />
             </div>
-            <input
-              className={styles.input + " " + styles.inputPassword}
-              placeholder="Password"
-              id="password"
-              type="password"
-              name="password"
-              value={password}
-              onChange={handleInputPassword}
-              minLength="6"
-              required
-            />
+            <input className={styles.input + " " + styles.inputPassword} placeholder="Password" id="password" type="password" name="password" value={password} onChange={handleInputPassword} minLength="6" required />
           </div>
         </>
         <div className={styles.authBtnWrapper}>
           <button className={styles.buttonLogin} type="submit">
             Login
           </button>
-          <button
-            type="button"
-            /*onClick={googleSignIn}*/ className={styles.google}
-          >
-            <img
-              className={styles.googleIcon}
-              src={googleIcon}
-              alt="google-icon"
-            />
+          <button type="button" /*onClick={googleSignIn}*/ className={styles.google}>
+            <img className={styles.googleIcon} src={googleIcon} alt="google-icon" />
             Google
           </button>
         </div>
-        <div className={styles.authBtnWrapper}>
+        <div className={styles.textCenter}>
           <p className={styles.descr}>If you don't have an account please</p>
           <button className={styles.buttonRegister}>
             <NavLink to={navigation.registration} exact>
@@ -96,7 +69,6 @@ const Login = () => {
             </NavLink>
           </button>
         </div>
-
         {/* - FORM END - */}
       </form>
     </div>

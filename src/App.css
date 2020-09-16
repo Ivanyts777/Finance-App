@@ -22,3 +22,8 @@ body {
 
   transition: all 0.1s linear;
 }
+.guest {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+}

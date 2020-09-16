@@ -56,7 +56,7 @@ const Registration = () => {
             Google
           </button>
         </div>
-        <div className={styles.authBtnWrapper}>
+        <div className={styles.textCenter}>
           <p className={styles.descr}>If you already have an account please</p>
           <button className={styles.buttonLogin}>
             <NavLink to={navigation.login} exact>

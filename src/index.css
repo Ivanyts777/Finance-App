@@ -24,25 +24,6 @@
   src: local("BauhausC Medium Bold"), local("HelveticaNeueCyr-Medium-Bold"), url("./fonts/bauhouse/BauhausC_Medium_Bold.ttf") format("truetype"); /* Safari, Android, iOS */
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  text-decoration: none;
-}
-
-::-webkit-scrollbar {
-  width: 0;
-}
-
-body {
-  font-family: HelveticaNeueCyr, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-size: 13px;
-  font-weight: 300;
-}
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
@@ -388,4 +369,23 @@ template {
 
 [hidden] {
   display: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
+body {
+  font-family: HelveticaNeueCyr, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 13px;
+  font-weight: 300;
 }
