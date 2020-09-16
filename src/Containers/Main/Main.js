@@ -7,7 +7,7 @@ import { Remove, Edit } from "../../Components/SVG/sprite";
 import Menu from "../../Components/Menu/Menu";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
-import { modalAdd } from "../../redux/Actions";
+import { modalAdd, modalEdit } from "../../redux/Actions";
 import AddTransaction from "../../Components/AddTransaction/AddTransaction";
 import { removePost } from "../../Components/Operations/operationsBD";
 
@@ -17,10 +17,16 @@ const Main = () => {
   const dataFinance = useSelector((state) => state.finance.data);
   const token = useSelector((state) => state.session.token);
 
-  const isModalAddTransactionOpen = useSelector((state) => state.global.isModalAddTransactionOpen);
+  const {
+    isModalAddTransactionOpen,
+    // isModalEditTransactionOpen
+  } = useSelector((state) => state.global);
   const dispatch = useDispatch();
 
-  const openModal = () => {
+  const openModalEdit = (id) => {
+    dispatch(modalEdit(true));
+  };
+  const openModalAdd = () => {
     dispatch(modalAdd(true));
   };
 
@@ -73,7 +79,7 @@ const Main = () => {
                   <div className={styles.text}>
                     <span className={styles.titleMobile}>Edit</span>
                     <div className={styles.buttonsMobile}>
-                      <button className={styles.button}>
+                      <button className={styles.button} onClick={() => dispatch(openModalEdit(el._id))}>
                         <Edit scale="18" />
                       </button>
                       <button className={styles.button} onClick={() => dispatch(removePost(el._id, token))}>
@@ -91,7 +97,7 @@ const Main = () => {
         <div className={styles.bgIconAdd}></div>
         <div className={styles.iconAdd}>
           <Fab
-            onClick={openModal}
+            onClick={openModalAdd}
             style={{
               backgroundColor: "#ff6c00",
               color: "#fff",

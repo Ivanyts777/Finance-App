@@ -34,7 +34,7 @@ const App = () => {
   };
   useEffect(() => {
     dispatch(getUserData(token, user.id));
-  }, []);
+  }, [dispatch, token, user.id]);
   return (
     <>
       {loader && (

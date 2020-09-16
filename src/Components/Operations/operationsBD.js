@@ -1,15 +1,14 @@
 import axios from "axios";
-import { useSelector } from "react-redux";
-import { Loader, Error, setUserData, setData, removeData, modalAdd } from "../../redux/Actions";
+import { Loader, Error, setUserData, setData, removeData } from "../../redux/Actions";
 
-const baseURL = "https://mywallet.goit.co.ua/api/";
+const baseURL = "https://app-wallet-14.herokuapp.com/api/transactions/";
 
 export const getUserData = (token, userId) => async (dispatch) => {
   try {
     await dispatch(Loader(true));
     const result = await axios({
       method: "get",
-      url: "https://app-wallet-14.herokuapp.com/api/transactions/" + userId,
+      url: baseURL + userId,
       headers: { Authorization: `Bearer ${token}` },
     });
     // console.log(result);
@@ -27,12 +26,11 @@ export const setPost = (token, dataPost) => async (dispatch) => {
     await dispatch(Loader(true));
     const result = await axios({
       method: "post",
-      url: "https://app-wallet-14.herokuapp.com/api/transactions/",
+      url: baseURL,
       data: dataPost,
       headers: { Authorization: `Bearer ${token}` },
     });
     dispatch(setData(result.data.transaction));
-    dispatch(modalAdd(false));
   } catch (error) {
     console.log(error.message);
     dispatch(Error(error.message));
@@ -44,9 +42,9 @@ export const setPost = (token, dataPost) => async (dispatch) => {
 export const removePost = (idTransaction, token) => async (dispatch) => {
   try {
     await dispatch(Loader(true));
-    const result = await axios({
+    await axios({
       method: "delete",
-      url: "https://app-wallet-14.herokuapp.com/api/transactions/" + idTransaction,
+      url: baseURL + idTransaction,
       headers: { Authorization: `Bearer ${token}` },
     });
     await dispatch(removeData(idTransaction));

@@ -11,7 +11,6 @@ const AddTransaction = () => {
   // const isModalAddTransactionOpen = useSelector((state) => state.global.isModalAddTransactionOpen)
   const dispatch = useDispatch();
   const session = useSelector((state) => state.session);
-  const balance = useSelector((state) => state.finance.balance);
 
   useEffect(() => {
     window.addEventListener("keydown", handleKeyPress);
