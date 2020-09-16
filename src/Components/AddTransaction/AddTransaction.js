@@ -1,5 +1,5 @@
 import React, { createRef, useEffect } from "react";
-import { modalAdd } from "../../redux/Actions";
+import { modalAdd } from "../../redux/Slice";
 import { setPost } from "../Operations/operationsBD";
 import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";

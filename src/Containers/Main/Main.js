@@ -7,7 +7,7 @@ import { Remove, Edit } from "../../Components/SVG/sprite";
 import Menu from "../../Components/Menu/Menu";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
-import { modalAdd, modalEdit } from "../../redux/Actions";
+import { modalAdd, modalEdit } from "../../redux/Slice";
 import AddTransaction from "../../Components/AddTransaction/AddTransaction";
 import { removePost } from "../../Components/Operations/operationsBD";
 
@@ -43,7 +43,7 @@ const Main = () => {
         <ul className={styles.list}>
           <li className={styles.item}>
             {titles.map((title) => (
-              <p key={title} className={title === "Sum" || title === "Balance" || title === "Edit" ? styles.titleMoney : styles.title}>
+              <p key={title} className={title === "Sum" || title === "Balance" || title === "Edit" || title === "Type" ? styles.titleMoney : styles.title}>
                 {title}
               </p>
             ))}
@@ -64,17 +64,17 @@ const Main = () => {
                     <span className={styles.titleMobile}>Comment</span>
                     {el.comment ? el.comment : "No comment"}
                   </p>
-                  <p className={styles.text}>
+                  <p className={styles.text + " " + styles.textCenter}>
                     <span className={styles.titleMobile}>Type</span>
                     {el.type === "expense" ? "-" : "+"}
                   </p>
                   <p className={el.type === "expense" ? styles.textOrange : styles.textBlue}>
                     <span className={styles.titleMobile}>Sum</span>
-                    {el.amount}
+                    {el.amount.toFixed(2)}
                   </p>
                   <p className={styles.textMoney}>
                     <span className={styles.titleMobile}>Balance</span>
-                    {el.balanceAfter}
+                    {el.balanceAfter.toFixed(2)}
                   </p>
                   <div className={styles.text}>
                     <span className={styles.titleMobile}>Edit</span>

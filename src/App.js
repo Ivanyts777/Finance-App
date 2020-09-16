@@ -6,7 +6,7 @@ import Loader from "react-loader-spinner";
 import { useDispatch, useSelector } from "react-redux";
 
 import { navigation } from "./constants";
-import { setSizeWindow } from "./redux/Actions";
+import { setSizeWindow } from "./redux/Slice";
 
 // Components
 import Header from "./Components/Header/Header";

@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { setError } from "../../redux/Actions";
+import { setError } from "../../redux/Slice";
 import styles from "./Error.module.css";
 
 // Sprite SVG icons

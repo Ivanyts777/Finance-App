@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
-import { session, global, finance } from "./Reducers";
+
+import { session, global, finance } from "../redux/Slice";
 
 const rootReducer = combineReducers({
   session,
