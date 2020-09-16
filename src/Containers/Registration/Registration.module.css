@@ -6,7 +6,8 @@
   margin: 0 auto;
   width: 304px;
   /* border-radius: 25px; */
-  box-shadow: 10px 10px 30px 0px rgba(170, 178, 197, 0.5);
+  box-shadow: 10px 17.321px 40px 0px rgba(107, 125, 131, 0.3);
+  border-radius: 4px;
   box-sizing: border-box;
 }
 
@@ -21,14 +22,17 @@
   color: #52555f;
 }
 
+.descr a {
+  text-decoration: underline;
+}
+
 .google {
   border: none;
   font-size: 14px;
   font-weight: 600;
   line-height: 23px;
   display: flex;
-  width: 120px;
-  min-height: 45px;
+  padding: 0 10px;
   text-align: center;
   align-items: center;
   justify-content: center;
@@ -38,11 +42,6 @@
   /* border-radius: 20px; */
   text-decoration: none;
   transition: 0.3s ease-in-out;
-}
-
-.googleIcon {
-  width: 30px;
-  height: 30px;
 }
 
 .authDescr {
@@ -95,9 +94,6 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-}
-
-.authBtnWrapper:not(:last-child) {
   margin-bottom: 40px;
 }
 
@@ -130,18 +126,6 @@
     padding: 54px 65px 52px;
   }
 
-  .googleDescr {
-    font-size: 13px;
-    font-weight: 600;
-    line-height: 17px;
-    text-align: left;
-    color: #52555f;
-  }
-
-  .google {
-    width: 124px;
-  }
-
   .authDescr {
     font-size: 13px;
     font-weight: 600;
@@ -151,8 +135,4 @@
 }
 
 @media (min-width: 1192px) {
-  .authWrapper {
-    margin: 0 auto;
-    margin-bottom: 142px;
-  }
 }

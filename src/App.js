@@ -1,5 +1,5 @@
 // Moduls
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useEffect } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Loader from "react-loader-spinner";
 
@@ -20,18 +20,21 @@ import Main from "./Containers/Main/Main";
 
 // CSS
 import "./App.css";
+import { getUserData } from "./Components/Operations/operationsBD";
 
 const Login = lazy(() => import("./Containers/Login/Login"));
 const Registration = lazy(() => import("./Containers/Registration/Registration"));
 const App = () => {
-  const windowSize = useSelector((state) => state.global.windowSize);
+  const { windowSize } = useSelector((state) => state.global);
+  const { error, token, user } = useSelector((state) => state.session);
+  const { loader } = useSelector((state) => state.global);
   const dispatch = useDispatch();
   window.onresize = ({ target }) => {
     dispatch(setSizeWindow(target.innerWidth));
   };
-
-  const { error, token } = useSelector((state) => state.session);
-  const { loader } = useSelector((state) => state.global);
+  useEffect(() => {
+    dispatch(getUserData(token, user.id));
+  }, []);
   return (
     <>
       {loader && (

@@ -11,15 +11,18 @@
   margin-bottom: 66px;
   margin-top: 66px;
 }
-.googleDescr {
+.descr {
   margin: 0 auto;
   font-size: 11px;
   font-weight: bold;
-  text-align: center;
-  margin-bottom: 26px;
   line-height: 17px;
   color: #52555f;
 }
+
+.descr a {
+  text-decoration: underline;
+}
+
 .textCenter {
   text-align: center;
 }
@@ -29,9 +32,7 @@
   font-weight: 600;
   line-height: 23px;
   display: flex;
-  width: 120px;
-  height: 45px;
-  margin-bottom: 40px;
+  padding: 0 10px;
   text-align: center;
   align-items: center;
   justify-content: center;
@@ -98,6 +99,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 40px;
 }
 .buttonLogin,
 .buttonRegister {
@@ -128,19 +130,6 @@
     padding: 54px 65px 52px;
     margin-bottom: 180px;
   }
-
-  .googleDescr {
-    font-size: 13px;
-    font-weight: 600;
-    line-height: 17px;
-    text-align: left;
-    color: #52555f;
-  }
-
-  .google {
-    width: 124px;
-  }
-
   .authDescr {
     font-size: 13px;
     font-weight: 600;
@@ -150,8 +139,4 @@
 }
 
 @media (min-width: 1192px) {
-  .authWrapper {
-    margin: 0 auto;
-    margin-bottom: 142px;
-  }
 }
