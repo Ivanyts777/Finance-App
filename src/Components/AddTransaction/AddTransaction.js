@@ -2,7 +2,7 @@ import React, { createRef, useEffect } from 'react';
 import {modalAdd, setData} from '../../redux/Actions'
 import {setPost} from '../Operations/operationsBD'
 import moment from 'moment';
-import {useDispatch } from "react-redux";
+import {useDispatch, useSelector } from "react-redux";
 import styles from './AddTransaction.module.css';
 import AddTransactionForm from './AddTransactionForm/AddTransactionForm';
 
@@ -13,6 +13,7 @@ const AddTransaction =() =>{
 const backdropRef = createRef();
 // const isModalAddTransactionOpen = useSelector((state) => state.global.isModalAddTransactionOpen)
 const dispatch = useDispatch();
+const session = useSelector((state)=> state.session)
 
 
 useEffect(() => {
@@ -49,7 +50,7 @@ const handleBackdropClick = e => {
   //   dispatch(setPost());
   // };
 const addTransaction = submittedData => {
-    dispatch(setPost());
+   
     let {
       typeOfTransaction,
       timeOfTransaction,
@@ -67,9 +68,9 @@ const addTransaction = submittedData => {
       amount: +value,
       category,
       comment,
-      balanceAfter
   };
-  dispatch(setData(reqData));
+  dispatch(setPost(session.user.id,session.token, reqData));
+  
 }
 
   // const addTransaction = ()=>{
