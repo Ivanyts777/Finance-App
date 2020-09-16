@@ -32,45 +32,82 @@ const Login = () => {
   };
 
   return (
-    <div className={styles.authWrapper}>
-      <form onSubmit={handleTypeRegister}>
-        {/* - FORM START - */}
+    <div className={styles.main_container}>
+      <div className={styles.desktop_container}>
+        <h2 className={styles.main_text2}>Finance App</h2>
+      </div>
+      <div className={styles.container}>
+        <h2 className={styles.main_text}>Finance App</h2>
+        <div className={styles.authWrapper}>
+          <form onSubmit={handleTypeRegister}>
+            {/* - FORM START - */}
 
-        <>
-          {/* - EMAIL INPUT - */}
-          <div className={styles.field}>
-            <div className={styles.icon}>
-              <Email />
+            <>
+              {/* - EMAIL INPUT - */}
+              <div className={styles.field}>
+                <div className={styles.icon}>
+                  <Email />
+                </div>
+                <input
+                  id="email"
+                  className={styles.input}
+                  type="email"
+                  placeholder="Email"
+                  name="email"
+                  value={email}
+                  onChange={handleInputEmail}
+                  required
+                  autoFocus
+                />
+              </div>
+              {/* - PASSWORD INPUT - */}
+              <div className={styles.field}>
+                <div className={styles.icon}>
+                  <LockClose />
+                </div>
+                <input
+                  className={styles.input + " " + styles.inputPassword}
+                  placeholder="Password"
+                  id="password"
+                  type="password"
+                  name="password"
+                  value={password}
+                  onChange={handleInputPassword}
+                  minLength="6"
+                  required
+                />
+              </div>
+            </>
+            <div className={styles.authBtnWrapper}>
+              <button className={styles.buttonLogin} type="submit">
+                Login
+              </button>
+              <button
+                type="button"
+                /*onClick={googleSignIn}*/ className={styles.google}
+              >
+                <img
+                  className={styles.googleIcon}
+                  src={googleIcon}
+                  alt="google-icon"
+                />
+                Google
+              </button>
             </div>
-            <input id="email" className={styles.input} type="email" placeholder="Email" name="email" value={email} onChange={handleInputEmail} required autoFocus />
-          </div>
-          {/* - PASSWORD INPUT - */}
-          <div className={styles.field}>
-            <div className={styles.icon}>
-              <LockClose />
+            <div className={styles.textCenter}>
+              <p className={styles.descr}>
+                If you don't have an account please
+              </p>
+              <button className={styles.buttonRegister}>
+                <NavLink to={navigation.registration} exact>
+                  Registration
+                </NavLink>
+              </button>
             </div>
-            <input className={styles.input + " " + styles.inputPassword} placeholder="Password" id="password" type="password" name="password" value={password} onChange={handleInputPassword} minLength="6" required />
-          </div>
-        </>
-        <div className={styles.authBtnWrapper}>
-          <button className={styles.buttonLogin} type="submit">
-            Login
-          </button>
-          <button type="button" /*onClick={googleSignIn}*/ className={styles.google}>
-            <img className={styles.googleIcon} src={googleIcon} alt="google-icon" />
-            Google
-          </button>
+            {/* - FORM END - */}
+          </form>
         </div>
-        <div className={styles.textCenter}>
-          <p className={styles.descr}>If you don't have an account please</p>
-          <button className={styles.buttonRegister}>
-            <NavLink to={navigation.registration} exact>
-              Registration
-            </NavLink>
-          </button>
-        </div>
-        {/* - FORM END - */}
-      </form>
+      </div>
     </div>
   );
 };
