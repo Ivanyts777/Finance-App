@@ -10,7 +10,9 @@ const CurrencyExchage = () => {
   const windowSize = useSelector((state) => state.global.windowSize);
 
   useEffect(() => {
-    axios.get(`https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5`).then(({ data }) => setCurrency(data));
+    axios
+      .get(`https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5`)
+      .then(({ data }) => setCurrency(data));
   }, []);
   const offExchange = () => {
     if (windowSize >= 748 && windowSize <= 1191) {
@@ -22,7 +24,14 @@ const CurrencyExchage = () => {
       <div className={styles.menuMobile}>
         <Menu />
       </div>
-      <div className={styles.currency__exchage_background + ` ${windowSize >= 748 && windowSize <= 1191 ? styles.none : ""}`} id="exchange" onClick={offExchange}>
+      <div
+        className={
+          styles.currency__exchage_background +
+          ` ${windowSize >= 748 && windowSize <= 1191 ? styles.none : ""}`
+        }
+        id="exchange"
+        onClick={offExchange}
+      >
         <ul className={styles.currency__exchage_list}>
           <li className={styles.currency__exchage_title}>
             <p className={styles.currency__exchage_name}>Currency</p>
