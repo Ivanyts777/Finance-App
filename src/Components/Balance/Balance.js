@@ -14,8 +14,4 @@ const Balance = () => {
   );
 };
 
-Balance.propTypes = {
-  balance: PropTypes.number.isRequired,
-};
-
 export default Balance;

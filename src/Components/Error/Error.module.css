@@ -49,8 +49,9 @@ h1 {
 }
 
 .error__box {
+  cursor: pointer;
   position: absolute;
-  min-width: 300px;
+  min-width: 288px;
   min-height: 300px;
   background: linear-gradient(to bottom left, #ef8d9c 40%, #ffc39e 100%);
   border-radius: 20px;

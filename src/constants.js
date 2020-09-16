@@ -17,6 +17,7 @@ export const LOGINOUTTYPE = TYPESTATES + "user/loginout";
 const TYPESTATEG = "global/";
 export const LOADERTYPE = TYPESTATEG + "loader";
 export const MODALADDTYPE = TYPESTATEG + "modal/add";
+export const MODALEDITTYPE = TYPESTATEG + "modal/edit";
 export const MODALLOGINTYPE = TYPESTATEG + "modal/loginOut";
 export const WINDOWTYPE = TYPESTATEG + "window";
 
