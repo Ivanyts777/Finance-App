@@ -22,7 +22,9 @@ import Main from "./Containers/Main/Main";
 import "./App.css";
 
 const Login = lazy(() => import("./Containers/Login/Login"));
-const Registration = lazy(() => import("./Containers/Registration/Registration"));
+const Registration = lazy(() =>
+  import("./Containers/Registration/Registration")
+);
 const App = () => {
   const windowSize = useSelector((state) => state.global.windowSize);
   const dispatch = useDispatch();
@@ -46,16 +48,34 @@ const App = () => {
           <Switch>
             {token ? (
               <>
-                <Route path={navigation.main} exact render={(props) => <Main {...props} />} />
-                <Route path={navigation.diagram} render={(props) => <Diagram {...props} />} />
-                {windowSize <= 748 ? <Route path={navigation.currency} render={(props) => <CurrencyExchage {...props} />} /> : null}
+                <Route
+                  path={navigation.main}
+                  exact
+                  render={(props) => <Main {...props} />}
+                />
+                <Route
+                  path={navigation.diagram}
+                  render={(props) => <Diagram {...props} />}
+                />
+                {windowSize <= 748 ? (
+                  <Route
+                    path={navigation.currency}
+                    render={(props) => <CurrencyExchage {...props} />}
+                  />
+                ) : null}
 
                 <Redirect to={navigation.main} />
               </>
             ) : (
               <>
-                <Route path={navigation.login} render={(props) => <Login {...props} />} />
-                <Route path={navigation.registration} render={(props) => <Registration {...props} />} />
+                <Route
+                  path={navigation.login}
+                  render={(props) => <Login {...props} />}
+                />
+                <Route
+                  path={navigation.registration}
+                  render={(props) => <Registration {...props} />}
+                />
                 <Redirect to={navigation.registration} />
               </>
             )}
