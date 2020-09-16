@@ -9,6 +9,7 @@ import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 import { modalAdd, modalEdit } from "../../redux/Actions";
 import AddTransaction from "../../Components/AddTransaction/AddTransaction";
+import ChangeTransaction from "../../Components/ChangeTransaction/ChangeTransaction";
 import { removePost } from "../../Components/Operations/operationsBD";
 
 const titles = ["Date", "Category", "Comment", "Type", "Sum", "Balance", "Edit"];
@@ -19,19 +20,20 @@ const Main = () => {
 
   const {
     isModalAddTransactionOpen,
-    // isModalEditTransactionOpen
+    isModalEditTransactionOpen
   } = useSelector((state) => state.global);
   const dispatch = useDispatch();
 
-  const openModalEdit = (id) => {
-    dispatch(modalEdit(true));
-  };
+  // const openModalEdit = () => {
+  //   dispatch(modalEdit(true));
+  // };
   const openModalAdd = () => {
     dispatch(modalAdd(true));
   };
 
   return (
     <div className={styles.mainGlobal}>
+      {isModalEditTransactionOpen && <ChangeTransaction/>}
       <div>
         <Menu />
         <Balance />
@@ -79,7 +81,7 @@ const Main = () => {
                   <div className={styles.text}>
                     <span className={styles.titleMobile}>Edit</span>
                     <div className={styles.buttonsMobile}>
-                      <button className={styles.button} onClick={() => dispatch(openModalEdit(el._id))}>
+                      <button className={styles.button} onClick={() =>dispatch(modalEdit(el._id, true ))}>
                         <Edit scale="18" />
                       </button>
                       <button className={styles.button} onClick={() => dispatch(removePost(el._id, token))}>

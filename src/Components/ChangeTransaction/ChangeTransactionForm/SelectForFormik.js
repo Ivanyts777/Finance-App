@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
-import styles from './AddTransactionForm.module.css';
+import styles from './ChangeTransactionForm.module.css';
 
 const options = [
   { value: 'Food', label: 'Food' },
@@ -14,7 +14,7 @@ const options = [
   { value: 'Other', label: 'Other' },
 ];
 
-const SelectForFormik = ({ value, onChange, onBlur }) => {
+const SelectForFormik = ({ value, onChange, onBlur, financeData }) => {
   const handleChange = val => {
     // this is going to call setFieldValue and manually update values.topcis
     onChange('category', val);
@@ -29,7 +29,7 @@ const SelectForFormik = ({ value, onChange, onBlur }) => {
     <>
       <Select
         placeholder="Category"
-        options={options}
+        options={ options}
         className={styles.select}
         components={{
           IndicatorSeparator: () => null,

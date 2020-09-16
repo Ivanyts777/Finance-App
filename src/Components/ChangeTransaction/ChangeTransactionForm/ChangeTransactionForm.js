@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
+import { useSelector } from "react-redux";
 
 import { Field, withFormik, Form } from "formik";
 import ChangeTransactionSchema from "./ChangeTransactionSchema";
@@ -8,12 +9,12 @@ import SelectForFormik from "./SelectForFormik";
 import ReactDatetimeForFormik from "./ReactDatetimeForFormik";
 import { ArrowRight } from "../../SVG/sprite";
 
-import styles from "./AddTransactionForm.module.css";
+import styles from "./ChangeTransactionForm.module.css";
 
 const { transactionForm, typeOfTransactionWrapper, typeRadio, valueInput, dateAndValueWrapper, comment, inputComment, errorsContainer, error, transactionModalButton, transactionButton, titleWrapper, controlWrapper, closeModalButton, closeModalButtonImg, title } = styles;
 
 const innerForm = (props) => {
-  const { values, touched, errors, setFieldValue, setFieldTouched } = props;
+  const { values, touched, errors, setFieldValue, setFieldTouched, financeData } = props;
   return (
     <Form className={transactionForm}>
       <div className={typeOfTransactionWrapper}>
@@ -44,7 +45,7 @@ const innerForm = (props) => {
         />
         <label htmlFor="contactChoice2">Expense</label>
       </div>
-      {values.typeOfTransaction === "expense" && <SelectForFormik value={values.category} onChange={setFieldValue} onBlur={setFieldTouched} error={errors.category} touched={touched.category} />}
+      {values.typeOfTransaction === "expense" && <SelectForFormik financeData = {financeData} value={values.category} onChange={setFieldValue} onBlur={setFieldTouched} error={errors.category} touched={touched.category} />}
       <div className={dateAndValueWrapper}>
         <Field type="text" name="value" placeholder="0.00" className={valueInput} autoComplete="off" />
         <Field name="timeOfTransaction" value={values.timeOfTransaction} component={ReactDatetimeForFormik} />
@@ -102,11 +103,12 @@ innerForm.propTypes = {
 };
 
 const EnhancedForm = withFormik({
-  mapPropsToValues: () => ({
-    typeOfTransaction: "expense",
-    value: "",
-    timeOfTransaction: moment().format("DD/MM/YYYY"),
-    category: "",
+  mapPropsToValues: ({financeData}) => ({
+    typeOfTransaction: financeData.type ? financeData.type : "expense",
+    value: financeData.amount ? String(financeData.amount) : "",
+    timeOfTransaction: financeData.transactionDate ? moment(financeData.transactionDate).format("DD/MM/YYYY") : moment().format("DD/MM/YYYY"),
+    category: financeData.category ? financeData.category : "",
+    comment: financeData.comment ? financeData.comment : "",
     balanceAfter: "",
   }),
   validationSchema: ChangeTransactionSchema,
@@ -121,7 +123,8 @@ const EnhancedForm = withFormik({
   displayName: "BasicForm", // helps with React DevTools
 })(innerForm);
 
-const ChangeTransactionForm = ({ changeTransaction, closeModalAddTransaction }) => {
+const ChangeTransactionForm = ({ addTransaction, closeModalAddTransaction }) => {
+  const financeData = useSelector(state => state.finance.data)
   return (
     <>
       <div className={titleWrapper}>
@@ -129,15 +132,15 @@ const ChangeTransactionForm = ({ changeTransaction, closeModalAddTransaction }) 
           <button type="button" className={closeModalButton} onClick={closeModalAddTransaction}>
             <ArrowRight className={closeModalButtonImg} />
           </button>
-          <h2 className={title}>Change transaction</h2>
+          <h2 className={title}>add transaction</h2>
         </div>
       </div>
-      <EnhancedForm onSubmit={addTransaction} />
+      <EnhancedForm onSubmit={addTransaction} financeData = {financeData[1]} />
     </>
   );
 };
 
-AddTransactionForm.propTypes = {
+ChangeTransactionForm.propTypes = {
   closeModalAddTransaction: PropTypes.func.isRequired,
   addTransaction: PropTypes.func.isRequired,
 };
