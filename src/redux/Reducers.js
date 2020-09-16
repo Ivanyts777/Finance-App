@@ -64,23 +64,26 @@ export const finance = (state = initialStateFinance, { type, payload }) => {
   let newData = [];
   switch (type) {
     case DATAADDTYPE:
-      newData = [payload, ...state.data];
-      newState = { data: newData, balance: newData.reduce((acc, item) => acc + item.amount, 0) };
+      newData = [...state.data, payload];
+      newState = { data: newData, balance: newData.reduce((acc, item) => (item.type === "income" ? acc + item.amount : acc - item.amount), 0) };
       break;
     case DATAREMOVETYPE:
-      newData = [...state.data.filter((item) => item.id !== payload)];
-      newState = { data: newData, balance: newData.reduce((acc, item) => acc + item.amount, 0) };
+      newData = [...state.data.filter((item) => item._id !== payload)];
+      newState = { data: newData, balance: newData.reduce((acc, item) => (item.type === "income" ? acc + item.amount : acc - item.amount), 0) };
       break;
     case DATAEDITTYPE:
       newData = [...state.data.map((item) => (item.id === payload.id ? payload : item))];
-      newState = { data: newData, balance: newData.reduce((acc, item) => acc + item.amount, 0) };
+      newState = { data: newData, balance: newData.reduce((acc, item) => (item.type === "income" ? acc + item.amount : acc - item.amount), 0) };
       break;
     case DATASETTYPE:
-      newState = { data: payload.data, balance: payload.totalBalance };
+      let a = 0;
+      newState = { data: payload, balance: payload.reduce((acc, item) => (item.type === "income" ? acc + item.amount : acc - item.amount), 0) };
       break;
     default:
       newState = state;
       break;
   }
-  return newState;
+  let a = 0;
+  let newStateAfter = { ...newState, data: newState.data.map((item) => ((a = item.type === "income" ? a + item.amount : a - item.amount), { ...item, balanceAfter: a })) };
+  return newStateAfter;
 };

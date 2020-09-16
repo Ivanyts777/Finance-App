@@ -1,35 +1,45 @@
 import axios from "axios";
-import { Loader, Error, setUserData, setData, removeData } from "../../redux/Actions";
+import { useSelector } from "react-redux";
+import {
+  Loader,
+  Error,
+  setUserData,
+  setData,
+  removeData,
+  modalAdd,
+} from "../../redux/Actions";
 
 const baseURL = "https://mywallet.goit.co.ua/api/";
 
-export const getUserData = (userId, token) => async (dispatch) => {
+export const getUserData = (token, userId) => async (dispatch) => {
   try {
+    await dispatch(Loader(true));
     const result = await axios({
       method: "get",
-      url: baseURL + "finance/" + userId,
+      url: "https://app-wallet-14.herokuapp.com/api/transactions/" + userId,
       headers: { Authorization: `Bearer ${token}` },
     });
-    console.log(result);
-    dispatch(setUserData(result.finance));
-    return result ? result : [];
+    // console.log(result);
+    dispatch(setUserData(result.data.transactionsList));
   } catch (error) {
     console.log(error.message);
     dispatch(Error(error.message));
+  } finally {
+    dispatch(Loader(false));
   }
 };
 
-export const setPost = (userId, token, dataPost) => async (dispatch) => {
+export const setPost = (token, dataPost) => async (dispatch) => {
   try {
-    dispatch(Loader(true));
+    await dispatch(Loader(true));
     const result = await axios({
       method: "post",
-      url: baseURL + "finance/" + userId,
+      url: "https://app-wallet-14.herokuapp.com/api/transactions111/",
       data: dataPost,
       headers: { Authorization: `Bearer ${token}` },
     });
-    dispatch(setData(result.finance.data));
-    dispatch(Error(null));
+    dispatch(setData(result.data.transaction));
+    dispatch(modalAdd(false));
   } catch (error) {
     console.log(error.message);
     dispatch(Error(error.message));
@@ -40,19 +50,17 @@ export const setPost = (userId, token, dataPost) => async (dispatch) => {
 
 export const removePost = (idTransaction, token) => async (dispatch) => {
   try {
-    dispatch(Loader(true));
+    await dispatch(Loader(true));
     const result = await axios({
-      method: "post",
-      url: baseURL + "transactions/" + idTransaction,
+      method: "delete",
+      url:
+        "https://app-wallet-14.herokuapp.com/api/transactions/" + idTransaction,
       headers: { Authorization: `Bearer ${token}` },
     });
-    console.log(result);
-    dispatch(removeData(idTransaction));
-    // dispatch(setData(result.finance.data));
-    dispatch(Error(null));
+    await dispatch(removeData(idTransaction));
   } catch (error) {
     console.log(error.message);
-    dispatch(Error(error));
+    dispatch(Error(error.message));
   } finally {
     dispatch(Loader(false));
   }
