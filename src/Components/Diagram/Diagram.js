@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import { useSelector } from "react-redux";
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import Table from './Table/Table';
 import Chart from './Chart/Chart';
 import styles from './Diagram.module.css';
 import Balance from "../Balance/Balance";
 import CurrencyExchage from "../CurrencyExchage/CurrencyExchage";
 import Menu from "../Menu/Menu";
+
+
 
 
 const {
@@ -49,6 +51,11 @@ const calendarMonths = [
 
 
 const Diagram = () => {
+  Diagram.ropTypes = {
+    finance: PropTypes.shape({
+      data: PropTypes.arrayOf(PropTypes.object),
+    }).isRequired,
+  };
 
 const [expenses, setExpenses] = useState([25]);
 const [income, setIncome] = useState([15]);
@@ -68,6 +75,7 @@ const [data, setData] = useState({
   ],
 },);
 
+// const pickColor = state => state.data.datasets[0].backgroundColor;
 
 // const dispach = useDispatch;
 const finance = useSelector((state) => state.finance);
@@ -93,8 +101,7 @@ useEffect(() => {
 
     years.forEach((year, idx) =>
     years.indexOf(year) === idx
-      ? 
-      setYear([{ label: year, value: year }])
+      ? setYear([{ label: year, value: year }])
       : null,
   );
 
@@ -109,6 +116,7 @@ useEffect(() => {
 
 
 useEffect(() => {
+  
   filterStatistics();
 }, [currentMonth,currentYear,statistics])
 
@@ -125,14 +133,14 @@ const getTotal = expenses =>
 const formStatistics = costs => {
   let counter = 0;
   const arr = [];
- 
+  const stateCopy = { ...data.datasets[0].backgroundColor };
 
   Object.keys(costs).forEach(key => {
     arr.push({
       id: counter,
       category: key,
       amount: costs[key],
-      color: "red"[counter],
+      color: stateCopy[counter],
     });
     counter += 1;
   });

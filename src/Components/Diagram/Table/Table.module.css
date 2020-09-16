@@ -53,12 +53,13 @@
     list-style-type: none;
     padding-bottom: 10px;
   }
+
   
   .statelessLine {
     display: inline-block;
     width: 100%;
     height: 2px;
-    border: 2px solid #f3f6f6;
+    border: 2px solid rgb(185, 201, 212);
   }
   
   .statelessList:last-child:nth-child(2n + 1) > .statelessLine {
@@ -89,9 +90,9 @@
     font-weight: 700;
   }
   
-  @media (min-width: 768px) {
+  @media (min-width: 748px) and (max-width: 1192px){
     .stateless {
-      width: 90%;
+      width: 748px;
     }
     .statelessHeader {
       display: none;
@@ -117,8 +118,9 @@
     .tableExpenses {
       padding-left: 20px;
       margin-bottom: 10px;
-      text-transform: uppercase;
       font-weight: 700;
+      display: grid;
+      grid-template-columns: 637px 1fr;
     }
     li:last-child:nth-child(2n + 1) > .statelessLine {
       visibility: hidden;
@@ -130,7 +132,9 @@
     }
   }
   
-  @media (min-width: 1280px) {
+
+
+  @media (min-width: 1192px) {
     .stateless {
       width: 360px;
     }

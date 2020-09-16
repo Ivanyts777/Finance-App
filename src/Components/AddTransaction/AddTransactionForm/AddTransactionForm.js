@@ -156,13 +156,15 @@ const EnhancedForm = withFormik({
       value: '',
       timeOfTransaction: moment().format('DD/MM/YYYY'),
       category: '',
+      balanceAfter: ''
     }),
     validationSchema: AddTransactionSchema,
     handleSubmit: (values, { setSubmitting, props: { onSubmit } }) => {
       const payload = { ...values, category: values.category.value };
       setTimeout(() => {
-        console.log(JSON.stringify(payload, null, 2));
-        // onSubmit(payload);
+        // console.log(JSON.stringify(payload, null, 2));
+        console.log(payload)
+        onSubmit(payload);
         setSubmitting(false);
       }, 100);
     },
@@ -170,7 +172,7 @@ const EnhancedForm = withFormik({
   })(innerForm);
 
 
-const AddTransactionForm = ({addTransaction, closeModalAddTransaction}) => {  //Сюди передати
+const AddTransactionForm = ({addTransaction, closeModalAddTransaction}) => {  
     return (
         <>
         <div className={titleWrapper}>
@@ -186,7 +188,6 @@ const AddTransactionForm = ({addTransaction, closeModalAddTransaction}) => {  //
             </div>
         </div>
         <EnhancedForm onSubmit={addTransaction} />
-        {/* <EnhancedForm onSubmit={addTransaction} /> */}
     </>
     )
 }

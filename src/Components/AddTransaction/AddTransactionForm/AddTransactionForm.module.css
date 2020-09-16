@@ -83,13 +83,19 @@
     color: #b9c9d4;
     cursor: pointer;
   }
+
+  
   
   .typeRadio:checked + label {
     color: #3a5374;
+    font-size: 13px;
+    font-family: "HelveticaNeueCyr";
   }
   
   .typeRadio[value='expense']:checked + label {
     color: #ff6c00;
+    font-size: 13px;
+    font-family: "HelveticaNeueCyr";
   }
   
   .typeRadio:after {
@@ -149,7 +155,8 @@
     letter-spacing: 0px;
     line-height: 30px;
     color: #3a5374;
-    border: 2px solid #b9c9d4;
+    border: 2px solid rgb(185, 201, 212);
+    background-color: rgb(255, 255, 255);
     border-radius: 4px;
     outline: none;
     font-weight: bold;
@@ -169,13 +176,15 @@
     font-size: 13px;
     letter-spacing: 1px;
     line-height: 18px;
-    color: #3a5374;
+    font-family: "HelveticaNeueCyr";
+    color: rgb(40, 40, 40);
     border: 2px solid #b9c9d4;
     border-radius: 4px;
     outline: none;
     padding: 8px;
     overflow-y: visible;
   }
+  
   
   .valueInput::placeholder,
   .inputComment::placeholder {
@@ -187,9 +196,11 @@
     font-size: 15px;
     letter-spacing: 0px;
     line-height: 30px;
-    color: #3a5374;
+    font-family: "HelveticaNeueCyr";
+    color: rgb(40, 40, 40);
     font-weight: bold;
   }
+  
 
   /* .transactionModalButton {
     position: fixed;
@@ -212,9 +223,8 @@
     display: block;
     width: 280px;
     min-height: 40px;
-    /* position: fixed; */
+    position: fixed;
     bottom: 30px;
-    margin-bottom: 50px;
   }
   
   input:focus,

@@ -1,60 +1,92 @@
 import React, { createRef, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import {modalAdd} from '../../redux/Actions'
-import {useDispatch } from "react-redux";
+import {modalAdd, setData} from '../../redux/Actions'
+import {setPost} from '../Operations/operationsBD'
+import moment from 'moment';
+import {useDispatch, useSelector } from "react-redux";
 import styles from './AddTransaction.module.css';
 import AddTransactionForm from './AddTransactionForm/AddTransactionForm';
 
 
 
-const AddTransaction =(props) =>{
+const AddTransaction =() =>{
 
 const backdropRef = createRef();
-
-const dispatch = useDispatch(modalAdd(false));
-
-
-
+// const isModalAddTransactionOpen = useSelector((state) => state.global.isModalAddTransactionOpen)
+const dispatch = useDispatch();
+const session = useSelector((state)=> state.session)
 
 
-// useEffect(() => {
-//   dispatch(modalAdd(true));
-//   // window.addEventListener('keydown', handleKeyPress());
-//   document.body.style.overflow = 'hidden';
-//   return () => {
-//   dispatch(modalAdd(false));
-//   // window.removeEventListener('keydown', handleKeyPress());
-//   document.body.style.overflow = 'unset';
-//   }
-// }, [dispatch])
+useEffect(() => {
+  window.addEventListener('keydown', handleKeyPress);
+  document.body.style.overflow = 'hidden';
+  return () => {
+  window.removeEventListener('keydown',handleKeyPress);
+  document.body.style.overflow = 'unset';
+  }
+},)
 
+const handleKeyPress = e => {
+  if (e.code !== 'Escape') {
+    return;
+  }
 
-// const handleBackdropClick = e => {
-//   if (backdropRef.current && e.target !== backdropRef.current) {
-//     return;
-//   }
+  closeModal();
+};
 
-//   dispatch(modalAdd(false));
-// };
+const handleBackdropClick = e => {
+  if (backdropRef.current && e.target !== backdropRef.current) {
+    return;
+  }
 
-// const handleKeyPress = e => {
-//   if (e.code !== 'Escape') {
-//     return;
-//   }
-//   dispatch(modalAdd(false));
-// };
+  closeModal();
+};
 
-const { closeModalAddTransaction, addTransaction } = props;
+ const closeModal =() => {
+  dispatch(modalAdd(false));
+  }
+
+  // const addTransaction = (e) => {
+  //   e.preventDefault();
+  //   dispatch(setPost());
+  // };
+const addTransaction = submittedData => {
+   
+    let {
+      typeOfTransaction,
+      timeOfTransaction,
+      value,
+      category,
+      comment,
+      balanceAfter,
+    } = submittedData;
+  
+    const transactionDate = moment(timeOfTransaction, 'DD/MM/YYYY').toISOString();
+  
+    const reqData = {
+      type: typeOfTransaction,
+      transactionDate,
+      amount: +value,
+      category,
+      comment,
+  };
+  dispatch(setPost(session.user.id,session.token, reqData));
+  
+}
+
+  // const addTransaction = ()=>{
+  //   dispatch(setPost());
+  // }
+
   return (
     <div
       className={styles.backdrop}
       ref={backdropRef}
-      // onClick={handleBackdropClick}
+      onClick={handleBackdropClick}
       role="presentation"
     >
       <div className={styles.modal}>
         <AddTransactionForm
-          closeModalAddTransaction={closeModalAddTransaction}
+          closeModalAddTransaction={closeModal}
           addTransaction={addTransaction}
         />
       </div>
