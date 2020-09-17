@@ -109,14 +109,13 @@ const EnhancedForm = withFormik({
     timeOfTransaction: financeData.transactionDate ? moment(financeData.transactionDate).format("DD/MM/YYYY") : moment().format("DD/MM/YYYY"),
     category: financeData.category ? financeData.category : "",
     comment: financeData.comment ? financeData.comment : "",
-    balanceAfter: "",
   }),
   validationSchema: ChangeTransactionSchema,
-  handleSubmit: (values, { setSubmitting, props: { onSubmit } }) => {
+  handleSubmit: (values, { setSubmitting, props: { onSubmit,financeData } }) => {
     const payload = { ...values, category: values.category.value };
     setTimeout(() => {
       // console.log(JSON.stringify(payload, null, 2));
-      onSubmit(payload);
+      onSubmit(payload,financeData._id);
       setSubmitting(false);
     }, 100);
   },
