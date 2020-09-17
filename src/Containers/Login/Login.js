@@ -81,27 +81,15 @@ const Login = () => {
               <button className={styles.buttonLogin} type="submit">
                 Login
               </button>
-              <button
-                type="button"
-                /*onClick={googleSignIn}*/ className={styles.google}
-              >
-                <img
-                  className={styles.googleIcon}
-                  src={googleIcon}
-                  alt="google-icon"
-                />
-                Google
+              <button type="button" className={styles.google}>
+                <Google />
               </button>
             </div>
             <div className={styles.textCenter}>
               <p className={styles.descr}>
-                If you don't have an account please
+                If you do not have any account, please{" "}
+                <NavLink to={navigation.registration}>registration</NavLink>
               </p>
-              <button className={styles.buttonRegister}>
-                <NavLink to={navigation.registration} exact>
-                  Registration
-                </NavLink>
-              </button>
             </div>
             {/* - FORM END - */}
           </form>
