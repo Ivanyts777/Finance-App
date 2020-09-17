@@ -5,11 +5,25 @@
   position: relative;
   margin: 0 auto;
   width: 304px;
-  /* border-radius: 25px; */
-  box-shadow: 10px 10px 30px 0px rgba(170, 178, 197, 0.5);
   box-sizing: border-box;
-  margin-bottom: 66px;
-  margin-top: 66px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.main_container {
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+}
+
+.textCenter {
+  text-align: center;
 }
 .descr {
   margin: 0 auto;
@@ -19,27 +33,20 @@
   color: #52555f;
 }
 
-.descr a {
-  text-decoration: underline;
-}
-
-.textCenter {
-  text-align: center;
-}
 .google {
   border: none;
   font-size: 14px;
   font-weight: 600;
   line-height: 23px;
   display: flex;
-  padding: 0 10px;
+  width: 120px;
+  min-height: 45px;
   text-align: center;
   align-items: center;
   justify-content: center;
   box-shadow: 1px 2px 3px rgba(170, 178, 197, 0.29);
   background-color: #f5f7fa;
   color: #52555f;
-  /* border-radius: 20px; */
   text-decoration: none;
   transition: 0.3s ease-in-out;
 }
@@ -63,18 +70,15 @@
   height: 52px;
   background-color: #f5f7fa;
   border: none;
-  /* border-radius: 24px; */
   outline: none;
   padding-left: 27px;
   font-size: 14px;
-  /* margin-bottom: 20px; */
 }
 
 .field {
   display: flex;
   text-align: center;
   align-items: center;
-  /* justify-content: center; */
   margin-bottom: 20px;
   background-color: #f5f7fa;
   padding-left: 20px;
@@ -86,21 +90,18 @@
   fill: #b9c9d4;
   background-color: #f5f7fa;
   height: 100%;
-  /* text-align: center;
-  align-items: center;
-  justify-content: center; */
 }
-
-/* .inputPassword {
-  margin-bottom: 40px;
-} */
 
 .authBtnWrapper {
   width: 100%;
   display: flex;
   justify-content: space-between;
+}
+
+.authBtnWrapper:not(:last-child) {
   margin-bottom: 40px;
 }
+
 .buttonLogin,
 .buttonRegister {
   font-size: 11px;
@@ -109,7 +110,6 @@
   height: 45px;
   border: none;
   background-color: #fff;
-  /* border-radius: 17px; */
   text-transform: uppercase;
   box-shadow: 1px 2px 3px rgba(170, 178, 197, 0.29);
   color: #52555f;
@@ -124,19 +124,126 @@
   color: #fff;
 }
 
+.wallet {
+  text-align: center;
+  align-items: center;
+  font-family: "BauhausC Medium";
+  font-size: 15px;
+  color: #3a5374;
+}
+
+.logo {
+  fill: #3a5374;
+}
+
+.main_text {
+  visibility: hidden;
+}
+
+.main_text2 {
+  opacity: 0;
+  position: absolute;
+}
+
 @media (min-width: 747px) {
+  .container {
+    margin: 0 auto;
+    background-image: url("../../img/Login/bgTablet.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    width: 100%;
+    height: 100%;
+  }
+
   .authWrapper {
     width: 420px;
     padding: 54px 65px 52px;
-    margin-bottom: 180px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0 auto;
   }
+
+  .main_text {
+    text-align: center;
+    color: #fff;
+    font-family: "BauhausC Medium";
+    font-size: 25px;
+    position: relative;
+    top: 90%;
+    visibility: visible;
+  }
+
+  .main_text2 {
+    opacity: 0;
+  }
+
+  .googleDescr {
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 17px;
+    text-align: left;
+    color: #52555f;
+  }
+
+  .google {
+    width: 124px;
+  }
+
   .authDescr {
     font-size: 13px;
     font-weight: 600;
     width: 100%;
     margin-bottom: 10px;
   }
+
+  .wallet {
+    text-align: center;
+    align-items: center;
+    font-family: "BauhausC Medium";
+    font-size: 15px;
+  }
 }
 
 @media (min-width: 1192px) {
+  .main_container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+  }
+
+  .container {
+    background: #fff;
+    width: 100%;
+    height: 100%;
+  }
+  .authWrapper {
+    top: 50%;
+    transform: translateY(-50%);
+    min-width: 400px;
+    padding: 54px 65px 52px;
+
+    margin: 0 auto;
+    box-shadow: 3px 3px 3px 3px rgba(170, 178, 197, 0.59);
+  }
+
+  .desktop_container {
+    background-image: url("../../img/Login/bgDesktop.png");
+    min-width: 700px;
+    height: 100%;
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+  }
+
+  .main_text2 {
+    text-align: center;
+    color: #fff;
+    font-family: "BauhausC Medium";
+    font-size: 25px;
+    position: relative;
+    top: 90%;
+    opacity: 1;
+  }
 }

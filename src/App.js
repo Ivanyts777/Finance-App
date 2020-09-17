@@ -6,7 +6,7 @@ import Loader from "react-loader-spinner";
 import { useDispatch, useSelector } from "react-redux";
 
 import { navigation } from "./constants";
-import { setSizeWindow } from "./redux/Actions";
+import { setSizeWindow } from "./redux/Slice";
 
 // Components
 import Header from "./Components/Header/Header";
@@ -55,7 +55,6 @@ const App = () => {
                 <Route path={navigation.main} exact render={(props) => <Main {...props} />} />
                 <Route path={navigation.diagram} render={(props) => <Diagram {...props} />} />
                 {windowSize <= 748 ? <Route path={navigation.currency} render={(props) => <CurrencyExchage {...props} />} /> : null}
-
                 <Redirect to={navigation.main} />
               </>
             ) : (

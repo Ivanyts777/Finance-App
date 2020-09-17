@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Loader, setError, setUserData, setData, removeData } from "../../redux/Actions";
+import { Loader, setUserData, setData, removeData, setError } from "../../redux/Slice";
 
 const baseURL = "https://app-wallet-14.herokuapp.com/api/transactions/";
 

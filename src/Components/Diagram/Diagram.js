@@ -9,8 +9,6 @@ import Balance from "../Balance/Balance";
 import CurrencyExchage from "../CurrencyExchage/CurrencyExchage";
 import Menu from "../Menu/Menu";
 
-
-
 const {
   diagram,
   chartBlock,
@@ -156,7 +154,6 @@ const formStatistics = useCallback((costs) => {
   });
   setStatistics(arr)
   },[data]);
-
 
 const handleChange = ({ value }) => {
   setCurrentYear(cry => typeof value !== 'string' ? value : cry)
