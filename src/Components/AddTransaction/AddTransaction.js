@@ -58,6 +58,7 @@ const AddTransaction = () => {
       comment,
     };
     dispatch(setPost(session.token, reqData));
+    closeModal();
   };
 
   // const addTransaction = ()=>{
