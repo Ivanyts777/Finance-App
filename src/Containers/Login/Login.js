@@ -32,9 +32,13 @@ const Login = () => {
 
   return (
     <div className={styles.main_container}>
-      <div className={styles.desktop_container}>
-        <h2 className={styles.main_text2}>Finance App</h2>
+      <div className={styles.leftbg}>
+        <div className={styles.desktop_container}>
+          <h2 className={styles.main_text2}>Finance App</h2>
+        </div>
+        <div className={styles.phone}></div>
       </div>
+
       <div className={styles.container}>
         <h2 className={styles.main_text}>Finance App</h2>
         <div className={styles.authWrapper}>
