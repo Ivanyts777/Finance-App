@@ -1,17 +1,18 @@
 // Moduls
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useEffect } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Loader from "react-loader-spinner";
 
 import { useDispatch, useSelector } from "react-redux";
 
 import { navigation } from "./constants";
-import { setSizeWindow } from "./redux/Actions";
+import { setSizeWindow } from "./redux/Slice";
 
 // Components
 import Header from "./Components/Header/Header";
 import Diagram from "./Components/Diagram/Diagram";
 import CurrencyExchage from "./Components/CurrencyExchage/CurrencyExchage";
+import Error from "./Components/Error/Error";
 
 // Containers
 import Main from "./Containers/Main/Main";
@@ -20,20 +21,23 @@ import Main from "./Containers/Main/Main";
 
 // CSS
 import "./App.css";
+import { getUserData } from "./Components/Operations/operationsBD";
 
 const Login = lazy(() => import("./Containers/Login/Login"));
-const Registration = lazy(() =>
-  import("./Containers/Registration/Registration")
-);
+const Registration = lazy(() => import("./Containers/Registration/Registration"));
 const App = () => {
-  const windowSize = useSelector((state) => state.global.windowSize);
+  const { windowSize } = useSelector((state) => state.global);
+  const { error, token, user } = useSelector((state) => state.session);
+  const { loader } = useSelector((state) => state.global);
   const dispatch = useDispatch();
   window.onresize = ({ target }) => {
     dispatch(setSizeWindow(target.innerWidth));
   };
-
-  const { error, token } = useSelector((state) => state.session);
-  const { loader } = useSelector((state) => state.global);
+  useEffect(() => {
+    if (token && user.id) {
+      dispatch(getUserData(token, user.id));
+    }
+  }, [dispatch, token, user.id]);
   return (
     <>
       {loader && (
@@ -41,41 +45,22 @@ const App = () => {
           <Loader type="ThreeDots" color="#284060" height={300} width={300} />
         </div>
       )}
-      {error && <h1>{error}</h1>}
+      {error && <Error text={error} />}
       <Suspense fallback={<p>Compaling...</p>}>
         {token && <Header />}
         <main className={token ? "main" : "main guest"}>
           <Switch>
             {token ? (
               <>
-                <Route
-                  path={navigation.main}
-                  exact
-                  render={(props) => <Main {...props} />}
-                />
-                <Route
-                  path={navigation.diagram}
-                  render={(props) => <Diagram {...props} />}
-                />
-                {windowSize <= 748 ? (
-                  <Route
-                    path={navigation.currency}
-                    render={(props) => <CurrencyExchage {...props} />}
-                  />
-                ) : null}
-
+                <Route path={navigation.main} exact render={(props) => <Main {...props} />} />
+                <Route path={navigation.diagram} render={(props) => <Diagram {...props} />} />
+                {windowSize <= 748 ? <Route path={navigation.currency} render={(props) => <CurrencyExchage {...props} />} /> : null}
                 <Redirect to={navigation.main} />
               </>
             ) : (
               <>
-                <Route
-                  path={navigation.login}
-                  render={(props) => <Login {...props} />}
-                />
-                <Route
-                  path={navigation.registration}
-                  render={(props) => <Registration {...props} />}
-                />
+                <Route path={navigation.login} render={(props) => <Login {...props} />} />
+                <Route path={navigation.registration} render={(props) => <Registration {...props} />} />
                 <Redirect to={navigation.registration} />
               </>
             )}

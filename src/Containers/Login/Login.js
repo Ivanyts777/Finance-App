@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import styles from "./Login.module.css";
-import googleIcon from "../../Components/SVG/gicon.png";
 import { userLogin } from "../../Components/Operations/operationsAuth";
 import { useDispatch } from "react-redux";
-import { Email, LockClose } from "../../Components/SVG/sprite";
+import { Email, LockClose, Google } from "../../Components/SVG/sprite";
 import { NavLink } from "react-router-dom";
 import { navigation } from "../../constants";
 
