@@ -10,13 +10,13 @@ import AddIcon from "@material-ui/icons/Add";
 import { modalAdd, modalEdit } from "../../redux/Slice";
 import AddTransaction from "../../Components/AddTransaction/AddTransaction";
 import ChangeTransaction from "../../Components/ChangeTransaction/ChangeTransaction";
-import { removePost } from "../../Components/Operations/operationsBD";
+import ModalDellAdd from "../../Components/ModalDellAdd/ModalDellAdd";
+import { modalDel } from "../../redux/Slice";
 
 const titles = ["Date", "Category", "Comment", "Type", "Sum", "Balance", "Edit"];
 
 const Main = () => {
   const dataFinance = useSelector((state) => state.finance.data);
-  const token = useSelector((state) => state.session.token);
 
   const { isModalAddTransactionOpen, isModalEditTransactionOpen } = useSelector((state) => state.global);
   const dispatch = useDispatch();
@@ -31,6 +31,7 @@ const Main = () => {
   return (
     <div className={styles.mainGlobal}>
       {isModalEditTransactionOpen && <ChangeTransaction />}
+      {isModalDelTransaction && <ModalDellAdd />}
       <div>
         <Menu />
         <Balance />
@@ -78,10 +79,10 @@ const Main = () => {
                   <div className={styles.text}>
                     <span className={styles.titleMobile}>Edit</span>
                     <div className={styles.buttonsMobile}>
-                      <button className={styles.button} onClick={() => dispatch(modalEdit(el._id, true))}>
+                      <button className={styles.button} onClick={() => dispatch(modalEdit(el._id))}>
                         <Edit scale="18" />
                       </button>
-                      <button className={styles.button} onClick={() => dispatch(removePost(el._id, token))}>
+                      <button className={styles.button} onClick={() => dispatch(modalDel(el._id))}>
                         <Remove scale="18" />
                       </button>
                     </div>
