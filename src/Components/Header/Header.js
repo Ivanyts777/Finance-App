@@ -2,8 +2,8 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { modalLoginOut } from '../../redux/Actions';
-import ModalLogOut from '../ModalLogOut/ModalLogOut'
+import { modalLoginOut } from "../../redux/Slice";
+import ModalLogOut from "../ModalLogOut/ModalLogOut";
 
 // Operations
 import { userLoginOut } from "../Operations/operationsAuth";
@@ -18,15 +18,15 @@ import { navigation } from "../../constants";
 import "./Header.scss";
 const Header = () => {
   const session = useSelector((state) => state.session);
-  const isModalLoginOut = useSelector((state) => state.global.isModalLoginOut)
+  const isModalLoginOut = useSelector((state) => state.global.isModalLoginOut);
   const dispatch = useDispatch();
   const openModal = () => {
     dispatch(modalLoginOut(true));
-  }
+  };
 
   return (
     <header className="header">
-      {isModalLoginOut && <ModalLogOut/>}
+      {isModalLoginOut && <ModalLogOut />}
       <nav className="header-center">
         <div className="header__logo">
           <Logo />
