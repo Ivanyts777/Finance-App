@@ -1,17 +1,57 @@
+/* eslint-disable no-use-before-define */
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useCallback } from "react";
+//Mpment
 import moment from "moment";
+//Redux
 import { useSelector } from "react-redux";
+//Props-types
 import PropTypes from "prop-types";
+//Components
 import Table from "./Table/Table";
 import Chart from "./Chart/Chart";
-import styles from "./Diagram.module.css";
 import Balance from "../Balance/Balance";
 import CurrencyExchage from "../CurrencyExchage/CurrencyExchage";
 import Menu from "../Menu/Menu";
+//Styles
+import styles from "./Diagram.module.css";
 
-const { diagram, chartBlock, chartBlockHeader, diagramHeader, wrapper, mainGlobal, showTabletDesktop } = styles;
+const {
+  diagram,
+  chartBlock,
+  chartBlockHeader,
+  diagramHeader,
+  wrapper,
+  mainGlobal,
+  showTabletDesktop,
+} = styles;
 
-const colors = ["#ecb22a", "#e28b20", "#d25925", "#67b7d0", "#5593d7", "#3e6ba8", "#9cc254", "#73ad57", "#507c3a"];
+const colors = [
+  "#ecb22a",
+  "#e28b20",
+  "#d25925",
+  "#67b7d0",
+  "#5593d7",
+  "#3e6ba8",
+  "#9cc254",
+  "#73ad57",
+  "#507c3a",
+];
+
+const calendarMonths = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
 
 const Diagram = () => {
   Diagram.ropTypes = {
@@ -23,8 +63,12 @@ const Diagram = () => {
   const [expenses, setExpenses] = useState([25]);
   const [income, setIncome] = useState([15]);
   const [statistics, setStatistics] = useState([]);
-  const [currentYear, setCurrentYear] = useState(Number(moment(moment()).format("YYYY")));
-  const [currentMonth, setCurrentMonth] = useState(moment(moment()).format("MMMM"));
+  const [currentYear, setCurrentYear] = useState(
+    Number(moment(moment()).format("YYYY"))
+  );
+  const [currentMonth, setCurrentMonth] = useState(
+    moment(moment()).format("MMMM")
+  );
   const [month, setMonth] = useState([{ label: "All months", value: "" }]);
   const [year, setYear] = useState([{ label: "All years", value: 0 }]);
   const [data, setData] = useState({
@@ -47,57 +91,74 @@ const Diagram = () => {
     setExpenses(allExpenses);
     setIncome(allIncome);
 
-    const years = finance.data.map((trans) => Number(moment(Date.parse(trans.transactionDate)).format("YYYY"))).sort();
+    sortTransactions(finance.data, currentMonth, currentYear);
 
-    const months = finance.data.map((trans) => moment(Date.parse(trans.transactionDate)).format("MMMM"));
+    const years = finance.data
+      .map((trans) =>
+        Number(moment(Date.parse(trans.transactionDate)).format("YYYY"))
+      )
+      .sort();
 
-    years.forEach((year, idx) => (years.indexOf(year) === idx ? setYear((y) => [...y, { label: year, value: year }]) : null));
+    const months = finance.data.map((trans) =>
+      moment(Date.parse(trans.transactionDate)).format("MMMM")
+    );
 
-    months.forEach((month, idx) =>
-      months.indexOf(month) === idx
-        ? // calendarMonth === month && months.indexOf(month) === idx
-          setMonth((m) => [...m, { label: month, value: month }])
+    years.forEach((year, idx) =>
+      years.indexOf(year) === idx
+        ? setYear((y) => [...y, { label: year, value: year }])
         : null
     );
 
-    const sortTransactions = (transactions) => {
-      const sorted = transactions.filter((trans) => {
-        const date = moment(Date.parse(trans.transactionDate)).format("YYYY MMMM");
-        const byMonth = date.includes(currentMonth);
-        const byYear = date.includes(currentYear);
-        return byMonth && byYear;
-      });
+    calendarMonths.forEach((calendarMonth) => {
+      months.forEach((month, idx) =>
+        calendarMonth === month && months.indexOf(month) === idx
+          ? setMonth((m) => [...m, { label: month, value: month }])
+          : null
+      );
+    });
+  }, []);
 
-      const allExpenses = filterTransactions(sorted, "expense");
-      const allIncome = filterTransactions(sorted, "income");
-
-      setExpenses(allExpenses);
-      setIncome(allIncome);
-      const totalCosts = getTotal(allExpenses);
-      return formStatistics(totalCosts);
-    };
-
-    sortTransactions(finance.data, currentMonth, currentYear);
-  }, [finance.data, currentMonth, currentYear]);
-
-  const filterStatistics = () => {
-    const categories = statistics.map((el) => el.category);
-    const costs = statistics.map((el) => el.amount);
-
-    data.datasets[0].data = costs;
-    setData((d) => ({ ...d, labels: categories, datasets: [...d.datasets] }));
-  };
   useEffect(() => {
+    sortTransactions(finance.data, currentMonth, currentYear);
+  }, [finance.data, currentMonth || currentYear]);
+
+  useEffect(() => {
+    const filterStatistics = () => {
+      const categories = statistics.map((el) => el.category);
+      const costs = statistics.map((el) => el.amount);
+      data.datasets[0].data = costs;
+      setData((d) => ({ ...d, labels: categories, datasets: [...d.datasets] }));
+    };
     filterStatistics();
   }, [statistics]);
 
-  const filterTransactions = (transaction, type) => transaction.filter((trans) => trans.type === type);
+  const filterTransactions = (transaction, type) =>
+    transaction.filter((trans) => trans.type === type);
 
   const getTotal = (expenses) =>
     expenses.reduce((acc, exp) => {
       acc[exp.category] = (acc[exp.category] || 0) + exp.amount;
       return acc;
     }, {});
+
+  const sortTransactions = (transactions) => {
+    const sorted = transactions.filter((trans) => {
+      const date = moment(Date.parse(trans.transactionDate)).format(
+        "YYYY MMMM"
+      );
+      const byMonth = date.includes(currentMonth);
+      const byYear = date.includes(currentYear);
+      return byMonth && byYear;
+    });
+
+    const allExpenses = filterTransactions(sorted, "expense");
+    const allIncome = filterTransactions(sorted, "income");
+
+    setExpenses(allExpenses);
+    setIncome(allIncome);
+    const totalCosts = getTotal(allExpenses);
+    return formStatistics(totalCosts);
+  };
 
   const formStatistics = useCallback(
     (costs) => {
@@ -124,7 +185,8 @@ const Diagram = () => {
     setCurrentMonth((crm) => (typeof value === "string" ? value : crm));
   };
 
-  const getSum = (transaction) => transaction.reduce((acc, trans) => acc + trans.amount, 0);
+  const getSum = (transaction) =>
+    transaction.reduce((acc, trans) => acc + trans.amount, 0);
 
   return (
     <div>
@@ -146,10 +208,23 @@ const Diagram = () => {
                 <h2>Statistics</h2>
               </div>
 
-              {statistics.length > 0 ? <Chart data={data} /> : "No transactions during this period"}
+              {statistics.length > 0 ? (
+                <Chart data={data} />
+              ) : (
+                "No transactions during this period"
+              )}
             </div>
 
-            <Table year={year} month={month} data={statistics} handleChange={handleChange} expenses={getSum(expenses)} income={getSum(income)} currentYear={currentYear} currentMonth={currentMonth} />
+            <Table
+              year={year}
+              month={month}
+              data={statistics}
+              handleChange={handleChange}
+              expenses={getSum(expenses)}
+              income={getSum(income)}
+              currentYear={currentYear}
+              currentMonth={currentMonth}
+            />
           </div>
         </div>
       </div>

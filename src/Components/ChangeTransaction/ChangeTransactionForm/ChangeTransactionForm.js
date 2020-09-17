@@ -7,7 +7,7 @@ import { Field, withFormik, Form } from "formik";
 import ChangeTransactionSchema from "./ChangeTransactionSchema";
 import SelectForFormik from "./SelectForFormik";
 import ReactDatetimeForFormik from "./ReactDatetimeForFormik";
-import { ArrowRight } from "../../SVG/sprite";
+import { ArrowLeft } from "../../SVG/sprite";
 
 import styles from "./ChangeTransactionForm.module.css";
 
@@ -59,11 +59,10 @@ const innerForm = (props) => {
         {!!errors.value && touched.value && <div className={error}>{errors.value}</div>}
         {!!errors.timeOfTransaction && touched.timeOfTransaction && <div className={error}>{errors.timeOfTransaction}</div>}
       </div>
-      <div className={transactionModalButton}>
+      <div className={transactionModalButton}> </div>
         <button type="submit" className={transactionButton}>
           Save
         </button>
-      </div>
     </Form>
   );
 };
@@ -102,10 +101,11 @@ innerForm.propTypes = {
   setFieldTouched: PropTypes.func.isRequired,
 };
 
+
 const EnhancedForm = withFormik({
   mapPropsToValues: ({ financeData }) => ({
     typeOfTransaction: financeData.type,
-    value: financeData.amount,
+    value: String(financeData.amount),
     timeOfTransaction: financeData.transactionDate ? moment(financeData.transactionDate).format("DD/MM/YYYY") : moment().format("DD/MM/YYYY"),
     category: financeData.category,
     comment: financeData.comment,
@@ -125,14 +125,15 @@ const EnhancedForm = withFormik({
 const ChangeTransactionForm = ({ addTransaction, closeModalAddTransaction }) => {
   const editTaransactionId = useSelector((state) => state.global.isModalEditTransactionOpen);
   const financeData = useSelector((state) => state.finance.data.find((el) => el._id === editTaransactionId));
+
   return (
     <>
       <div className={titleWrapper}>
         <div className={controlWrapper}>
           <button type="button" className={closeModalButton} onClick={closeModalAddTransaction}>
-            <ArrowRight className={closeModalButtonImg} />
+            <ArrowLeft className={closeModalButtonImg} />
           </button>
-          <h2 className={title}>add transaction</h2>
+          <h2 className={title}>Change transaction</h2>
         </div>
       </div>
       <EnhancedForm onSubmit={addTransaction} financeData={financeData} />

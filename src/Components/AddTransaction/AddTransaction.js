@@ -45,7 +45,7 @@ const AddTransaction = () => {
   //   e.preventDefault();
   //   dispatch(setPost());
   // };
-  const addTransaction = (submittedData) => {
+  const addTransaction = async (submittedData) => {
     let { typeOfTransaction, timeOfTransaction, value, category, comment } = submittedData;
 
     const transactionDate = moment(timeOfTransaction, "DD/MM/YYYY").toISOString();
@@ -57,8 +57,8 @@ const AddTransaction = () => {
       category,
       comment,
     };
-    dispatch(setPost(session.token, reqData));
-    closeModal();
+   await dispatch(setPost(session.token, reqData));
+   await closeModal();
   };
 
   // const addTransaction = ()=>{

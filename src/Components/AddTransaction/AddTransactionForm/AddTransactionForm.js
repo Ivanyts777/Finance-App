@@ -6,7 +6,7 @@ import { Field, withFormik, Form } from "formik";
 import AddTransactionSchema from "./AddTransactionSchema";
 import SelectForFormik from "./SelectForFormik";
 import ReactDatetimeForFormik from "./ReactDatetimeForFormik";
-import { ArrowRight } from "../../SVG/sprite";
+import { ArrowLeft } from "../../SVG/sprite";
 
 import styles from "./AddTransactionForm.module.css";
 
@@ -58,11 +58,10 @@ const innerForm = (props) => {
         {!!errors.value && touched.value && <div className={error}>{errors.value}</div>}
         {!!errors.timeOfTransaction && touched.timeOfTransaction && <div className={error}>{errors.timeOfTransaction}</div>}
       </div>
-      <div className={transactionModalButton}>
+      <div className={transactionModalButton}></div>
         <button type="submit" className={transactionButton}>
           Add
         </button>
-      </div>
     </Form>
   );
 };
@@ -127,7 +126,7 @@ const AddTransactionForm = ({ addTransaction, closeModalAddTransaction }) => {
       <div className={titleWrapper}>
         <div className={controlWrapper}>
           <button type="button" className={closeModalButton} onClick={closeModalAddTransaction}>
-            <ArrowRight className={closeModalButtonImg} />
+          <ArrowLeft className={closeModalButtonImg} />
           </button>
           <h2 className={title}>add transaction</h2>
         </div>

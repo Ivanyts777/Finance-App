@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 import Balance from "../../Components/Balance/Balance";
 import CarrencyExchange from "../../Components/CurrencyExchage/CurrencyExchage";
 import styles from "./Main.module.css";
@@ -20,6 +21,10 @@ const Main = () => {
 
   const { isModalAddTransactionOpen, isModalEditTransactionOpen, isModalDelTransaction } = useSelector((state) => state.global);
   const dispatch = useDispatch();
+
+  const timestampToDate = (timestamp) => {
+    return moment(timestamp).format('YYYY-MM-DD');
+  }
 
   // const openModalEdit = () => {
   //   dispatch(modalEdit(true));
@@ -54,7 +59,7 @@ const Main = () => {
                 <li className={styles.item} key={el._id}>
                   <p className={styles.text}>
                     <span className={styles.titleMobile}>Date</span>
-                    {el.transactionDate.slice(0, 10)}
+                    {timestampToDate(el.transactionDate)}
                   </p>
                   <p className={styles.text}>
                     <span className={styles.titleMobile}>Category</span>

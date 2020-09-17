@@ -1,17 +1,26 @@
 import React, { createRef, useEffect } from "react";
 import { modalEdit } from "../../redux/Slice";
-import { removePost, setPost } from "../Operations/operationsBD";
+
+//Moment
 import moment from "moment";
+
+//Redux
 import { useDispatch, useSelector } from "react-redux";
-import styles from "./ChangeTransaction.module.css";
+
+//Operations
+import { removePost, setPost } from "../Operations/operationsBD";
+
+//Components
 import ChangeTransactionForm from "./ChangeTransactionForm/ChangeTransactionForm";
+
+//Style
+import styles from "./ChangeTransaction.module.css";
+
 
 const ChangeTransaction = () => {
   const backdropRef = createRef();
-  // const isModalAddTransactionOpen = useSelector((state) => state.global.isModalAddTransactionOpen)
   const dispatch = useDispatch();
   const session = useSelector((state) => state.session);
-  // const balance = useSelector((state) => state.finance.balance);
 
   useEffect(() => {
     window.addEventListener("keydown", handleKeyPress);
