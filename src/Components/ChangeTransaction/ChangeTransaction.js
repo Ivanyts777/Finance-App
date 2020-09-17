@@ -1,6 +1,6 @@
 import React, { createRef, useEffect } from "react";
 import { modalEdit } from "../../redux/Slice";
-import { setPost } from "../Operations/operationsBD";
+import { removePost, setPost } from "../Operations/operationsBD";
 import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./ChangeTransaction.module.css";
@@ -46,9 +46,10 @@ const ChangeTransaction = () => {
   //   e.preventDefault();
   //   dispatch(setPost());
   // };
-  const addTransaction = (submittedData) => {
+  const addTransaction = async (submittedData, idOldTransaction) => {
+    await dispatch(modalEdit(false));
+    await dispatch(removePost(idOldTransaction, session.token));
     let { typeOfTransaction, timeOfTransaction, value, category, comment } = submittedData;
-
     const transactionDate = moment(timeOfTransaction, "DD/MM/YYYY").toISOString();
 
     const reqData = {
@@ -57,14 +58,10 @@ const ChangeTransaction = () => {
       amount: +value,
       category,
       comment,
-      
     };
-    // dispatch(setPost(session.token, reqData));
-  };
 
-  // const addTransaction = ()=>{
-  //   dispatch(setPost());
-  // }
+    await dispatch(setPost(session.token, reqData));
+  };
 
   return (
     <div className={styles.backdrop} ref={backdropRef} onClick={handleBackdropClick} role="presentation">

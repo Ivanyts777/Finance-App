@@ -14,6 +14,7 @@ export const createNewUser = (userData) => async (dispatch) => {
     });
     dispatch(setToken(result.data.token));
     dispatch(setUserInfo(result.data.user));
+    // axios.defaults.headers.common.Authorization = `Bearer ${result.data.token}`;
   } catch (error) {
     console.log(error.message);
     dispatch(setError(error.message));
@@ -32,6 +33,7 @@ export const userLogin = (userData) => async (dispatch) => {
     });
     dispatch(setToken(result.data.token));
     dispatch(setUserInfo(result.data.user));
+    // axios.defaults.headers.common.Authorization = `Bearer ${result.data.token}`;
     await dispatch(getUserData(result.data.token, result.data.user.id));
   } catch (error) {
     dispatch(setError(error.message));
@@ -45,6 +47,7 @@ export const userLoginOut = () => async (dispatch) => {
   try {
     dispatch(Loader(true));
     await dispatch(loginOut());
+    // axios.defaults.headers.common.Authorization = null;
   } catch (error) {
     console.log(error.message);
     dispatch(setError(error.message));

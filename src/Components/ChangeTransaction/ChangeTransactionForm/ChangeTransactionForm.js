@@ -45,7 +45,7 @@ const innerForm = (props) => {
         />
         <label htmlFor="contactChoice2">Expense</label>
       </div>
-      {values.typeOfTransaction === "expense" && <SelectForFormik financeData = {financeData} value={values.category} onChange={setFieldValue} onBlur={setFieldTouched} error={errors.category} touched={touched.category} />}
+      {values.typeOfTransaction === "expense" && <SelectForFormik financeData={financeData} value={values.category} onChange={setFieldValue} onBlur={setFieldTouched} error={errors.category} touched={touched.category} />}
       <div className={dateAndValueWrapper}>
         <Field type="text" name="value" placeholder="0.00" className={valueInput} autoComplete="off" />
         <Field name="timeOfTransaction" value={values.timeOfTransaction} component={ReactDatetimeForFormik} />
@@ -103,19 +103,19 @@ innerForm.propTypes = {
 };
 
 const EnhancedForm = withFormik({
-  mapPropsToValues: ({financeData}) => ({
-    typeOfTransaction: financeData.type ? financeData.type : "expense",
-    value: financeData.amount ? String(financeData.amount) : "",
+  mapPropsToValues: ({ financeData }) => ({
+    typeOfTransaction: financeData.type,
+    value: financeData.amount,
     timeOfTransaction: financeData.transactionDate ? moment(financeData.transactionDate).format("DD/MM/YYYY") : moment().format("DD/MM/YYYY"),
-    category: financeData.category ? financeData.category : "",
-    comment: financeData.comment ? financeData.comment : "",
+    category: financeData.category,
+    comment: financeData.comment,
   }),
   validationSchema: ChangeTransactionSchema,
-  handleSubmit: (values, { setSubmitting, props: { onSubmit,financeData } }) => {
+  handleSubmit: (values, { setSubmitting, props: { onSubmit, financeData } }) => {
     const payload = { ...values, category: values.category.value };
     setTimeout(() => {
       // console.log(JSON.stringify(payload, null, 2));
-      onSubmit(payload,financeData._id);
+      onSubmit(payload, financeData._id);
       setSubmitting(false);
     }, 100);
   },
@@ -123,8 +123,8 @@ const EnhancedForm = withFormik({
 })(innerForm);
 
 const ChangeTransactionForm = ({ addTransaction, closeModalAddTransaction }) => {
-  const editTaransactionId = useSelector(state => state.global.isModalEditTransactionOpen)
-  const financeData = useSelector(state => state.finance.data.find(el => el._id === editTaransactionId))
+  const editTaransactionId = useSelector((state) => state.global.isModalEditTransactionOpen);
+  const financeData = useSelector((state) => state.finance.data.find((el) => el._id === editTaransactionId));
   return (
     <>
       <div className={titleWrapper}>
@@ -135,7 +135,7 @@ const ChangeTransactionForm = ({ addTransaction, closeModalAddTransaction }) => 
           <h2 className={title}>add transaction</h2>
         </div>
       </div>
-      <EnhancedForm onSubmit={addTransaction} financeData = {financeData} />
+      <EnhancedForm onSubmit={addTransaction} financeData={financeData} />
     </>
   );
 };

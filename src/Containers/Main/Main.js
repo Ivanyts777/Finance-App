@@ -18,7 +18,7 @@ const titles = ["Date", "Category", "Comment", "Type", "Sum", "Balance", "Edit"]
 const Main = () => {
   const dataFinance = useSelector((state) => state.finance.data);
 
-  const { isModalAddTransactionOpen, isModalEditTransactionOpen } = useSelector((state) => state.global);
+  const { isModalAddTransactionOpen, isModalEditTransactionOpen, isModalDelTransaction } = useSelector((state) => state.global);
   const dispatch = useDispatch();
 
   // const openModalEdit = () => {
