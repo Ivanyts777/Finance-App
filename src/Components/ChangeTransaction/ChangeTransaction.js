@@ -57,8 +57,9 @@ const ChangeTransaction = () => {
       amount: +value,
       category,
       comment,
+      
     };
-    dispatch(setPost(session.token, reqData));
+    // dispatch(setPost(session.token, reqData));
   };
 
   // const addTransaction = ()=>{
