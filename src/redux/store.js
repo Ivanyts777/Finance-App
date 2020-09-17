@@ -11,7 +11,7 @@ const middleWares = [thunk];
 const persistConfig = {
   key: "session",
   storage,
-  whitelist: ["session"],
+  whitelist: ["session", "finance"],
 };
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 const rootMiddleWares = applyMiddleware(...middleWares);

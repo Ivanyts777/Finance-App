@@ -18,10 +18,7 @@ const Main = () => {
   const dataFinance = useSelector((state) => state.finance.data);
   const token = useSelector((state) => state.session.token);
 
-  const {
-    isModalAddTransactionOpen,
-    isModalEditTransactionOpen
-  } = useSelector((state) => state.global);
+  const { isModalAddTransactionOpen, isModalEditTransactionOpen } = useSelector((state) => state.global);
   const dispatch = useDispatch();
 
   // const openModalEdit = () => {
@@ -33,7 +30,7 @@ const Main = () => {
 
   return (
     <div className={styles.mainGlobal}>
-      {isModalEditTransactionOpen && <ChangeTransaction/>}
+      {isModalEditTransactionOpen && <ChangeTransaction />}
       <div>
         <Menu />
         <Balance />
@@ -81,7 +78,7 @@ const Main = () => {
                   <div className={styles.text}>
                     <span className={styles.titleMobile}>Edit</span>
                     <div className={styles.buttonsMobile}>
-                      <button className={styles.button} onClick={() =>dispatch(modalEdit(el._id, true ))}>
+                      <button className={styles.button} onClick={() => dispatch(modalEdit(el._id, true))}>
                         <Edit scale="18" />
                       </button>
                       <button className={styles.button} onClick={() => dispatch(removePost(el._id, token))}>

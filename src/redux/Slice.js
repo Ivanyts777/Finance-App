@@ -38,8 +38,8 @@ const globalSlice = createSlice({
 
 const initialStateFinance = {
   data: [],
-  dataEdit: [],
-  balance: 0,
+  //   editData: [{ name: "lol" }],
+  //   balance: 0,
 };
 const financeEditArray = (array) => {
   let balanceAfter = 0;
@@ -47,13 +47,19 @@ const financeEditArray = (array) => {
   const newDataObj = { ...newState, data: newState.data.map((item) => ((balanceAfter = item.type === "income" ? balanceAfter + item.amount : balanceAfter - item.amount), { ...item, balanceAfter: balanceAfter })) };
   return newDataObj;
 };
+const checkDataEdit = (state, obj) => {
+  if (state.dataEdit.find((item) => item._id === obj._id)) {
+    return { ...state, dataEdit: [...state.dataEdit, { ...state.dataEdit.find((item) => item._id === obj._id), ...obj }] };
+  }
+  return { ...state, dataEdit: [...state.dataEdit, obj] };
+};
 const financeSlice = createSlice({
   name: "finance",
   initialState: initialStateFinance,
   reducers: {
-    setData: (state, { payload }) => financeEditArray([...state.data, payload]),
-    removeData: (state, { payload }) => financeEditArray([...state.data.filter((item) => item._id !== payload)]),
-    editData: (state, { payload }) => financeEditArray([...state.data.map((item) => (item.id === payload.id ? payload : item))]),
+    setData: ({ data }, { payload }) => financeEditArray([...data, payload]),
+    removeData: ({ data }, { payload }) => financeEditArray([...data.filter((item) => item._id !== payload)]),
+    editData: (state, { payload }) => checkDataEdit(state, payload),
     setUserData: (state, { payload }) => financeEditArray(payload),
   },
 });
