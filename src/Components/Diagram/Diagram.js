@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import moment from 'moment';
 import { useSelector } from "react-redux";
 import PropTypes from 'prop-types';
@@ -8,6 +8,7 @@ import styles from './Diagram.module.css';
 import Balance from "../Balance/Balance";
 import CurrencyExchage from "../CurrencyExchage/CurrencyExchage";
 import Menu from "../Menu/Menu";
+
 
 
 const {
@@ -31,22 +32,6 @@ const colors = [
   '#73ad57',
   '#507c3a',
 ];
-
-const calendarMonths = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-];
-
 
 const Diagram = () => {
   Diagram.ropTypes = {
@@ -73,19 +58,15 @@ const [data, setData] = useState({
   ],
 },);
 
-// const pickColor = state => state.data.datasets[0].backgroundColor;
-
-// const dispach = useDispatch;
 const finance = useSelector((state) => state.finance);
 
 useEffect(() => {
+  
   const allExpenses = filterTransactions(finance.data, 'expense');
   const allIncome = filterTransactions(finance.data, 'income');
 
   setExpenses(allExpenses);
-  setIncome(allIncome);
-
-  sortTransactions(finance.data, currentMonth, currentYear);
+  setIncome(allIncome); 
 
   const years = finance.data
     .map(trans =>
@@ -97,70 +78,20 @@ useEffect(() => {
       moment(Date.parse(trans.transactionDate)).format('MMMM'),
     );
 
-    years.forEach((yea, idx) =>
-    years.indexOf(yea) === idx
-      ? setYear([{ label: yea, value: year },...year])
+    years.forEach((year, idx) =>
+    years.indexOf(year) === idx
+      ? setYear(y =>[...y,{ label: year, value: year }])
       : null,
   );
 
-  calendarMonths.forEach(calendarMonth => {
-    months.forEach((mont, idx) =>
-      calendarMonth === mont && months.indexOf(mont) === idx
-        ? setMonth([{ label: calendarMonth, value: calendarMonth },...month])
-        : null,
-    );
-  });
-}, [currentMonth,currentYear,finance])
-
-// useEffect(() => {
-//   sortTransactions(finance.data, currentMonth, currentYear);
-// }, [currentMonth,currentYear,statistics])
-
-
-useEffect(() => {
+  months.forEach((month,idx) => 
   
-  filterStatistics();
-}, [currentMonth,currentYear,statistics])
-
-
-const filterTransactions = (transaction, type) =>
-    transaction.filter(trans => trans.type === type);
-
-const getTotal = expenses =>
-    expenses.reduce((acc, exp) => {
-      acc[exp.category] = (acc[exp.category] || 0) + exp.amount;
-      return acc;
-    }, {});
-
-const formStatistics = costs => {
-  let counter = 0;
-  const arr = [];
-  const stateCopy = { ...data.datasets[0].backgroundColor };
-
-  Object.keys(costs).forEach(key => {
-    arr.push({
-      id: counter,
-      category: key,
-      amount: costs[key],
-      color: stateCopy[counter],
-    });
-    counter += 1;
-  });
-  setStatistics(arr)
-  };
-
-  const filterStatistics = () => {
-
-    const categories = statistics.map(el => el.category);
-    const costs = statistics.map(el => el.amount);
-
-    const stateCopy = { ...data };
-
-    stateCopy.datasets[0].data = costs;
-
-    setData({...data,labels: categories,
-      datasets: [...stateCopy.datasets]})
-  };
+    months.indexOf(month) === idx
+    
+      // calendarMonth === month && months.indexOf(month) === idx
+        ? setMonth(m => [...m,{ label: month, value: month}])
+        : null,
+  );
 
   const sortTransactions = (transactions) => {
     const sorted = transactions.filter(trans => {
@@ -181,9 +112,55 @@ const formStatistics = costs => {
     return formStatistics(totalCosts);
   }
 
+  sortTransactions(finance.data, currentMonth, currentYear);
+},[finance.data, currentMonth, currentYear])
+
+useEffect(() => {
+  const filterStatistics = () => {
+
+    const categories = statistics.map(el => el.category);
+    const costs = statistics.map(el => el.amount);
+
+
+    data.datasets[0].data = costs;
+    setData(d => ({...d, labels: categories, datasets: [...d.datasets]}))
+
+  };
+  filterStatistics();
+},[statistics,])
+
+
+
+const filterTransactions = (transaction, type) =>
+    transaction.filter(trans => trans.type === type);
+
+const getTotal = expenses =>
+    expenses.reduce((acc, exp) => {
+      acc[exp.category] = (acc[exp.category] || 0) + exp.amount;
+      return acc;
+    }, {});
+
+const formStatistics = useCallback((costs) => {
+  let counter = 0;
+  const arr = [];
+  const stateCopy = { ...data.datasets[0].backgroundColor };
+
+  Object.keys(costs).forEach(key => {
+    arr.push({
+      id: counter,
+      category: key,
+      amount: costs[key],
+      color: stateCopy[counter],
+    });
+    counter += 1;
+  });
+  setStatistics(arr)
+  },[data]);
+
+
 const handleChange = ({ value }) => {
-  setCurrentYear(typeof value !== 'string' ? value : currentYear)
-  setCurrentMonth(typeof value === 'string' ? value : currentMonth)
+  setCurrentYear(cry => typeof value !== 'string' ? value : cry)
+  setCurrentMonth(crm => typeof value === 'string' ? value : crm)
 };
 
   const getSum = transaction =>
