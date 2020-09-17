@@ -1,21 +1,16 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
-import { setToken } from "../../redux/Actions";
+import { setError } from "../../redux/Slice";
 import styles from "./Error.module.css";
 
 // Sprite SVG icons
 import { ErrorMessage } from "../SVG/sprite";
 
 const Error = ({ text }) => {
-  //   const dispatch = useDispatch();
-  //   useEffect(() => {
-  //     setTimeout(() => {
-  //       dispatch(setToken(null));
-  //     }, 2000);
-  //   }, []);
+  const dispatch = useDispatch();
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} onClick={() => dispatch(setError(null))}>
       <div className={styles.error__box}>
         <div className={styles.face}>
           <div className={styles.eye}></div>

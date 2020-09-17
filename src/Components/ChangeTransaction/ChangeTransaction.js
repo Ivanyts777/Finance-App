@@ -1,16 +1,17 @@
 import React, { createRef, useEffect } from "react";
-import { modalAdd } from "../../redux/Slice";
+import { modalEdit } from "../../redux/Slice";
 import { setPost } from "../Operations/operationsBD";
 import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
-import styles from "./AddTransaction.module.css";
-import AddTransactionForm from "./AddTransactionForm/AddTransactionForm";
+import styles from "./ChangeTransaction.module.css";
+import ChangeTransactionForm from "./ChangeTransactionForm/ChangeTransactionForm";
 
-const AddTransaction = () => {
+const ChangeTransaction = () => {
   const backdropRef = createRef();
   // const isModalAddTransactionOpen = useSelector((state) => state.global.isModalAddTransactionOpen)
   const dispatch = useDispatch();
   const session = useSelector((state) => state.session);
+  // const balance = useSelector((state) => state.finance.balance);
 
   useEffect(() => {
     window.addEventListener("keydown", handleKeyPress);
@@ -38,7 +39,7 @@ const AddTransaction = () => {
   };
 
   const closeModal = () => {
-    dispatch(modalAdd(false));
+    dispatch(modalEdit(false));
   };
 
   // const addTransaction = (e) => {
@@ -58,7 +59,6 @@ const AddTransaction = () => {
       comment,
     };
     dispatch(setPost(session.token, reqData));
-    closeModal();
   };
 
   // const addTransaction = ()=>{
@@ -68,10 +68,10 @@ const AddTransaction = () => {
   return (
     <div className={styles.backdrop} ref={backdropRef} onClick={handleBackdropClick} role="presentation">
       <div className={styles.modal}>
-        <AddTransactionForm closeModalAddTransaction={closeModal} addTransaction={addTransaction} />
+        <ChangeTransactionForm closeModalAddTransaction={closeModal} addTransaction={addTransaction} />
       </div>
     </div>
   );
 };
 
-export default AddTransaction;
+export default ChangeTransaction;

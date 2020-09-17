@@ -6,7 +6,7 @@ import Loader from "react-loader-spinner";
 import { useDispatch, useSelector } from "react-redux";
 
 import { navigation } from "./constants";
-import { setSizeWindow } from "./redux/Actions";
+import { setSizeWindow } from "./redux/Slice";
 
 // Components
 import Header from "./Components/Header/Header";
@@ -24,9 +24,7 @@ import "./App.css";
 import { getUserData } from "./Components/Operations/operationsBD";
 
 const Login = lazy(() => import("./Containers/Login/Login"));
-const Registration = lazy(() =>
-  import("./Containers/Registration/Registration")
-);
+const Registration = lazy(() => import("./Containers/Registration/Registration"));
 const App = () => {
   const { windowSize } = useSelector((state) => state.global);
   const { error, token, user } = useSelector((state) => state.session);
@@ -36,8 +34,10 @@ const App = () => {
     dispatch(setSizeWindow(target.innerWidth));
   };
   useEffect(() => {
-    dispatch(getUserData(token, user.id));
-  }, []);
+    if (token && user.id) {
+      dispatch(getUserData(token, user.id));
+    }
+  }, [dispatch, token, user.id]);
   return (
     <>
       {loader && (
@@ -52,34 +52,15 @@ const App = () => {
           <Switch>
             {token ? (
               <>
-                <Route
-                  path={navigation.main}
-                  exact
-                  render={(props) => <Main {...props} />}
-                />
-                <Route
-                  path={navigation.diagram}
-                  render={(props) => <Diagram {...props} />}
-                />
-                {windowSize <= 748 ? (
-                  <Route
-                    path={navigation.currency}
-                    render={(props) => <CurrencyExchage {...props} />}
-                  />
-                ) : null}
-
+                <Route path={navigation.main} exact render={(props) => <Main {...props} />} />
+                <Route path={navigation.diagram} render={(props) => <Diagram {...props} />} />
+                {windowSize <= 748 ? <Route path={navigation.currency} render={(props) => <CurrencyExchage {...props} />} /> : null}
                 <Redirect to={navigation.main} />
               </>
             ) : (
               <>
-                <Route
-                  path={navigation.login}
-                  render={(props) => <Login {...props} />}
-                />
-                <Route
-                  path={navigation.registration}
-                  render={(props) => <Registration {...props} />}
-                />
+                <Route path={navigation.login} render={(props) => <Login {...props} />} />
+                <Route path={navigation.registration} render={(props) => <Registration {...props} />} />
                 <Redirect to={navigation.registration} />
               </>
             )}

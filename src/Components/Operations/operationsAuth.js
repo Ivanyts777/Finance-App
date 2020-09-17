@@ -1,23 +1,22 @@
 import axios from "axios";
-import { Loader, Error, setToken, setUserInfo, loginOut } from "../../redux/Actions";
+import { setError, setToken, loginOut, setUserInfo, Loader } from "../../redux/Slice";
 import { getUserData } from "./operationsBD";
 
-const baseURL = " https://app-wallet-14.herokuapp.com/api/";
+const baseURL = " https://app-wallet-14.herokuapp.com/api/auth/";
 
 export const createNewUser = (userData) => async (dispatch) => {
   try {
     await dispatch(Loader(true));
     const result = await axios({
       method: "post",
-      url: "https://app-wallet-14.herokuapp.com/api/auth/sign-up",
+      url: baseURL + "sign-up",
       data: userData,
     });
     dispatch(setToken(result.data.token));
     dispatch(setUserInfo(result.data.user));
-    dispatch(Error(null));
   } catch (error) {
     console.log(error.message);
-    dispatch(Error(error.message));
+    dispatch(setError(error.message));
   } finally {
     dispatch(Loader(false));
   }
@@ -28,15 +27,14 @@ export const userLogin = (userData) => async (dispatch) => {
     dispatch(Loader(true));
     const result = await axios({
       method: "post",
-      url: "https://app-wallet-14.herokuapp.com/api/auth/sign-in",
+      url: baseURL + "sign-in",
       data: userData,
     });
     dispatch(setToken(result.data.token));
     dispatch(setUserInfo(result.data.user));
-    // dispatch(getUserData(result.data.token));
-    dispatch(Error(null));
+    await dispatch(getUserData(result.data.token, result.data.user.id));
   } catch (error) {
-    dispatch(Error(error.message));
+    dispatch(setError(error.message));
     console.log(error.message);
   } finally {
     dispatch(Loader(false));
@@ -49,7 +47,7 @@ export const userLoginOut = () => async (dispatch) => {
     await dispatch(loginOut());
   } catch (error) {
     console.log(error.message);
-    dispatch(Error(error.message));
+    dispatch(setError(error.message));
   } finally {
     dispatch(Loader(false));
   }

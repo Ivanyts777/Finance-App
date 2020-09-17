@@ -194,8 +194,8 @@
 
   .textMoney {
     composes: text;
-    text-align: right;
-    margin-right: 40px;
+    text-align: center;
+    /* margin-right: 30px; */
   }
 
   .textOrange {
@@ -209,7 +209,9 @@
     font-weight: bold;
     color: #415b7d;
   }
-
+  .textCenter {
+    text-align: center;
+  }
   .iconAdd {
     position: absolute;
     bottom: 7px;

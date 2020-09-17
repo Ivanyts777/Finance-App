@@ -10,8 +10,6 @@ import CurrencyExchage from "../CurrencyExchage/CurrencyExchage";
 import Menu from "../Menu/Menu";
 
 
-
-
 const {
   diagram,
   chartBlock,
@@ -95,24 +93,28 @@ useEffect(() => {
     )
     .sort();
 
-    const months = finance.data.map(trans =>
+    const months = finance.data.map((trans) =>
       moment(Date.parse(trans.transactionDate)).format('MMMM'),
     );
 
-    years.forEach((year, idx) =>
-    years.indexOf(year) === idx
-      ? setYear([{ label: year, value: year }])
+    years.forEach((yea, idx) =>
+    years.indexOf(yea) === idx
+      ? setYear([{ label: yea, value: year },...year])
       : null,
   );
 
   calendarMonths.forEach(calendarMonth => {
-    months.forEach((month, idx) =>
-      calendarMonth === month && months.indexOf(month) === idx
-        ? setMonth([{ label: calendarMonth, value: calendarMonth }])
+    months.forEach((mont, idx) =>
+      calendarMonth === mont && months.indexOf(mont) === idx
+        ? setMonth([{ label: calendarMonth, value: calendarMonth },...month])
         : null,
     );
   });
 }, [currentMonth,currentYear,finance])
+
+// useEffect(() => {
+//   sortTransactions(finance.data, currentMonth, currentYear);
+// }, [currentMonth,currentYear,statistics])
 
 
 useEffect(() => {
@@ -156,7 +158,7 @@ const formStatistics = costs => {
 
     stateCopy.datasets[0].data = costs;
 
-    setData({labels: categories,
+    setData({...data,labels: categories,
       datasets: [...stateCopy.datasets]})
   };
 
