@@ -1,7 +1,10 @@
 .svg-LoginOut {
   fill: #8390a2;
 }
-
+.svg-Remove,
+.svg-Edit {
+  cursor: pointer;
+}
 .svg-Logo {
   fill: #8390a2;
 }

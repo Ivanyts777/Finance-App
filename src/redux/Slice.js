@@ -42,10 +42,14 @@ const initialStateFinance = {
   data: [],
   balance: 0,
 };
+
+const covertData = (data) => {
+  return new Date(data).toISOString();
+};
 const financeEditArray = (array) => {
-  let totalBalance = array.sort((a, b) => new Date(a.transactionDate).getTime() - new Date(b.transactionDate).getTime());
+  //   let totalBalance = array.sort((a, b) => new Date(a.transactionDate).getTime() - new Date(b.transactionDate).getTime());
   let balanceAfter = 0;
-  const newState = { data: array, balance: totalBalance.reduce((acc, item) => (item.type === "income" ? acc + item.amount : acc - item.amount), 0) };
+  const newState = { data: array, balance: array.reduce((acc, item) => (item.type === "income" ? acc + item.amount : acc - item.amount), 0) };
   const newDataObj = {
     ...newState,
     data: newState.data.map((item) => {

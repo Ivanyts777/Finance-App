@@ -61,7 +61,7 @@ const innerForm = (props) => {
       </div>
       <div className={transactionModalButton}>
         <button type="submit" className={transactionButton}>
-          Add
+          Save
         </button>
       </div>
     </Form>
