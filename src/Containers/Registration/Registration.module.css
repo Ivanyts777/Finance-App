@@ -215,12 +215,31 @@
   }
 
   .desktop_container {
-    background-image: url("../../img/Registration/bgDesktop.png");
-    min-width: 700px;
-    height: 100%;
+    background-image: url("../../img/Registration/bgClearDesktop.png");
     background-size: cover;
     background-position: bottom;
     background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+  }
+
+  .phone {
+    background-image: url("../../img/Registration/bgDesktopPhone.png");
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    display: block;
+
+    position: absolute;
+  }
+
+  .leftbg {
+    min-width: 700px;
+    height: 100%;
+    position: relative;
   }
 
   .main_text2 {
