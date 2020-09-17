@@ -21,6 +21,7 @@ const initialStateGlobal = {
   isModalAddTransactionOpen: false,
   isModalEditTransactionOpen: false,
   isModalLoginOut: false,
+  isModalDelTransaction: false,
   loader: false,
   windowSize: window.innerWidth,
 };
@@ -31,6 +32,7 @@ const globalSlice = createSlice({
     Loader: (state, { payload }) => ({ ...state, loader: payload }),
     modalAdd: (state, { payload }) => ({ ...state, isModalAddTransactionOpen: payload }),
     modalEdit: (state, { payload }) => ({ ...state, isModalEditTransactionOpen: payload }),
+    modalDel: (state, { payload }) => ({ ...state, isModalDelTransaction: payload }),
     modalLoginOut: (state, { payload }) => ({ ...state, isModalLoginOut: payload }),
     setSizeWindow: (state, { payload }) => ({ ...state, windowSize: payload }),
   },
@@ -62,7 +64,7 @@ export const session = sessionSlice.reducer;
 export const { setError, setToken, setUserInfo, loginOut } = sessionSlice.actions;
 
 export const global = globalSlice.reducer;
-export const { Loader, modalAdd, modalEdit, modalLoginOut, setSizeWindow } = globalSlice.actions;
+export const { Loader, modalAdd, modalEdit, modalLoginOut,modalDel, setSizeWindow } = globalSlice.actions;
 
 export const finance = financeSlice.reducer;
 export const { setData, removeData, editData, setUserData } = financeSlice.actions;

@@ -5,8 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { modalLoginOut } from "../../redux/Slice";
 import ModalLogOut from "../ModalLogOut/ModalLogOut";
 
-// Operations
-import { userLoginOut } from "../Operations/operationsAuth";
 
 // Sprite SVG icons
 import { Logo, LoginOut } from "../SVG/sprite";

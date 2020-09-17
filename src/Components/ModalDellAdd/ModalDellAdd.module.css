@@ -1,0 +1,56 @@
+.yes_no_btn_header {
+    display: flex;
+    flex-flow: row;
+    width: 125px;
+    height: 47px;
+    font-family: 'HelveticaNeueCyr';
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    border-radius: 15px;
+    font-weight: 700;
+    background-color: transparent;
+    border: 1px solid grey;
+    transition: 0.3s ease-in-out;
+  }
+  
+  .yes_no_btn_header:hover {
+    background-color: #fd812d;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+  }
+  
+  .modalLogout_btn {
+    display: flex;
+    justify-content: space-between;
+    width: 260px;
+  }
+  
+  .modalLogout_p {
+    font-weight: 700;
+    padding-bottom: 20px;
+  }
+  
+  .modalWrapper {
+    width: 310px;
+    height: 195px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 25px;
+  }
+  
+  .modalContent {
+    display: flex;
+    flex-flow: column;
+  }
+  
+  @media (min-width: 768px) {
+    .modalWrapper {
+      width: 380px;
+    }
+  }
+  

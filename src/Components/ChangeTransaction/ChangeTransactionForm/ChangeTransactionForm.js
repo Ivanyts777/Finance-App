@@ -124,7 +124,8 @@ const EnhancedForm = withFormik({
 })(innerForm);
 
 const ChangeTransactionForm = ({ addTransaction, closeModalAddTransaction }) => {
-  const financeData = useSelector(state => state.finance.data)
+  const editTaransactionId = useSelector(state => state.global.isModalEditTransactionOpen)
+  const financeData = useSelector(state => state.finance.data.find(el => el._id === editTaransactionId))
   return (
     <>
       <div className={titleWrapper}>
@@ -135,7 +136,7 @@ const ChangeTransactionForm = ({ addTransaction, closeModalAddTransaction }) => 
           <h2 className={title}>add transaction</h2>
         </div>
       </div>
-      <EnhancedForm onSubmit={addTransaction} financeData = {financeData[1]} />
+      <EnhancedForm onSubmit={addTransaction} financeData = {financeData} />
     </>
   );
 };
