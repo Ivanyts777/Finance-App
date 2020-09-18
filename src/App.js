@@ -54,7 +54,7 @@ const App = () => {
               <>
                 <Route path={navigation.main} exact render={(props) => <Main {...props} />} />
                 <Route path={navigation.diagram} render={(props) => <Diagram {...props} />} />
-                {windowSize <= 748 ? <Route path={navigation.currency} render={(props) => <CurrencyExchage {...props} />} /> : null}
+                {windowSize <= 748 ? <Route path={navigation.currency} render={(props) => <CurrencyExchage {...props} />} /> : <Route path={navigation.currency} render={(props) => <Main {...props} />} />}
                 <Redirect to={navigation.main} />
               </>
             ) : (
