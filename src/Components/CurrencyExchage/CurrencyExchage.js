@@ -10,9 +10,12 @@ const CurrencyExchage = () => {
   const windowSize = useSelector((state) => state.global.windowSize);
 
   useEffect(() => {
+    const ac = new AbortController();
     axios
       .get(`https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5`)
-      .then(({ data }) => setCurrency(data));
+      .then(({ data }) => setCurrency(data))
+      .catch(ex => console.error(ex));
+      return () => ac.abort(); // Abort both fetches on unmount
   }, []);
   const offExchange = () => {
     if (windowSize >= 748 && windowSize <= 1191) {
