@@ -45,7 +45,7 @@ const innerForm = (props) => {
         />
         <label htmlFor="contactChoice2">Expense</label>
       </div>
-      {values.typeOfTransaction === "expense" && <SelectForFormik financeData={financeData} value={values.category} onChange={setFieldValue} onBlur={setFieldTouched} error={errors.category} touched={touched.category} />}
+      {values.typeOfTransaction === "expense" && <SelectForFormik financeData={financeData} value={values.category.value} onChange={setFieldValue} onBlur={setFieldTouched} error={errors.category} touched={touched.category} />}
       <div className={dateAndValueWrapper}>
         <Field type="text" name="value" placeholder="0.00" className={valueInput} autoComplete="off" />
         <Field name="timeOfTransaction" value={values.timeOfTransaction} component={ReactDatetimeForFormik} />
@@ -107,7 +107,7 @@ const EnhancedForm = withFormik({
     typeOfTransaction: financeData.type,
     value: String(financeData.amount),
     timeOfTransaction: financeData.transactionDate ? moment(financeData.transactionDate).format("DD/MM/YYYY") : moment().format("DD/MM/YYYY"),
-    category: financeData.category,
+    category: financeData.category !== "income" ? {value: financeData.category, label: financeData.category}: financeData.category,
     comment: financeData.comment,
   }),
   validationSchema: ChangeTransactionSchema,

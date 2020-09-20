@@ -14,8 +14,9 @@ const options = [
   { value: 'Other', label: 'Other' },
 ];
 
-const SelectForFormik = ({ value, onChange, onBlur, financeData }) => {
+const SelectForFormik = ({ value, onChange, onBlur}) => {
   const handleChange = val => {
+    
     // this is going to call setFieldValue and manually update values.topcis
     onChange('category', val);
   };
@@ -28,7 +29,7 @@ const SelectForFormik = ({ value, onChange, onBlur, financeData }) => {
   return (
     <>
       <Select
-        placeholder="Category"
+        // placeholder="Category"
         options={ options}
         className={styles.select}
         components={{
@@ -42,7 +43,7 @@ const SelectForFormik = ({ value, onChange, onBlur, financeData }) => {
         }}
         onChange={handleChange}
         onBlur={handleBlur}
-        value={value}
+        value={{value: value, label: value}}
       />
     </>
   );
