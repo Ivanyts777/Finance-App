@@ -124,7 +124,7 @@ const Diagram = () => {
 
   useEffect(() => {
     const filterStatistics = () => {
-      const categories = statistics.map((el) => el.category);
+      const categories = statistics.map((el) => el.category.replace(/Other/g, ''));
       const costs = statistics.map((el) => el.amount);
       data.datasets[0].data = costs;
       setData((d) => ({ ...d, labels: categories, datasets: [...d.datasets] }));
@@ -169,7 +169,7 @@ const Diagram = () => {
       Object.keys(costs).forEach((key) => {
         arr.push({
           id: counter,
-          category: key,
+          category: key.replace(/Other/g, ''),
           amount: costs[key],
           color: stateCopy[counter],
         });

@@ -10,7 +10,24 @@ import { ArrowLeft } from "../../SVG/sprite";
 
 import styles from "./AddTransactionForm.module.css";
 
-const { transactionForm, typeOfTransactionWrapper, typeRadio, valueInput, dateAndValueWrapper, comment, inputComment, errorsContainer, error, transactionModalButton, transactionButton, titleWrapper, controlWrapper, closeModalButton, closeModalButtonImg, title } = styles;
+const {
+  transactionForm,
+  typeOfTransactionWrapper,
+  typeRadio,
+  valueInput,
+  dateAndValueWrapper,
+  comment,
+  inputComment,
+  errorsContainer,
+  error,
+  transactionModalButton,
+  transactionButton,
+  titleWrapper,
+  controlWrapper,
+  closeModalButton,
+  closeModalButtonImg,
+  title,
+} = styles;
 
 const innerForm = (props) => {
   const { values, touched, errors, setFieldValue, setFieldTouched } = props;
@@ -44,24 +61,56 @@ const innerForm = (props) => {
         />
         <label htmlFor="contactChoice2">Expense</label>
       </div>
-      {values.typeOfTransaction === "expense" && <SelectForFormik value={values.category} onChange={setFieldValue} onBlur={setFieldTouched} error={errors.category} touched={touched.category} />}
+      {values.typeOfTransaction === "expense" && (
+        <SelectForFormik
+          value={values.category}
+          onChange={setFieldValue}
+          onBlur={setFieldTouched}
+          error={errors.category}
+          touched={touched.category}
+        />
+      )}
       <div className={dateAndValueWrapper}>
-        <Field type="text" name="value" placeholder="0.00" className={valueInput} autoComplete="off" />
-        <Field name="timeOfTransaction" value={values.timeOfTransaction} component={ReactDatetimeForFormik} />
+        <Field
+          type="text"
+          name="value"
+          placeholder="0.00"
+          className={valueInput}
+          autoComplete="off"
+        />
+        <Field
+          name="timeOfTransaction"
+          value={values.timeOfTransaction}
+          component={ReactDatetimeForFormik}
+        />
       </div>
       <label htmlFor="comment" className={comment}>
         <p>Comment</p>
       </label>
-      <Field as="textarea" id="comment" name="comment" placeholder="You can input comment here" className={inputComment} />
+      <Field
+        as="textarea"
+        id="comment"
+        name="comment"
+        placeholder="You can input comment here"
+        className={inputComment}
+      />
       <div className={errorsContainer}>
-        {!!errors.category && touched.category && values.typeOfTransaction === "expense" && <div className={error}>{errors.category}</div>}
-        {!!errors.value && touched.value && <div className={error}>{errors.value}</div>}
-        {!!errors.timeOfTransaction && touched.timeOfTransaction && <div className={error}>{errors.timeOfTransaction}</div>}
+        {!!errors.category &&
+          touched.category &&
+          values.typeOfTransaction === "expense" && (
+            <div className={error}>{errors.category}</div>
+          )}
+        {!!errors.value && touched.value && (
+          <div className={error}>{errors.value}</div>
+        )}
+        {!!errors.timeOfTransaction && touched.timeOfTransaction && (
+          <div className={error}>{errors.timeOfTransaction}</div>
+        )}
       </div>
       <div className={transactionModalButton}></div>
-        <button type="submit" className={transactionButton}>
-          Add
-        </button>
+      <button type="submit" className={transactionButton}>
+        Add
+      </button>
     </Form>
   );
 };
@@ -110,7 +159,16 @@ const EnhancedForm = withFormik({
   }),
   validationSchema: AddTransactionSchema,
   handleSubmit: (values, { setSubmitting, props: { onSubmit } }) => {
-    const payload = { ...values, category: values.category.value };
+    const payload = {
+      ...values,
+      category:
+        values.category.value === undefined
+          ? values.category.value
+          : values.category.value.replace(
+              values.category.value,
+              "Other" + values.category.value
+            ),
+    };
     setTimeout(() => {
       // console.log(JSON.stringify(payload, null, 2));
       onSubmit(payload);
@@ -125,8 +183,12 @@ const AddTransactionForm = ({ addTransaction, closeModalAddTransaction }) => {
     <>
       <div className={titleWrapper}>
         <div className={controlWrapper}>
-          <button type="button" className={closeModalButton} onClick={closeModalAddTransaction}>
-          <ArrowLeft className={closeModalButtonImg} />
+          <button
+            type="button"
+            className={closeModalButton}
+            onClick={closeModalAddTransaction}
+          >
+            <ArrowLeft className={closeModalButtonImg} />
           </button>
           <h2 className={title}>add transaction</h2>
         </div>

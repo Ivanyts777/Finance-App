@@ -1,48 +1,117 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Select from 'react-select';
-import styles from './AddTransactionForm.module.css';
+import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+// import Select from 'react-select';
+import CreatableSelect from "react-select/creatable";
+import styles from "./AddTransactionForm.module.css";
 
-const options = [
-  { value: 'Food', label: 'Food' },
-  { value: 'Car', label: 'Car' },
-  { value: 'Self-care', label: 'Self-care' },
-  { value: 'Children', label: 'Children' },
-  { value: 'Home-care', label: 'Home-care' },
-  { value: 'Education', label: 'Education' },
-  { value: 'Hobbies', label: 'Hobbies' },
-  { value: 'Other', label: 'Other' },
+const createOption = (label) => ({
+  label: label.charAt(0).toUpperCase() + label.substr(1).toLowerCase(),
+  value: label.charAt(0).toUpperCase() + label.substr(1).toLowerCase(),
+});
+
+const option = [
+  createOption("Food"),
+  createOption("Car"),
+  createOption("Self-care"),
+  createOption("Children"),
+  createOption("Home-care"),
+  createOption("Education"),
+  // createOption('Other')
 ];
 
+// const options = [
+//   { value: 'Food', label: 'Food' },
+//   { value: 'Car', label: 'Car' },
+//   { value: 'Self-care', label: 'Self-care' },
+//   { value: 'Children', label: 'Children' },
+//   { value: 'Home-care', label: 'Home-care' },
+//   { value: 'Education', label: 'Education' },
+//   { value: 'Hobbies', label: 'Hobbies' },
+//   { value: 'Other', label: 'Other' },
+// ];
+
 const SelectForFormik = ({ value, onChange, onBlur }) => {
-  const handleChange = val => {
-    // this is going to call setFieldValue and manually update values.topcis
-    onChange('category', val);
+  const [isLoading, setIsLoading] = useState(false);
+  const [options, setOptions] = useState(option);
+  const [values, setValues] = useState(value);
+
+  const handleChange = (newValue) => {
+    setValues(newValue);
+    onChange("category", newValue);
+  };
+
+  const handleCreate = (inputValue) => {
+    setIsLoading(true);
+    setTimeout(() => {
+      const newOption = createOption(inputValue);
+      setIsLoading(false);
+      setOptions([...options, newOption]);
+      setValues(newOption);
+      onChange("category", newOption);
+    }, 1000);
   };
 
   const handleBlur = () => {
     // this is going to call setFieldTouched and manually update touched.topcis
-    onBlur('category', true);
+    onBlur("category", true);
   };
+
+  const save = (key, value) => {
+    try {
+      localStorage.setItem(key, JSON.stringify(value));
+    } catch (err) {
+      throw new Error();
+    }
+  };
+  const get = (key) => {
+    try {
+      const items = localStorage.getItem(key);
+      return items ? JSON.parse(items) : null;
+    } catch (err) {
+      throw new Error();
+    }
+  };
+
+  useEffect(() => {
+    const optionsData = get("options");
+    if (!optionsData) {
+      save("options", []);
+      return;
+    }
+    setOptions(optionsData);
+  }, []);
+
+  useEffect(() => {
+    save("options", options);
+  }, [options]);
+
+  // const handleChange = val => {
+  //   // this is going to call setFieldValue and manually update values.topcis
+  //   onChange('category', val);
+  // };
 
   return (
     <>
-      <Select
+      <CreatableSelect
+        // isClearable
         placeholder="Category"
+        isDisabled={isLoading}
+        isLoading={isLoading}
         options={options}
         className={styles.select}
         components={{
           IndicatorSeparator: () => null,
         }}
         styles={{
-          control: control => ({
+          control: (control) => ({
             ...control,
-            border: '2px solid #b9c9d4',
+            border: "2px solid #b9c9d4",
           }),
         }}
         onChange={handleChange}
+        onCreateOption={handleCreate}
         onBlur={handleBlur}
-        value={value}
+        value={values}
       />
     </>
   );

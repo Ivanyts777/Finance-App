@@ -11,10 +11,34 @@ import { ArrowLeft } from "../../SVG/sprite";
 
 import styles from "./ChangeTransactionForm.module.css";
 
-const { transactionForm, typeOfTransactionWrapper, typeRadio, valueInput, dateAndValueWrapper, comment, inputComment, errorsContainer, error, transactionModalButton, transactionButton, titleWrapper, controlWrapper, closeModalButton, closeModalButtonImg, title } = styles;
+const {
+  transactionForm,
+  typeOfTransactionWrapper,
+  typeRadio,
+  valueInput,
+  dateAndValueWrapper,
+  comment,
+  inputComment,
+  errorsContainer,
+  error,
+  transactionModalButton,
+  transactionButton,
+  titleWrapper,
+  controlWrapper,
+  closeModalButton,
+  closeModalButtonImg,
+  title,
+} = styles;
 
 const innerForm = (props) => {
-  const { values, touched, errors, setFieldValue, setFieldTouched, financeData } = props;
+  const {
+    values,
+    touched,
+    errors,
+    setFieldValue,
+    setFieldTouched,
+    financeData,
+  } = props;
   return (
     <Form className={transactionForm}>
       <div className={typeOfTransactionWrapper}>
@@ -45,24 +69,57 @@ const innerForm = (props) => {
         />
         <label htmlFor="contactChoice2">Expense</label>
       </div>
-      {values.typeOfTransaction === "expense" && <SelectForFormik financeData={financeData} value={values.category.value} onChange={setFieldValue} onBlur={setFieldTouched} error={errors.category} touched={touched.category} />}
+      {values.typeOfTransaction === "expense" && (
+        <SelectForFormik
+          financeData={financeData}
+          value={values.category.value}
+          onChange={setFieldValue}
+          onBlur={setFieldTouched}
+          error={errors.category}
+          touched={touched.category}
+        />
+      )}
       <div className={dateAndValueWrapper}>
-        <Field type="text" name="value" placeholder="0.00" className={valueInput} autoComplete="off" />
-        <Field name="timeOfTransaction" value={values.timeOfTransaction} component={ReactDatetimeForFormik} />
+        <Field
+          type="text"
+          name="value"
+          placeholder="0.00"
+          className={valueInput}
+          autoComplete="off"
+        />
+        <Field
+          name="timeOfTransaction"
+          value={values.timeOfTransaction}
+          component={ReactDatetimeForFormik}
+        />
       </div>
       <label htmlFor="comment" className={comment}>
         <p>Comment</p>
       </label>
-      <Field as="textarea" id="comment" name="comment" placeholder="You can input comment here" className={inputComment} />
+      <Field
+        as="textarea"
+        id="comment"
+        name="comment"
+        placeholder="You can input comment here"
+        className={inputComment}
+      />
       <div className={errorsContainer}>
-        {!!errors.category && touched.category && values.typeOfTransaction === "expense" && <div className={error}>{errors.category}</div>}
-        {!!errors.value && touched.value && <div className={error}>{errors.value}</div>}
-        {!!errors.timeOfTransaction && touched.timeOfTransaction && <div className={error}>{errors.timeOfTransaction}</div>}
+        {!!errors.category &&
+          touched.category &&
+          values.typeOfTransaction === "expense" && (
+            <div className={error}>{errors.category}</div>
+          )}
+        {!!errors.value && touched.value && (
+          <div className={error}>{errors.value}</div>
+        )}
+        {!!errors.timeOfTransaction && touched.timeOfTransaction && (
+          <div className={error}>{errors.timeOfTransaction}</div>
+        )}
       </div>
       <div className={transactionModalButton}> </div>
-        <button type="submit" className={transactionButton}>
-          Save
-        </button>
+      <button type="submit" className={transactionButton}>
+        Save
+      </button>
     </Form>
   );
 };
@@ -101,18 +158,37 @@ innerForm.propTypes = {
   setFieldTouched: PropTypes.func.isRequired,
 };
 
-
 const EnhancedForm = withFormik({
   mapPropsToValues: ({ financeData }) => ({
     typeOfTransaction: financeData.type,
     value: String(financeData.amount),
-    timeOfTransaction: financeData.transactionDate ? moment(financeData.transactionDate).format("DD/MM/YYYY") : moment().format("DD/MM/YYYY"),
-    category: financeData.category !== "income" ? {value: financeData.category, label: financeData.category}: financeData.category,
+    timeOfTransaction: financeData.transactionDate
+      ? moment(financeData.transactionDate).format("DD/MM/YYYY")
+      : moment().format("DD/MM/YYYY"),
+    category:
+      financeData.category !== "income"
+        ? {
+            value: financeData.category.replace(/Other/g, ""),
+            label: financeData.category.replace(/Other/g, ""),
+          }
+        : financeData.category,
     comment: financeData.comment,
   }),
   validationSchema: ChangeTransactionSchema,
-  handleSubmit: (values, { setSubmitting, props: { onSubmit, financeData } }) => {
-    const payload = { ...values, category: values.category.value };
+  handleSubmit: (
+    values,
+    { setSubmitting, props: { onSubmit, financeData } }
+  ) => {
+    const payload = {
+      ...values,
+      category:
+        values.category.value === undefined
+          ? values.category.value
+          : values.category.value.replace(
+              values.category.value,
+              "Other" + values.category.value
+            ),
+    };
     setTimeout(() => {
       // console.log(JSON.stringify(payload, null, 2));
       onSubmit(payload, financeData._id);
@@ -122,15 +198,26 @@ const EnhancedForm = withFormik({
   displayName: "BasicForm", // helps with React DevTools
 })(innerForm);
 
-const ChangeTransactionForm = ({ addTransaction, closeModalAddTransaction }) => {
-  const editTaransactionId = useSelector((state) => state.global.isModalEditTransactionOpen);
-  const financeData = useSelector((state) => state.finance.data.find((el) => el._id === editTaransactionId));
+const ChangeTransactionForm = ({
+  addTransaction,
+  closeModalAddTransaction,
+}) => {
+  const editTaransactionId = useSelector(
+    (state) => state.global.isModalEditTransactionOpen
+  );
+  const financeData = useSelector((state) =>
+    state.finance.data.find((el) => el._id === editTaransactionId)
+  );
 
   return (
     <>
       <div className={titleWrapper}>
         <div className={controlWrapper}>
-          <button type="button" className={closeModalButton} onClick={closeModalAddTransaction}>
+          <button
+            type="button"
+            className={closeModalButton}
+            onClick={closeModalAddTransaction}
+          >
             <ArrowLeft className={closeModalButtonImg} />
           </button>
           <h2 className={title}>Change transaction</h2>
