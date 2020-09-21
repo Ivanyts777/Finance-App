@@ -108,7 +108,7 @@ const SelectForFormik = ({ value, onChange, onBlur }) => {
         onChange={handleChange}
         onCreateOption={handleCreate}
         onBlur={handleBlur}
-        value={value === undefined ? value : {label: value}}
+        value={value === 'income' ? value : {label: value.value, value: value.value}}
       />
     </>
   );

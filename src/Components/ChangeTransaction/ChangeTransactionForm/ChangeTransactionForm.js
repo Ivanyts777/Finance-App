@@ -72,7 +72,7 @@ const innerForm = (props) => {
       {values.typeOfTransaction === "expense" && (
         <SelectForFormik
           financeData={financeData}
-          value={values.category.value}
+          value={values.category}
           onChange={setFieldValue}
           onBlur={setFieldTouched}
           error={errors.category}

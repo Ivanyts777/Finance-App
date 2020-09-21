@@ -99,9 +99,9 @@ const Diagram = () => {
       )
       .sort();
 
-    const months = finance.data.map((trans) =>
-      moment(Date.parse(trans.transactionDate)).format("MMMM")
-    );
+    // const months = finance.data.map((trans) =>
+    //   moment(Date.parse(trans.transactionDate)).format("MMMM")
+    // );
 
     years.forEach((year, idx) =>
       years.indexOf(year) === idx
@@ -109,18 +109,24 @@ const Diagram = () => {
         : null
     );
 
+    // months.forEach((month, idx) =>
+    //    months.indexOf(month) === idx
+    //       ? setMonth((m) => [...m, { label: month, value: month }])
+    //       : null
+    //   );
+
     calendarMonths.forEach((calendarMonth) => {
-      months.forEach((month, idx) =>
-        calendarMonth === month && months.indexOf(month) === idx
-          ? setMonth((m) => [...m, { label: month, value: month }])
-          : null
-      );
+      // months.forEach((month, idx) =>
+      //   calendarMonth === month && months.indexOf(month) === idx
+           setMonth((m) => [...m, { label: calendarMonth, value: calendarMonth }])
+          // : null
+      // );
     });
   }, []);
 
   useEffect(() => {
     sortTransactions(finance.data, currentMonth, currentYear);
-  }, [finance.data, currentMonth || currentYear]);
+  }, [finance.data, currentMonth, currentYear]);
 
   useEffect(() => {
     const filterStatistics = () => {
