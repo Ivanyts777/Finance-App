@@ -63,7 +63,7 @@ const Main = () => {
                   </p>
                   <p className={styles.text}>
                     <span className={styles.titleMobile}>Category</span>
-                    {el.category}
+                    {el.category.replace(/Other/g, '')}
                   </p>
                   <p title={el.comment} className={styles.text}>
                     <span className={styles.titleMobile}>Comment</span>
